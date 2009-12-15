@@ -14,8 +14,9 @@ module ShowFor
 
     def attribute(attribute_name, options={}, &block)
       apply_default_options!(attribute_name, options)
+      collection_block, block = block, nil if collection_block?(block)
 
-      value = if content_block?(block)
+      value = if block
         block
       elsif @object.respond_to?(:"human_#{attribute_name}")
         @object.send :"human_#{attribute_name}"
@@ -23,7 +24,7 @@ module ShowFor
         @object.send(attribute_name)
       end
 
-      wrap_label_and_content(attribute_name, value, options, &block)
+      wrap_label_and_content(attribute_name, value, options, &collection_block)
     end
 
     def association(association_name, options={}, &block)
@@ -32,8 +33,11 @@ module ShowFor
     
       # If a block with an iterator was given, no need to calculate the labels
       # since we want the collection to be yielded. Otherwise, calculate the values.
-      @value = if block_given?
-        collection_block?(block) ? association : block
+      @value = if collection_block?(block)
+        collection_block = block
+        association
+      elsif block
+        block
       else
         values = retrieve_values_from_association(association, options)
 
@@ -46,7 +50,7 @@ module ShowFor
         end
       end
 
-      wrap_label_and_content(association_name, value, options, &block)
+      wrap_label_and_content(association_name, value, options, &collection_block)
     end
 
   protected
@@ -57,7 +61,7 @@ module ShowFor
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
       wrap_with(:wrapper, label(name, options, false) + ShowFor.separator.to_s +
-        content(value, options, false, &block), options, true, block_given?)
+        content(value, options, false, &block), options, true, value.is_a?(Proc))
     end
 
     # Set "#{object_name}_#{attribute_name}" as in the wrapper tag.

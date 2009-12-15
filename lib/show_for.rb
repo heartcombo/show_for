@@ -7,7 +7,7 @@ module ShowFor
   @@show_for_tag = :div
 
   mattr_accessor :label_tag
-  @@label_tag = :b
+  @@label_tag = :strong
 
   mattr_accessor :separator
   @@separator = "<br />"

@@ -26,8 +26,12 @@ class ActionView::TestCase
     @user = User.new({
       :id => 1,
       :name => 'ShowFor',
-      :description => 'Hello',
-      :created_at => Time.now
+      :description => '',
+      :active => true,
+      :invalid => false,
+      :scopes => ["admin", "manager", "visitor"],
+      :created_at => Time.now,
+      :updated_at => Date.today
     }.merge(options))
   end
 end

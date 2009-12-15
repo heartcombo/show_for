@@ -26,8 +26,6 @@ class User < OpenStruct
     case attribute
       when 'name'
         'Super User Name!'
-      when 'description'
-        'User Description!'
       when 'company'
         'Company Human Name!'
       else
