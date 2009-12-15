@@ -1,0 +1,31 @@
+== ShowFor
+
+Describe.
+
+== Installation
+
+Install the gem:
+
+  sudo gem install show_for
+
+Configure simple_form gem inside your app:
+
+  config.gem 'show_for'
+
+Run the generator:
+
+  ruby script/generate show_for
+
+And you're ready to go.
+
+== Contributors
+
+* José Valim (http://github.com/josevalim)
+
+== Bugs and Feedback
+
+If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
+
+http://github.com/plataformatec/show_for/issues
+
+MIT License. Copyright 2009 Plataforma Tecnologia. http://blog.plataformatec.com.br
