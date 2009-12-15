@@ -25,8 +25,8 @@ class ActionView::TestCase
   def setup_new_user(options={})
     @user = User.new({
       :id => 1,
-      :name => 'New in Simple Form!',
-      :description => 'Hello!',
+      :name => 'ShowFor',
+      :description => 'Hello',
       :created_at => Time.now
     }.merge(options))
   end

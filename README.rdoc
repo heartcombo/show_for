@@ -1,6 +1,21 @@
 == ShowFor
 
-Describe.
+ShowFor allows you to quickly show a model information with I18n features.
+
+  <% show_for @user do |u| %>
+    <%= u.attribute :name %>
+    <%= u.attribute :confirmed? %>
+    <%= u.attribute :created_at, :format => :short %>
+    <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet"
+                    :wrapper_html => { :id => "sign_in_timestamp" } %>
+
+    <% u.attribute :photo do
+      <%= image_url(@user.photo_url) %>
+    end %>
+
+    <%= u.association :company %>
+    <%= u.association :tags, :to_sentence => true %>
+  <% end %>
 
 == Installation
 
@@ -17,6 +32,110 @@ Run the generator:
   ruby script/generate show_for
 
 And you're ready to go.
+
+== Usage
+
+ShowFor allows you to quickly show a model information with I18n features.
+
+  <% show_for @admin do |a| %>
+    <%= a.attribute :name %>
+    <%= a.attribute :confirmed? %>
+    <%= a.attribute :created_at, :format => :short %>
+    <%= a.attribute :last_sign_in_at, :if_blank => "Administrator did not access yet"
+                    :wrapper_html => { :id => "sign_in_timestamp" } %>
+
+    <% a.attribute :photo do %>
+      <%= image_url(@admin.photo_url) %>
+    <% end %>
+  <% end %>
+
+Will generate something like:
+
+  <div id="admin_1" class="show_for admin">
+    <p id="admin_name" class="wrapper">
+      <b class="label">Name</b><br />
+      José Valim
+    </p>
+    <p id="admin_confirmed" class="wrapper">
+      <b class="label">Confirmed?</b><br />
+      Yes
+    </p>
+    <p id="admin_created_at" class="wrapper">
+      <b class="label">Created at</b><br />
+      13/12/2009 - 19h17
+    </p>
+    <p id="sign_in_timestamp" class="wrapper">
+      <b class="label">Last sign in at</b><br />
+      Administrator did not access yet
+    </p>
+    <p id="admin_photo" class="wrapper">
+      <b class="label">Photo</b><br />
+      <img src="path/to/photo" />
+    </p>
+  </div>
+
+== Value lookup
+
+To show the proper value, before retrieving the attribute value, show_for first looks if a
+block without argument was given, otherwise checks if a :"human_#{attribute}" method is defined
+and, if not, only then retrieve the attribute.
+
+== Options
+
+show_for handles a series of options. Those are:
+
+* :escape * - When the attribute should be escaped. True by default.
+
+* :format * - Sent to I18n.localize when the attribute is a date/time object.
+
+* :if_blank * - An object to be used if the value is blank. Not escaped as well.
+
+Besides, all containers (:label, :content and :wrapper) can have their html
+options configured through the :label_html, :content_html and :wrapper_html
+options. Containers can have their tags configured on demand as well through
+:label_tag, :content_tag and :wrapper_tag options.
+
+== Label
+
+show_for also exposes the label method. In case you want to use the default
+human_attribute_name lookup and the default wrapping:
+
+  a.label :name                     #=> <b class="label">Name</b>
+  a.label "Name", :id => "my_name"  #=> <b class="label" id="my_name">Name</b>
+
+== Associations
+
+show_for also supports associations.
+
+  <% show_for @artwork do |a| %>
+    <%= a.association :artist %>
+    <%= a.association :artist, :method => :name_with_title %>
+
+    <%= a.association :tags %>
+    <%= a.association :tags, :to_sentence => true %>
+    <% a.association :tags do
+      @artwork.tags.map(&:name).to_sentence
+    end %>
+
+    <% a.association :fans, :collection_tag => :ol do |fan| %>
+      <li><%= link_to fan.name, fan %></li>
+    <% end %>
+  <% end %>
+
+The first is a has_one or belongs_to association, which works like an attribute
+to show_for, except it will retrieve the artist association and try to find a
+proper method from ShowFor.association_methods to be used. You can pass
+the option :method to tell (and not guess) which method from the association
+to use.
+
+:tags is a has_and_belongs_to_many association which will return a collection.
+show_for can handle collections by default by wrapping them in list (<ul> with
+each item wrapped by an <li>). However, it also allows you to give :to_sentence
+or :join it you want to render them inline.
+
+You can also pass a block which expects an argument to association. In such cases,
+a wrapper for the collection is still created and the block just iterates over the
+collection objects.
 
 == Contributors
 
