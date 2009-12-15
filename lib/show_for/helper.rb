@@ -1,5 +1,5 @@
 module ShowFor
-  module FormHelper
+  module Helper
     # Creates a div around the object and yields a builder.
     #
     # Example:
@@ -22,4 +22,4 @@ module ShowFor
   end
 end
 
-ActionView::Base.send :include, ShowFor::FormHelper
+ActionView::Base.send :include, ShowFor::Helper

@@ -1,4 +1,4 @@
-require 'show_for/form_helper'
+require 'show_for/helper'
 
 module ShowFor
   autoload :Builder, 'show_for/builder'
@@ -28,13 +28,14 @@ module ShowFor
   @@i18n_format = :default
 
   mattr_accessor :association_methods
-  @@label_methods = [ :name, :title, :to_s ]
+  @@association_methods = [ :name, :title, :to_s ]
 
   # Yield self for configuration block:
   #
   #   ShowFor.setup do |config|
   #     config.i18n_format = :long
   #   end
+  #
   def self.setup
     yield self
   end

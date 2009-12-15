@@ -1,26 +1,32 @@
 require 'ostruct'
 
-Column = Struct.new(:name, :type, :limit)
-Association = Struct.new(:klass, :name, :macro, :options)
-
 class Company < Struct.new(:id, :name)
-  def self.all(options={})
-    all = (1..3).map{|i| Company.new(i, "Company #{i}")}
-    return [all.first] if options[:conditions]
-    return [all.last]  if options[:order]
-    all
+  def alternate_name
+    "Alternate #{self.name}"
   end
 end
 
 class Tag < Struct.new(:id, :name)
   def self.all(options={})
-    (1..3).map{|i| Tag.new(i, "Tag #{i}")}
+    (1..3).map{ |i| Tag.new(i, "Tag #{i}") }
+  end
+
+  def alternate_name
+    "Alternate #{self.name}"
   end
 end
 
 class User < OpenStruct
   # Get rid of deprecation warnings
   undef_method :id
+
+  def tags
+    Tag.all
+  end
+
+  def company
+    Company.new(1, "PlataformaTec")
+  end
 
   def self.human_attribute_name(attribute)
     case attribute

@@ -18,7 +18,7 @@ I18n.default_locale = :en
 class ActionView::TestCase
   include MiscHelpers
 
-  tests ShowFor::FormHelper
+  tests ShowFor::Helper
 
   setup :setup_new_user
 

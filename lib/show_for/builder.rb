@@ -29,16 +29,16 @@ module ShowFor
 
     def association(association_name, options={}, &block)
       apply_default_options!(association_name, options)
-      association = @object.send(association_name)
     
       # If a block with an iterator was given, no need to calculate the labels
       # since we want the collection to be yielded. Otherwise, calculate the values.
-      @value = if collection_block?(block)
+      value = if collection_block?(block)
         collection_block = block
-        association
+        @object.send(association_name)
       elsif block
         block
       else
+        association = @object.send(association_name)
         values = retrieve_values_from_association(association, options)
 
         if options.delete(:to_sentence)
@@ -91,7 +91,7 @@ module ShowFor
     def retrieve_values_from_association(association, options) #:nodoc:
       sample = association.is_a?(Array) ? association.first : association
       method = options[:method] || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
-      association.is_a?(Array) ? association.map(&method) : association.send(method)
+      association.is_a?(Array) ? association.map(&method) : association.try(method)
     end
   end
 end
