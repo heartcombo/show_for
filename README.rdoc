@@ -52,23 +52,23 @@ ShowFor allows you to quickly show a model information with I18n features.
 Will generate something like:
 
   <div id="admin_1" class="show_for admin">
-    <p id="admin_name" class="wrapper">
+    <p class="wrapper admin_name">
       <b class="label">Name</b><br />
       José Valim
     </p>
-    <p id="admin_confirmed" class="wrapper">
+    <p class="wrapper admin_confirmed">
       <b class="label">Confirmed?</b><br />
       Yes
     </p>
-    <p id="admin_created_at" class="wrapper">
+    <p class="wrapper admin_created_at">
       <b class="label">Created at</b><br />
       13/12/2009 - 19h17
     </p>
-    <p id="sign_in_timestamp" class="wrapper">
+    <p id="sign_in_timestamp" class="wrapper admin_last_sign_in_at">
       <b class="label">Last sign in at</b><br />
       Administrator did not access yet
     </p>
-    <p id="admin_photo" class="wrapper">
+    <p class="wrapper admin_photo">
       <b class="label">Photo</b><br />
       <img src="path/to/photo" />
     </p>
