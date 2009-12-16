@@ -29,7 +29,7 @@ Configure simple_form gem inside your app:
 
 Run the generator:
 
-  ruby script/generate show_for
+  ruby script/generate show_for_install
 
 And you're ready to go.
 
