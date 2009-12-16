@@ -66,8 +66,9 @@ module ShowFor
 
     # Set "#{object_name}_#{attribute_name}" as in the wrapper tag.
     def apply_default_options!(name, options) #:nodoc:
-      options[:wrapper_html]      ||= {}
-      options[:wrapper_html][:id] ||= "#{object_name}_#{name}".gsub(/\W/, '')
+      html_class = "#{object_name}_#{name}".gsub(/\W/, '')
+      wrapper_html = options[:wrapper_html] ||= {}
+      wrapper_html[:class] = "#{html_class} #{wrapper_html[:class]}".strip
     end
 
     # Gets the default tag set in ShowFor module and apply (if defined)

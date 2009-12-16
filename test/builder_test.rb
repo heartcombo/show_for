@@ -21,16 +21,27 @@ class BuilderTest < ActionView::TestCase
   end
 
   def with_content_for(object, value, options={})
-     show_for object do |o|
-       concat o.content value, options
-     end
-   end
+    show_for object do |o|
+      concat o.content value, options
+    end
+  end
 
+  # WRAPPER 
   test "show_for attribute wraps each attribute with a label and content" do
     with_attribute_for @user, :name
-    assert_select "div.show_for p#user_name.wrapper"
+    assert_select "div.show_for p.user_name.wrapper"
     assert_select "div.show_for p.wrapper strong.label"
     assert_select "div.show_for p.wrapper"
+  end
+
+  test "show_for allows wrapper tag to be changed by attribute" do
+    with_attribute_for @user, :name, :wrapper_tag => :span
+    assert_select "div.show_for span.user_name.wrapper"
+  end
+
+  test "show_for allows wrapper html to be configured by attribute" do
+    with_attribute_for @user, :name, :wrapper_html => { :id => "thewrapper", :class => "special" }
+    assert_select "div.show_for p#thewrapper.user_name.wrapper.special"
   end
 
   # SEPARATOR
