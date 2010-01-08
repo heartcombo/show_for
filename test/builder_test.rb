@@ -211,6 +211,13 @@ class BuilderTest < ActionView::TestCase
     with_content_for @user, "Special content", :content_tag => :b, :id => "thecontent", :class => "special"
     assert_select "div.show_for b#thecontent.special.content", "Special content"
   end
+  
+  test "show_for#content with blank value has a 'no value'-class" do
+    swap ShowFor, :blank_content_class => "nothing" do
+      with_content_for @user, nil, :content_tag => :b
+      assert_select "div.show_for b.nothing"
+    end
+  end
 
   # COLLECTIONS
   test "show_for accepts an attribute as a collection" do
