@@ -169,7 +169,14 @@ class BuilderTest < ActionView::TestCase
 
   test "show_for accepts nil and or blank attributes" do
     with_attribute_for @user, :description
-    assert_select "div.show_for p.wrapper", "Description"
+    assert_select "div.show_for p.wrapper", /Not specified/
+  end
+
+  test "show_for accepts not spcified message can be localized" do
+    store_translations(:en, :show_for => { :blank => "OMG! It's blank!" }) do
+      with_attribute_for @user, :description
+      assert_select "div.show_for p.wrapper", /OMG! It's blank!/
+    end
   end
 
   test "show_for uses :if_blank if attribute is blank" do

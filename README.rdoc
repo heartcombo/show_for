@@ -137,9 +137,13 @@ You can also pass a block which expects an argument to association. In such case
 a wrapper for the collection is still created and the block just iterates over the
 collection objects.
 
-== Contributors
+== Maintainers
 
 * José Valim (http://github.com/josevalim)
+
+== Contributors
+
+* Jonas Grimfelt (http://github.com/grimen)
 
 == Bugs and Feedback
 

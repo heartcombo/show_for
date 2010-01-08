@@ -1,8 +1,10 @@
 module ShowFor
   module Content
     def content(value, options={}, apply_options=true, &block)
-      value = options.delete(:if_blank) || ShowFor.blank_content if value.blank? && value != false
-      options[:class] = [options[:class], ShowFor.blank_content_class].join(' ') if value.blank?
+      if value.blank? && value != false
+        value = options.delete(:if_blank) || I18n.t(:'show_for.blank', :default => "Not specified")
+        options[:class] = [options[:class], ShowFor.blank_content_class].join(' ')
+      end
 
       content = case value
         when Date, Time, DateTime

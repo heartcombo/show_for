@@ -1,0 +1,7 @@
+* enhancements
+  * HAML compatibility (by github.com/grimen)
+  * blank_content support (by github.com/grimen)
+
+== 0.1
+
+* First release
