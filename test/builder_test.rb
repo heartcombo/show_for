@@ -219,6 +219,13 @@ class BuilderTest < ActionView::TestCase
     end
   end
 
+  test "show_for#content with blank value fallbacks on a default value" do
+    swap ShowFor, :blank_content => "Not specified" do
+      with_content_for @user, nil, :content_tag => :b
+      assert_select "div.show_for b", "Not specified"
+    end
+  end
+
   # COLLECTIONS
   test "show_for accepts an attribute as a collection" do
     with_attribute_for @user, :scopes

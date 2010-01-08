@@ -1,7 +1,7 @@
 module ShowFor
   module Content
     def content(value, options={}, apply_options=true, &block)
-      value = options.delete(:if_blank) if value.blank? && value != false
+      value = options.delete(:if_blank) || ShowFor.blank_content if value.blank? && value != false
       options[:class] = [options[:class], ShowFor.blank_content_class].join(' ') if value.blank?
 
       content = case value
