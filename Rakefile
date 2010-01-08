@@ -35,7 +35,7 @@ begin
     s.homepage = "http://github.com/plataformatec/show_for"
     s.description = "Wrap your objects with a helper to easily show them"
     s.authors = ['José Valim']
-    s.files =  FileList["[A-Z]*(.rdoc)", "lib/**/*", "init.rb"]
+    s.files =  FileList["[A-Z]*(.rdoc)", "{generators,lib}/**/*", "init.rb"]
   end
 
   Jeweler::GemcutterTasks.new
