@@ -15,6 +15,12 @@ module ShowFor
   mattr_accessor :content_tag
   @@content_tag = nil
 
+  mattr_accessor :blank_content_class
+  @@blank_content_class = "blank"
+
+  mattr_accessor :blank_content
+  @@blank_content = ""
+
   mattr_accessor :wrapper_tag
   @@wrapper_tag = :p
 
