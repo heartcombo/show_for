@@ -4,6 +4,7 @@ ShowFor allows you to quickly show a model information with I18n features.
 
   <% show_for @user do |u| %>
     <%= u.attribute :name %>
+    <%= u.attribute :nickname, :in => :profile %>
     <%= u.attribute :confirmed? %>
     <%= u.attribute :created_at, :format => :short %>
     <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet"
@@ -109,7 +110,8 @@ show_for also supports associations.
 
   <% show_for @artwork do |a| %>
     <%= a.association :artist %>
-    <%= a.association :artist, :method => :name_with_title %>
+    <%= a.association :artist, :using => :name_with_title %>
+    <%= a.attribute :name_with_title, :in => :artist %>
 
     <%= a.association :tags %>
     <%= a.association :tags, :to_sentence => true %>
@@ -125,7 +127,7 @@ show_for also supports associations.
 The first is a has_one or belongs_to association, which works like an attribute
 to show_for, except it will retrieve the artist association and try to find a
 proper method from ShowFor.association_methods to be used. You can pass
-the option :method to tell (and not guess) which method from the association
+the option :using to tell (and not guess) which method from the association
 to use.
 
 :tags is a has_and_belongs_to_many association which will return a collection.
@@ -137,9 +139,13 @@ You can also pass a block which expects an argument to association. In such case
 a wrapper for the collection is still created and the block just iterates over the
 collection objects.
 
-== Contributors
+== Maintainers
 
 * José Valim (http://github.com/josevalim)
+
+== Contributors
+
+* Jonas Grimfelt (http://github.com/grimen)
 
 == Bugs and Feedback
 

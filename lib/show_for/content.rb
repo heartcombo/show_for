@@ -1,8 +1,10 @@
 module ShowFor
   module Content
     def content(value, options={}, apply_options=true, &block)
-      value = options.delete(:if_blank) || ShowFor.blank_content if value.blank? && value != false
-      options[:class] = [options[:class], ShowFor.blank_content_class].join(' ') if value.blank?
+      if value.blank? && value != false
+        value = options.delete(:if_blank) || I18n.t(:'show_for.blank', :default => "Not specified")
+        options[:class] = [options[:class], ShowFor.blank_content_class].join(' ')
+      end
 
       content = case value
         when Date, Time, DateTime
@@ -39,12 +41,6 @@ module ShowFor
       end
 
       wrap_with(:collection, response, options)
-    end
-
-    # Returns true if the block is supposed to iterate through a collection,
-    # i.e. it has arity equals to one.
-    def collection_block?(block) #:nodoc:
-      block && block.arity == 1
     end
   end
 end

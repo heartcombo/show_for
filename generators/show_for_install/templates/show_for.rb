@@ -15,9 +15,6 @@ ShowFor.setup do |config|
   # The DOM class set for blank content tags. Default is "blank".
   # config.blank_content_class = 'no_content'
 
-  # The default content for blank content tags. Default is "".
-  # config.blank_content = I18n.t(:'show_for.blank', :default => "Not specified")
-
   # The separator between label and content. Default is "<br />".
   # config.separator = "<br />"
 

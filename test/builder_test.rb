@@ -169,7 +169,14 @@ class BuilderTest < ActionView::TestCase
 
   test "show_for accepts nil and or blank attributes" do
     with_attribute_for @user, :description
-    assert_select "div.show_for p.wrapper", "Description"
+    assert_select "div.show_for p.wrapper", /Not specified/
+  end
+
+  test "show_for accepts not spcified message can be localized" do
+    store_translations(:en, :show_for => { :blank => "OMG! It's blank!" }) do
+      with_attribute_for @user, :description
+      assert_select "div.show_for p.wrapper", /OMG! It's blank!/
+    end
   end
 
   test "show_for uses :if_blank if attribute is blank" do
@@ -264,9 +271,20 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /PlataformaTec/
   end
 
-  test "show_for accepts :method as option to tell how to retrieve association value" do
-    with_association_for @user, :company, :method => :alternate_name
+  test "show_for accepts :using as option to tell how to retrieve association value" do
+    with_association_for @user, :company, :using => :alternate_name
     assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
+  end
+
+  test "show_for accepts :in to tell to retrieve an attribute from association" do
+    with_attribute_for @user, :alternate_name, :in => :company
+    assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
+  end
+
+  test "show_for forwards all options send with :in to association" do
+    with_attribute_for @user, :alternate_name, :in => :tags, :to_sentence => true
+    assert_no_select "div.show_for p.wrapper ul.collection"
+    assert_select "div.show_for p.wrapper", /Alternate Tag 1, Alternate Tag 2, and Alternate Tag 3/
   end
 
   test "show_for works with has_many/has_and_belongs_to_many associations" do
@@ -277,8 +295,8 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper ul.collection li", "Tag 3"
   end
 
-  test "show_for accepts :method as option to tell how to retrieve association values" do
-    with_association_for @user, :tags, :method => :alternate_name
+  test "show_for accepts :using as option to tell how to retrieve association values" do
+    with_association_for @user, :tags, :using => :alternate_name
     assert_select "div.show_for p.wrapper ul.collection"
     assert_select "div.show_for p.wrapper ul.collection li", "Alternate Tag 1"
     assert_select "div.show_for p.wrapper ul.collection li", "Alternate Tag 2"
