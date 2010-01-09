@@ -1,3 +1,5 @@
+== 0.1.2
+
 * enhancements
   * allow f.attribute :nickname, :in => :profile as association shortcut
 
