@@ -91,7 +91,13 @@ module ShowFor
 
     def retrieve_values_from_association(association, options) #:nodoc:
       sample = association.is_a?(Array) ? association.first : association
-      method = options[:method] || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
+
+      if options[:method]
+        options[:using] = options.delete(:method)
+        ActiveSupport::Deprecation.warn ":method is deprecated. Please use :using instead", caller
+      end
+
+      method = options.delete(:using) || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
       association.is_a?(Array) ? association.map(&method) : association.try(method)
     end
   end

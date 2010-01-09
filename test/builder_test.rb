@@ -271,8 +271,8 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /PlataformaTec/
   end
 
-  test "show_for accepts :method as option to tell how to retrieve association value" do
-    with_association_for @user, :company, :method => :alternate_name
+  test "show_for accepts :using as option to tell how to retrieve association value" do
+    with_association_for @user, :company, :using => :alternate_name
     assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
   end
 
@@ -284,8 +284,8 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper ul.collection li", "Tag 3"
   end
 
-  test "show_for accepts :method as option to tell how to retrieve association values" do
-    with_association_for @user, :tags, :method => :alternate_name
+  test "show_for accepts :using as option to tell how to retrieve association values" do
+    with_association_for @user, :tags, :using => :alternate_name
     assert_select "div.show_for p.wrapper ul.collection"
     assert_select "div.show_for p.wrapper ul.collection li", "Alternate Tag 1"
     assert_select "div.show_for p.wrapper ul.collection li", "Alternate Tag 2"
