@@ -1,8 +1,12 @@
+require 'show_for/attribute'
+require 'show_for/association'
 require 'show_for/content'
 require 'show_for/label'
 
 module ShowFor
   class Builder
+    include ShowFor::Attribute
+    include ShowFor::Association
     include ShowFor::Content
     include ShowFor::Label
 
@@ -10,47 +14,6 @@ module ShowFor
 
     def initialize(object, template)
       @object, @template = object, template
-    end
-
-    def attribute(attribute_name, options={}, &block)
-      apply_default_options!(attribute_name, options)
-      collection_block, block = block, nil if collection_block?(block)
-
-      value = if block
-        block
-      elsif @object.respond_to?(:"human_#{attribute_name}")
-        @object.send :"human_#{attribute_name}"
-      else
-        @object.send(attribute_name)
-      end
-
-      wrap_label_and_content(attribute_name, value, options, &collection_block)
-    end
-
-    def association(association_name, options={}, &block)
-      apply_default_options!(association_name, options)
-    
-      # If a block with an iterator was given, no need to calculate the labels
-      # since we want the collection to be yielded. Otherwise, calculate the values.
-      value = if collection_block?(block)
-        collection_block = block
-        @object.send(association_name)
-      elsif block
-        block
-      else
-        association = @object.send(association_name)
-        values = retrieve_values_from_association(association, options)
-
-        if options.delete(:to_sentence)
-          values.to_sentence
-        elsif joiner = options.delete(:join)
-          values.join(joiner)
-        else
-          values
-        end
-      end
-
-      wrap_label_and_content(association_name, value, options, &collection_block)
     end
 
   protected
@@ -89,16 +52,10 @@ module ShowFor
       concat ? @template.concat(html) : html
     end
 
-    def retrieve_values_from_association(association, options) #:nodoc:
-      sample = association.is_a?(Array) ? association.first : association
-
-      if options[:method]
-        options[:using] = options.delete(:method)
-        ActiveSupport::Deprecation.warn ":method is deprecated. Please use :using instead", caller
-      end
-
-      method = options.delete(:using) || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
-      association.is_a?(Array) ? association.map(&method) : association.try(method)
+    # Returns true if the block is supposed to iterate through a collection,
+    # i.e. it has arity equals to one.
+    def collection_block?(block) #:nodoc:
+      block && block.arity == 1
     end
   end
 end

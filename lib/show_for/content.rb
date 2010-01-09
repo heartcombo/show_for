@@ -42,11 +42,5 @@ module ShowFor
 
       wrap_with(:collection, response, options)
     end
-
-    # Returns true if the block is supposed to iterate through a collection,
-    # i.e. it has arity equals to one.
-    def collection_block?(block) #:nodoc:
-      block && block.arity == 1
-    end
   end
 end
