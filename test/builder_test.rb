@@ -3,27 +3,27 @@ require 'test_helper'
 class BuilderTest < ActionView::TestCase
 
   def with_attribute_for(object, attribute, options={}, &block)
-    concat(show_for(object) do |o|
+    show_for(object) do |o|
       o.attribute(attribute, options, &block)
-    end)
+    end
   end
 
   def with_association_for(object, association, options={}, &block)
-     concat(show_for(object) do |o|
+     show_for(object) do |o|
        o.association(association, options, &block)
-     end)
+     end
    end
 
   def with_label_for(object, attribute, options={})
-    concat(show_for(object) do |o|
+    show_for(object) do |o|
       o.label attribute, options
-    end)
+    end
   end
 
   def with_content_for(object, value, options={})
-    concat(show_for(object) do |o|
+    show_for(object) do |o|
       o.content value, options
-    end)
+    end
   end
 
   # WRAPPER 

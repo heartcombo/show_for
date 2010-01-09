@@ -15,7 +15,7 @@ module ShowFor
       html_options[:id]  ||= dom_id(object)
       html_options[:class] = "show_for #{dom_class(object)} #{html_options[:class]}".strip
 
-      content_tag(tag, yield(ShowFor::Builder.new(object, self)), html_options)
+      concat content_tag(tag, capture(ShowFor::Builder.new(object, self), &block), html_options)
     end
   end
 end
