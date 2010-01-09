@@ -1,3 +1,9 @@
+* enhancements
+  * allow f.attribute :nickname, :in => :profile as association shortcut
+
+* deprecations
+  * :method now becomes :using
+
 == 0.1.1
 
 * enhancements

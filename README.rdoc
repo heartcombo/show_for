@@ -4,6 +4,7 @@ ShowFor allows you to quickly show a model information with I18n features.
 
   <% show_for @user do |u| %>
     <%= u.attribute :name %>
+    <%= u.attribute :nickname, :in => :profile %>
     <%= u.attribute :confirmed? %>
     <%= u.attribute :created_at, :format => :short %>
     <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet"
@@ -110,6 +111,7 @@ show_for also supports associations.
   <% show_for @artwork do |a| %>
     <%= a.association :artist %>
     <%= a.association :artist, :using => :name_with_title %>
+    <%= a.attribute :name_with_title, :in => :artist %>
 
     <%= a.association :tags %>
     <%= a.association :tags, :to_sentence => true %>

@@ -276,6 +276,17 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
   end
 
+  test "show_for accepts :in to tell to retrieve an attribute from association" do
+    with_attribute_for @user, :alternate_name, :in => :company
+    assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
+  end
+
+  test "show_for forwards all options send with :in to association" do
+    with_attribute_for @user, :alternate_name, :in => :tags, :to_sentence => true
+    assert_no_select "div.show_for p.wrapper ul.collection"
+    assert_select "div.show_for p.wrapper", /Alternate Tag 1, Alternate Tag 2, and Alternate Tag 3/
+  end
+
   test "show_for works with has_many/has_and_belongs_to_many associations" do
     with_association_for @user, :tags
     assert_select "div.show_for p.wrapper ul.collection"
