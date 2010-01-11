@@ -54,23 +54,23 @@ Will generate something like:
 
   <div id="admin_1" class="show_for admin">
     <p class="wrapper admin_name">
-      <b class="label">Name</b><br />
+      <strong class="label">Name</strong><br />
       José Valim
     </p>
     <p class="wrapper admin_confirmed">
-      <b class="label">Confirmed?</b><br />
+      <strong class="label">Confirmed?</strong><br />
       Yes
     </p>
     <p class="wrapper admin_created_at">
-      <b class="label">Created at</b><br />
+      <strong class="label">Created at</strong><br />
       13/12/2009 - 19h17
     </p>
     <p id="sign_in_timestamp" class="wrapper admin_last_sign_in_at">
-      <b class="label">Last sign in at</b><br />
+      <strong class="label">Last sign in at</strong><br />
       Administrator did not access yet
     </p>
     <p class="wrapper admin_photo">
-      <b class="label">Photo</b><br />
+      <strong class="label">Photo</strong><br />
       <img src="path/to/photo" />
     </p>
   </div>
