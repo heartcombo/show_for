@@ -1,9 +1,18 @@
 require "test_helper"
 
+class CustomBuilder < ShowFor::Builder
+end
+
 class HelperTest < ActionView::TestCase
   test "show for yields an instance of ShowFor::Builder" do
     show_for(@user) do |f|
       assert f.instance_of?(ShowFor::Builder)
+    end
+  end
+
+  test "show for yields an instance of builder class specified by builder option" do
+    show_for(@user, :builder => CustomBuilder) do |f|
+      assert f.instance_of?(CustomBuilder)
     end
   end
 
