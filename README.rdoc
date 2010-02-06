@@ -22,7 +22,7 @@ ShowFor allows you to quickly show a model information with I18n features.
 
 Install the gem:
 
-  sudo gem install show_for
+  sudo gem install show_for --version=0.1
 
 Configure simple_form gem inside your app:
 
@@ -153,4 +153,4 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 
 http://github.com/plataformatec/show_for/issues
 
-MIT License. Copyright 2009 Plataforma Tecnologia. http://blog.plataformatec.com.br
+MIT License. Copyright 2010 Plataforma Tecnologia. http://blog.plataformatec.com.br
