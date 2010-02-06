@@ -1,7 +1,7 @@
-<%% show_for @<%= singular_name %> do |u| %>
+<%% show_for @<%= singular_name %> do |o| %>
 <% attributes.each do |attribute| -%>
-  <%%= u.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %> %>
-<% end %>
+  <%%= o.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %> %>
+<% end -%>
 <%% end %>
 
 <%%= link_to 'Edit', edit_<%= singular_name %>_path(@<%= singular_name %>) %> |

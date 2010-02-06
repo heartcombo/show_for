@@ -1,4 +1,3 @@
-require 'active_support/i18n'
 require 'show_for/helper'
 
 module ShowFor
@@ -47,10 +46,17 @@ module ShowFor
     yield self
   end
 
-  class Railtie < ::Rails::Engine
-    engine_name :show_for
+  class Railtie < ::Rails::Railtie
+    railtie_name :show_for
 
-    paths.config.locales = "lib/locale"
+    # Add load paths straight to I18n, so engines and application can overwrite it.
+    require 'active_support/i18n'
+    I18n.load_path << File.expand_path('../locales/en.yml', __FILE__)
+
+    # Remove this conditional on next Rails beta
+    if config.generators.respond_to?(:templates)
+      config.generators.templates << File.expand_path('../templates', __FILE__)
+    end
 
     initializer "show_for.initialize_values" do |app|
       config.show_for.each do |setting, value|

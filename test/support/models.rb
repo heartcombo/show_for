@@ -1,12 +1,16 @@
 require 'ostruct'
 
 class Company < Struct.new(:id, :name)
+  extend ActiveModel::Naming
+
   def alternate_name
     "Alternate #{self.name}"
   end
 end
 
 class Tag < Struct.new(:id, :name)
+  extend ActiveModel::Naming
+
   def self.all(options={})
     (1..3).map{ |i| Tag.new(i, "Tag #{i}") }
   end
@@ -17,6 +21,8 @@ class Tag < Struct.new(:id, :name)
 end
 
 class User < OpenStruct
+  extend ActiveModel::Naming
+
   # Get rid of deprecation warnings
   undef_method :id
 
