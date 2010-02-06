@@ -7,7 +7,7 @@ ShowFor allows you to quickly show a model information with I18n features.
     <%= u.attribute :nickname, :in => :profile %>
     <%= u.attribute :confirmed? %>
     <%= u.attribute :created_at, :format => :short %>
-    <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet"
+    <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet",
                     :wrapper_html => { :id => "sign_in_timestamp" } %>
 
     <% u.attribute :photo do
@@ -22,17 +22,16 @@ ShowFor allows you to quickly show a model information with I18n features.
 
 Install the gem:
 
-  sudo gem install show_for
-
-Configure simple_form gem inside your app:
-
-  config.gem 'show_for'
+  sudo gem install show_for --version=0.2
 
 Run the generator:
 
-  ruby script/generate show_for_install
+  rails generate show_for_install
 
-And you're ready to go.
+And you are ready to go. Since this branch is aims Rails 3 support,
+if you want to use it with Rails 2.3 you should check this branch:
+
+  http://github.com/plataformatec/show_for/tree/v0.1
 
 == Usage
 
@@ -153,4 +152,4 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 
 http://github.com/plataformatec/show_for/issues
 
-MIT License. Copyright 2009 Plataforma Tecnologia. http://blog.plataformatec.com.br
+MIT License. Copyright 2010 Plataforma Tecnologia. http://blog.plataformatec.com.br

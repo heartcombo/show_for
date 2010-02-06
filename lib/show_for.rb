@@ -1,3 +1,4 @@
+require 'active_support/i18n'
 require 'show_for/helper'
 
 module ShowFor
@@ -44,5 +45,17 @@ module ShowFor
   #
   def self.setup
     yield self
+  end
+
+  class Railtie < ::Rails::Engine
+    engine_name :show_for
+
+    paths.config.locales = "lib/locale"
+
+    initializer "show_for.initialize_values" do |app|
+      config.show_for.each do |setting, value|
+        ShowFor.send("#{setting}=", value)
+      end
+    end
   end
 end
