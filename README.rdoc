@@ -22,7 +22,7 @@ ShowFor allows you to quickly show a model information with I18n features.
 
 Install the gem:
 
-  sudo gem install show_for --version=0.2
+  sudo gem install show_for
 
 Run the generator:
 
