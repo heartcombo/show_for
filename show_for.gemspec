@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    "lib/generators/show_for_install/USAGE",
+    "init.rb",
+     "lib/generators/show_for_install/USAGE",
      "lib/generators/show_for_install/show_for_install_generator.rb",
      "lib/generators/show_for_install/templates/en.yml",
      "lib/generators/show_for_install/templates/show.html.erb",

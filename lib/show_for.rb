@@ -45,14 +45,4 @@ module ShowFor
   def self.setup
     yield self
   end
-
-  class Railtie < ::Rails::Railtie
-    railtie_name :show_for
-
-    initializer "show_for.initialize_values" do |app|
-      config.show_for.each do |setting, value|
-        ShowFor.send("#{setting}=", value)
-      end
-    end
-  end
 end
