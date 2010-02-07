@@ -6,7 +6,6 @@ require 'action_controller'
 require 'action_view/test_case'
 
 require 'rails/railtie'
-require 'rails/backtrace_cleaner'
 
 begin
   require 'ruby-debug'

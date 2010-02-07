@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-02-06}
+  s.date = %q{2010-02-07}
   s.description = %q{Wrap your objects with a helper to easily show them}
   s.email = %q{contact@plataformatec.com.br}
   s.extra_rdoc_files = [
@@ -18,8 +18,9 @@ Gem::Specification.new do |s|
   s.files = [
     "lib/generators/show_for_install/USAGE",
      "lib/generators/show_for_install/show_for_install_generator.rb",
+     "lib/generators/show_for_install/templates/en.yml",
+     "lib/generators/show_for_install/templates/show.html.erb",
      "lib/generators/show_for_install/templates/show_for.rb",
-     "lib/locales/en.yml",
      "lib/show_for.rb",
      "lib/show_for/association.rb",
      "lib/show_for/attribute.rb",
@@ -27,8 +28,7 @@ Gem::Specification.new do |s|
      "lib/show_for/content.rb",
      "lib/show_for/helper.rb",
      "lib/show_for/label.rb",
-     "lib/show_for/version.rb",
-     "lib/templates/erb/scaffold/show.html.erb"
+     "lib/show_for/version.rb"
   ]
   s.homepage = %q{http://github.com/plataformatec/show_for}
   s.rdoc_options = ["--charset=UTF-8"]
