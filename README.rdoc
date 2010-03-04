@@ -100,8 +100,8 @@ options. Containers can have their tags configured on demand as well through
 show_for also exposes the label method. In case you want to use the default
 human_attribute_name lookup and the default wrapping:
 
-  a.label :name                     #=> <b class="label">Name</b>
-  a.label "Name", :id => "my_name"  #=> <b class="label" id="my_name">Name</b>
+  a.label :name                     #=> <strong class="label">Name</strong>
+  a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
 
 == Associations
 
