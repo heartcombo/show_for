@@ -10,9 +10,9 @@ ShowFor allows you to quickly show a model information with I18n features.
     <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet"
                     :wrapper_html => { :id => "sign_in_timestamp" } %>
 
-    <% u.attribute :photo do
-      <%= image_url(@user.photo_url) %>
-    end %>
+    <% u.attribute :photo do %>
+      <%= image_tag(@user.photo_url) %>
+    <% end %>
 
     <%= u.association :company %>
     <%= u.association :tags, :to_sentence => true %>
@@ -46,7 +46,7 @@ ShowFor allows you to quickly show a model information with I18n features.
                     :wrapper_html => { :id => "sign_in_timestamp" } %>
 
     <% a.attribute :photo do %>
-      <%= image_url(@admin.photo_url) %>
+      <%= image_tag(@admin.photo_url) %>
     <% end %>
   <% end %>
 
