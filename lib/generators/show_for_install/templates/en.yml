@@ -3,3 +3,4 @@ en:
     blank: "Not specified"
     "yes": "Yes"
     "no": "No"
+    label_wrapper: "{{label}}"
