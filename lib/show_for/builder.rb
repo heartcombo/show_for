@@ -24,7 +24,7 @@ module ShowFor
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
       wrap_with(:wrapper, label(name, options, false) + ShowFor.separator.to_s.html_safe +
-        content(value, options, false, &block), options, value.is_a?(Proc))
+        content(value, options, false, &block), options)
     end
 
     # Set "#{object_name}_#{attribute_name}" as in the wrapper tag.
@@ -37,7 +37,7 @@ module ShowFor
     # Gets the default tag set in ShowFor module and apply (if defined)
     # around the given content. It also check for html_options in @options
     # hash related to the current type.
-    def wrap_with(type, content, options, concat=false) #:nodoc:
+    def wrap_with(type, content, options) #:nodoc:
       tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
 
       html = if tag
@@ -48,7 +48,7 @@ module ShowFor
         content
       end
 
-      concat ? @template.safe_concat(html) : html.html_safe
+      html.html_safe
     end
 
     # Returns true if the block is supposed to iterate through a collection,

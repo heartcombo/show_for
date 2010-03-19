@@ -18,7 +18,7 @@ module ShowFor
           collection_handler(value, options, &block)
         when Proc
           options[:escape] = false
-          @template.capture(&value)
+          @template.capture(&value).html_safe
         when NilClass
           ""
         else
@@ -40,7 +40,7 @@ module ShowFor
         response << template.capture(item, &iterator)
       end
 
-      wrap_with(:collection, response, options)
+      wrap_with(:collection, response.html_safe, options)
     end
   end
 end
