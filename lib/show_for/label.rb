@@ -11,7 +11,7 @@ module ShowFor
 
       return "" if label == false
       options[:label_html] = options.dup if apply_options
-      label = ::I18n.t(:'show_for.label_wrapper', :label => label, :default => "{{label}}")
+      label = ::I18n.t(:'show_for.label_wrapper', :label => label, :default => "{{label}}") if options.fetch(:wrap_label, true)
       wrap_with :label, label, options
     end
 
