@@ -154,6 +154,13 @@ class BuilderTest < ActionView::TestCase
       assert_select "div.show_for p.wrapper", /Hell yeah!/
     end
   end
+  
+  test "should let you override the label wrapper" do
+    store_translations(:en, :show_for => {"label_wrapper" => "{{label}}:"}) do
+      with_label_for @user, "Special Label"
+      assert_select "div.show_for strong.label", "Special Label:"
+    end
+  end
 
   test "show_for accepts an attribute as false" do
     with_attribute_for @user, :invalid
