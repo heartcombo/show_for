@@ -25,6 +25,13 @@ class BuilderTest < ActionView::TestCase
       concat o.content(value, options)
     end)
   end
+  
+  def with_label_proc(proc)
+    old_proc, ShowFor.label_proc = ShowFor.label_proc, proc
+    yield if block_given?
+  ensure
+    ShowFor.label_proc = old_proc
+  end
 
   # WRAPPER 
   test "show_for attribute wraps each attribute with a label and content" do
@@ -156,14 +163,14 @@ class BuilderTest < ActionView::TestCase
   end
   
   test "should let you override the label wrapper" do
-    store_translations(:en, :show_for => {"label_wrapper" => "{{label}}:"}) do
+    with_label_proc(proc { |l| l + ":" }) do
       with_label_for @user, "Special Label"
       assert_select "div.show_for strong.label", "Special Label:"
     end
   end
   
   test "should you skip wrapping the label on a per item basis" do
-    store_translations(:en, :show_for => {"label_wrapper" => "{{label}}:"}) do
+    with_label_proc(proc { |l| l + ":" }) do
       with_label_for @user, "Special Label", :wrap_label => false
       assert_select "div.show_for strong.label", "Special Label"
     end

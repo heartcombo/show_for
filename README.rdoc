@@ -104,12 +104,10 @@ human_attribute_name lookup and the default wrapping:
   a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
   
 Optionally, if you want to wrap the inner part of the label with some text
-(e.g. adding a semicolon), you can do so using I18n. Simply add a translation
-for show_for.label_wrapper including the value for label. E.g, in show_for.en.yml:
+(e.g. adding a semicolon), you can do so by specifying a proc for ShowFor.label_proc
+that will be called with any label text. E.g.:
   
-  en:
-    show_for:
-      label_wrapper: "{{label}}:"
+  ShowFor.label_proc = lambda { |l| l + ":" }
 
 When taking this route, you can also skip on a per label basis by passing the
 :wrap_label option with a value of false.

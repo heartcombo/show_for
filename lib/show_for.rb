@@ -35,6 +35,9 @@ module ShowFor
 
   mattr_accessor :association_methods
   @@association_methods = [ :name, :title, :to_s ]
+  
+  mattr_accessor :label_proc
+  @@label_proc = nil
 
   # Yield self for configuration block:
   #
