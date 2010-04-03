@@ -1,6 +1,13 @@
+== 0.2.1
+
+* enhancements
+  * added label_proc
+  * compatibility with latest Rails
+
 == 0.2.0
 
-* Rails 3 compatibility
+* enhancements
+  * Rails 3 compatibility
 
 == 0.1.3
 
