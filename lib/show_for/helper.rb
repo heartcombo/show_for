@@ -14,11 +14,9 @@ module ShowFor
 
       html_options[:id]  ||= dom_id(object)
       html_options[:class] = "show_for #{dom_class(object)} #{html_options[:class]}".strip
-      builder_class = html_options.delete(:builder) || ShowFor::Builder
 
-      content = with_output_buffer do
-        yield builder_class.new(object, self)
-      end
+      builder = html_options.delete(:builder) || ShowFor::Builder
+      content = capture(builder.new(object, self), &block)
 
       content_tag(tag, content, html_options)
     end
