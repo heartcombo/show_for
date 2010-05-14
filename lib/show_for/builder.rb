@@ -48,7 +48,7 @@ module ShowFor
         content
       end
 
-      html.html_safe
+      html
     end
 
     # Returns true if the block is supposed to iterate through a collection,

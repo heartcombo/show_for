@@ -11,6 +11,7 @@ module ShowFor
 
       return "" if label == false
       options[:label_html] = options.dup if apply_options
+
       label = ShowFor.label_proc.call(label) if options.fetch(:wrap_label, true) && ShowFor.label_proc
       wrap_with :label, label, options
     end

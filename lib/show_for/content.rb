@@ -14,18 +14,15 @@ module ShowFor
         when FalseClass
           I18n.t :"show_for.no", :default => "No"
         when Array, Hash
-          options[:escape] = false
           collection_handler(value, options, &block)
         when Proc
-          options[:escape] = false
-          @template.capture(&value).html_safe
+          @template.capture(&value)
         when NilClass
           ""
         else
           value
       end
 
-      content = @template.send(:h, content) unless options.delete(:escape) == false
       options[:content_html] = options.dup if apply_options
       wrap_with(:content, content, options)
     end

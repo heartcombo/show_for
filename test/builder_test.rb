@@ -212,9 +212,9 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /&lt;b&gt;/
   end
 
-  test "show_for does not escape content if chosen" do
-    @user.name = "<b>hack you!</b>"
-    with_attribute_for @user, :name, :escape => false
+  test "show_for works with html_safe marked strings" do
+    @user.name = "<b>hack you!</b>".html_safe
+    with_attribute_for @user, :name
     assert_select "div.show_for p.wrapper b", "hack you!"
   end
 
@@ -237,13 +237,6 @@ class BuilderTest < ActionView::TestCase
     swap ShowFor, :blank_content_class => "nothing" do
       with_content_for @user, nil, :content_tag => :b
       assert_select "div.show_for b.nothing"
-    end
-  end
-
-  test "show_for#content with blank value fallbacks on a default value" do
-    swap ShowFor, :blank_content => "Not specified" do
-      with_content_for @user, nil, :content_tag => :b
-      assert_select "div.show_for b", "Not specified"
     end
   end
 
