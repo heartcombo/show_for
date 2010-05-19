@@ -6,6 +6,10 @@ module ShowFor
         options[:class] = [options[:class], ShowFor.blank_content_class].join(' ')
       end
 
+      # We need to convert value to_a because when dealing with ActiveRecord
+      # Array proxies, the follow statement Array# === value return false
+      value = value.to_a if value.is_a?(Array)
+
       content = case value
         when Date, Time, DateTime
           I18n.l value, :format => options.delete(:format) || ShowFor.i18n_format
