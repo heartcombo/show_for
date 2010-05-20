@@ -5,6 +5,8 @@ module ShowFor
         value = options.delete(:if_blank) || I18n.t(:'show_for.blank', :default => "Not specified")
         options[:class] = [options[:class], ShowFor.blank_content_class].join(' ')
       end
+      
+      value = value.to_a if value.is_a?(Array)
 
       content = case value
         when Date, Time, DateTime
