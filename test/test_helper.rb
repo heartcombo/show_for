@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'test/unit'
 
+gem 'actionpack', '2.3.5'
+
 require 'action_controller'
 require 'action_view/test_case'
 

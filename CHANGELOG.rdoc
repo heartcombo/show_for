@@ -1,3 +1,8 @@
+== 0.1.4
+
+* bug fix
+  * allow show_for to work with AR association proxies
+
 == 0.1.3
 
 * enhancements
@@ -18,7 +23,6 @@
 
 * enhancements
   * HAML compatibility (by github.com/grimen)
-  * blank_content support (by github.com/grimen)
 
 == 0.1
 

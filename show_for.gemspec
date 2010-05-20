@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{show_for}
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
@@ -36,10 +36,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Wrap your objects with a helper to easily show them}
   s.test_files = [
-    "test/helper_test.rb",
-     "test/builder_test.rb",
-     "test/support/models.rb",
+    "test/builder_test.rb",
+     "test/helper_test.rb",
      "test/support/misc_helpers.rb",
+     "test/support/models.rb",
      "test/test_helper.rb"
   ]
 
