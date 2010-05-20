@@ -1,3 +1,11 @@
+== 0.2.2
+
+* bug fix
+  * allow show_for to work with AR association proxies
+
+* enhancements
+  * improvements on html safe and output buffers
+
 == 0.2.1
 
 * enhancements
@@ -8,6 +16,11 @@
 
 * enhancements
   * Rails 3 compatibility
+
+== 0.1.4
+
+* bug fix
+  * allow show_for to work with AR association proxies
 
 == 0.1.3
 
