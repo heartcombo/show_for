@@ -21,8 +21,8 @@ module ShowFor
           collection_handler(value, options, &block)
         when Proc
           @template.capture(&value)
-        when NilClass
-          ""
+        when NilClass, Numeric
+          value.to_s
         else
           value
       end
