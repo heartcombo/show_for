@@ -1,4 +1,8 @@
 require 'rubygems'
+require 'bundler'
+
+Bundler.setup
+
 require 'test/unit'
 
 require 'active_model'
@@ -7,12 +11,7 @@ require 'action_view'
 require 'action_view/template'
 require 'action_view/test_case'
 
-begin
-  require 'ruby-debug'
-rescue LoadError
-end
-
-$:.unshift File.join(File.dirname(__FILE__), '..', 'lib', 'show_for')
+$:.unshift File.expand_path("../../lib", __FILE__)
 require 'show_for'
 
 Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
@@ -20,8 +19,7 @@ I18n.default_locale = :en
 
 class ActionView::TestCase
   include MiscHelpers
-
-  tests ShowFor::Helper
+  include ShowFor::Helper
 
   setup :setup_new_user
 
