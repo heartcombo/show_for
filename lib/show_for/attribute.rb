@@ -13,6 +13,12 @@ module ShowFor
       end
 
       wrap_label_and_content(attribute_name, value, options, &collection_block)
-    end 
+    end
+
+    def attributes(*attribute_names)
+      attribute_names.map do |attribute_name|
+        attribute(attribute_name)
+      end.join.html_safe
+    end
   end
 end

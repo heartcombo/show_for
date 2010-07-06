@@ -74,6 +74,12 @@ Will generate something like:
     </p>
   </div>
 
+You also have the possibility to show a list of attributes, useful if you don't need to change any configuration:
+
+  <%= show_for @admin do |a| %>
+    <%= a.attributes :name, :confirmed?, :created_at %>
+  <% end %>
+
 == Value lookup
 
 To show the proper value, before retrieving the attribute value, show_for first looks if a

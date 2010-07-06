@@ -26,7 +26,13 @@ class BuilderTest < ActionView::TestCase
     end)
   end
 
-  # WRAPPER 
+  def with_attributes_for(object, *attributes)
+    concat(show_for(object) do |o|
+      concat o.attributes(*attributes)
+    end)
+  end
+
+  # WRAPPER
   test "show_for attribute wraps each attribute with a label and content" do
     with_attribute_for @user, :name
     assert_select "div.show_for p.user_name.wrapper"
@@ -154,14 +160,14 @@ class BuilderTest < ActionView::TestCase
       assert_select "div.show_for p.wrapper", /Hell yeah!/
     end
   end
-  
+
   test "should let you override the label wrapper" do
     swap ShowFor, :label_proc => proc { |l| l + ":" } do
       with_label_for @user, "Special Label"
       assert_select "div.show_for strong.label", "Special Label:"
     end
   end
-  
+
   test "should you skip wrapping the label on a per item basis" do
     swap ShowFor, :label_proc => proc { |l| l + ":" } do
       with_label_for @user, "Special Label", :wrap_label => false
@@ -232,7 +238,7 @@ class BuilderTest < ActionView::TestCase
     with_content_for @user, "Special content", :content_tag => :b, :id => "thecontent", :class => "special"
     assert_select "div.show_for b#thecontent.special.content", "Special content"
   end
-  
+
   test "show_for#content with blank value has a 'no value'-class" do
     swap ShowFor, :blank_content_class => "nothing" do
       with_content_for @user, nil, :content_tag => :b
@@ -340,5 +346,14 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper p.collection span", "Tag 1"
     assert_select "div.show_for p.wrapper p.collection span", "Tag 2"
     assert_select "div.show_for p.wrapper p.collection span", "Tag 3"
+  end
+
+  # ATTRIBUTES
+  test "show_for attributes wraps each attribute with a label and content" do
+    with_attributes_for @user, :name, :email
+    assert_select "div.show_for p.user_name.wrapper", /ShowFor/
+    assert_select "p.user_name strong.label", "Super User Name!"
+    assert_select "div.show_for p.user_email.wrapper", /Not specified/
+    assert_select "p.user_email strong.label", "Email"
   end
 end
