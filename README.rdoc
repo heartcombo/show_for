@@ -2,7 +2,7 @@
 
 ShowFor allows you to quickly show a model information with I18n features.
 
-  <% show_for @user do |u| %>
+  <%= show_for @user do |u| %>
     <%= u.attribute :name %>
     <%= u.attribute :nickname, :in => :profile %>
     <%= u.attribute :confirmed? %>
@@ -37,7 +37,7 @@ if you want to use it with Rails 2.3 you should check this branch:
 
 ShowFor allows you to quickly show a model information with I18n features.
 
-  <% show_for @admin do |a| %>
+  <%= show_for @admin do |a| %>
     <%= a.attribute :name %>
     <%= a.attribute :confirmed? %>
     <%= a.attribute :created_at, :format => :short %>
@@ -102,11 +102,11 @@ human_attribute_name lookup and the default wrapping:
 
   a.label :name                     #=> <strong class="label">Name</strong>
   a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
-  
+
 Optionally, if you want to wrap the inner part of the label with some text
 (e.g. adding a semicolon), you can do so by specifying a proc for ShowFor.label_proc
 that will be called with any label text. E.g.:
-  
+
   ShowFor.label_proc = lambda { |l| l + ":" }
 
 When taking this route, you can also skip on a per label basis by passing the
@@ -116,7 +116,7 @@ When taking this route, you can also skip on a per label basis by passing the
 
 show_for also supports associations.
 
-  <% show_for @artwork do |a| %>
+  <%= show_for @artwork do |a| %>
     <%= a.association :artist %>
     <%= a.association :artist, :using => :name_with_title %>
     <%= a.attribute :name_with_title, :in => :artist %>

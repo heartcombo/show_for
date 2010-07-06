@@ -1,6 +1,6 @@
-<%% show_for @<%= singular_name %> do |o| %>
+<%%= show_for @<%= singular_name %> do |s| %>
 <% attributes.each do |attribute| -%>
-  <%%= o.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %> %>
+  <%%= s.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %> %>
 <% end -%>
 <%% end %>
 
