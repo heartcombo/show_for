@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jos\303\251 Valim"]
-  s.date = %q{2010-05-20}
+  s.date = %q{2010-07-13}
   s.description = %q{Wrap your objects with a helper to easily show them}
   s.email = %q{contact@plataformatec.com.br}
   s.extra_rdoc_files = [
@@ -17,11 +17,11 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     "init.rb",
-     "lib/generators/show_for_install/USAGE",
-     "lib/generators/show_for_install/show_for_install_generator.rb",
-     "lib/generators/show_for_install/templates/en.yml",
-     "lib/generators/show_for_install/templates/show.html.erb",
-     "lib/generators/show_for_install/templates/show_for.rb",
+     "lib/generators/show_for/USAGE",
+     "lib/generators/show_for/install_generator.rb",
+     "lib/generators/show_for/templates/en.yml",
+     "lib/generators/show_for/templates/show.html.erb",
+     "lib/generators/show_for/templates/show_for.rb",
      "lib/show_for.rb",
      "lib/show_for/association.rb",
      "lib/show_for/attribute.rb",
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/plataformatec/show_for}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Wrap your objects with a helper to easily show them}
   s.test_files = [
     "test/builder_test.rb",
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
     else
     end
   else
