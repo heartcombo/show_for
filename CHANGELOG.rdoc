@@ -1,6 +1,8 @@
+== 0.2.3
+
 * enhancements
   * added :attributes method to generate all attributes given
-  * udpate generator to use the new syntax show_for:install
+  * update generator to use the new syntax show_for:install
 
 * bug fix
   * fix numeric types
