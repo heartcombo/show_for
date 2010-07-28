@@ -48,7 +48,7 @@ module ShowFor
         content
       end
 
-      html.html_safe! if safe && html.respond_to?(:html_safe!)
+      html.html_safe if safe && html.respond_to?(:html_safe)
       concat ? @template.concat(html) : html
     end
 
