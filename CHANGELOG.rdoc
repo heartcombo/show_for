@@ -1,12 +1,17 @@
+== 0.1.5
+
+* bug fix
+  * Remove deprecation message for Rails 2.3.8
+
 == 0.1.4
 
 * bug fix
-  * allow show_for to work with AR association proxies
+  * Allow show_for to work with AR association proxies
 
 == 0.1.3
 
 * enhancements
-  * allow builder to be given to show_for
+  * Allow builder to be given to show_for
 
 * bugfix
   * Fix typo in yaml
@@ -14,7 +19,7 @@
 == 0.1.2
 
 * enhancements
-  * allow f.attribute :nickname, :in => :profile as association shortcut
+  * Allow f.attribute :nickname, :in => :profile as association shortcut
 
 * deprecations
   * :method now becomes :using
