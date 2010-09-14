@@ -23,8 +23,9 @@ module ShowFor
     end
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
-      wrap_with(:wrapper, label(name, options, false) + ShowFor.separator.to_s.html_safe +
-        content(value, options, false, &block), options)
+      label = label(name, options, false)
+      label += ShowFor.separator.to_s.html_safe if label.present?
+      wrap_with(:wrapper, label + content(value, options, false, &block), options)
     end
 
     # Set "#{object_name}_#{attribute_name}" as in the wrapper tag.

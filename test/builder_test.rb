@@ -72,6 +72,7 @@ class BuilderTest < ActionView::TestCase
   test "show_for skips label if requested" do
     with_attribute_for @user, :name, :label => false
     assert_no_select "div.show_for p.wrapper strong.label"
+    assert_no_select "div.show_for p.wrapper br"
   end
 
   test "show_for allows label to be configured globally" do
