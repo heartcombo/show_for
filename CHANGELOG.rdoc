@@ -1,3 +1,7 @@
+* enhancements
+  * Fix empty labels to be html_safe (label => false) (by github.com/eugenebolshakov)
+  * Do not add separator if label is not present (by github.com/eugenebolshakov)
+
 == 0.2.3
 
 * enhancements
