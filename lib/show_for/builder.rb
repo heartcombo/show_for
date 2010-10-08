@@ -24,7 +24,7 @@ module ShowFor
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
       label = label(name, options, false)
-      label += ShowFor.separator.to_s.html_safe if label.present?
+      label += html_safe(ShowFor.separator.to_s) if label.present?
       wrap_with(:wrapper, label + content(value, options, false, &block),
                 options, true, (value.is_a?(Proc) or collection_block?(block)))
     end
@@ -50,7 +50,7 @@ module ShowFor
         content
       end
 
-      html.html_safe if safe && html.respond_to?(:html_safe)
+      html = html_safe(html) if safe
       concat ? @template.concat(html) : html
     end
 
@@ -58,6 +58,17 @@ module ShowFor
     # i.e. it has arity equals to one.
     def collection_block?(block) #:nodoc:
       block && block.arity == 1
+    end
+
+    # Ensure we make html safe only if it responds to it.
+    def html_safe(content)
+      if content.respond_to?(:html_safe)
+        content.html_safe
+      elsif content.respond_to?(:html_safe!)
+        content.html_safe!
+      else
+        content
+      end
     end
   end
 end
