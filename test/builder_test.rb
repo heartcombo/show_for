@@ -26,7 +26,7 @@ class BuilderTest < ActionView::TestCase
     end
   end
 
-  # WRAPPER 
+  # WRAPPER
   test "show_for attribute wraps each attribute with a label and content" do
     with_attribute_for @user, :name
     assert_select "div.show_for p.user_name.wrapper"
@@ -66,6 +66,7 @@ class BuilderTest < ActionView::TestCase
   test "show_for skips label if requested" do
     with_attribute_for @user, :name, :label => false
     assert_no_select "div.show_for p.wrapper strong.label"
+    assert_no_select "div.show_for p.wrapper br"
   end
 
   test "show_for allows label to be configured globally" do
@@ -218,7 +219,7 @@ class BuilderTest < ActionView::TestCase
     with_content_for @user, "Special content", :content_tag => :b, :id => "thecontent", :class => "special"
     assert_select "div.show_for b#thecontent.special.content", "Special content"
   end
-  
+
   test "show_for#content with blank value has a 'no value'-class" do
     swap ShowFor, :blank_content_class => "nothing" do
       with_content_for @user, nil, :content_tag => :b
