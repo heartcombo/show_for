@@ -13,7 +13,8 @@ module ShowFor
       end
 
       def copy_generator_template
-        copy_file 'show.html.erb', 'lib/templates/erb/scaffold/show.html.erb'
+        engine = options[:template_engine]
+        copy_file "show.html.#{engine}", "lib/templates/#{engine}/scaffold/show.html.#{engine}"
       end
     end
   end
