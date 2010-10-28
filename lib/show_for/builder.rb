@@ -28,6 +28,10 @@ module ShowFor
       wrap_with(:wrapper, label + content(value, options, false, &block), options)
     end
 
+    def wrap_content(name, value, options, &block) #:nodoc:
+      wrap_with(:wrapper, content(value, options, false, &block), options)
+    end
+
     # Set "#{object_name}_#{attribute_name}" as in the wrapper tag.
     def apply_default_options!(name, options) #:nodoc:
       html_class = "#{object_name}_#{name}".gsub(/\W/, '')
@@ -59,3 +63,4 @@ module ShowFor
     end
   end
 end
+
