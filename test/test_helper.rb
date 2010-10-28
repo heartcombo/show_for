@@ -31,8 +31,10 @@ class ActionView::TestCase
       :active => true,
       :invalid => false,
       :scopes => ["admin", "manager", "visitor"],
+      :birthday => nil,
       :created_at => Time.now,
       :updated_at => Date.today
     }.merge(options))
   end
 end
+
