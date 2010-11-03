@@ -24,6 +24,10 @@ Install the gem:
 
   sudo gem install show_for
 
+Or add ShowFor to your Gemfile and bundle it up:
+
+  gem 'show_for'
+
 Run the generator:
 
   rails generate show_for:install
@@ -47,6 +51,8 @@ ShowFor allows you to quickly show a model information with I18n features.
     <% a.attribute :photo do %>
       <%= image_tag(@admin.photo_url) %>
     <% end %>
+
+    <% a.value :biography %>
   <% end %>
 
 Will generate something like:
@@ -71,6 +77,9 @@ Will generate something like:
     <p class="wrapper admin_photo">
       <strong class="label">Photo</strong><br />
       <img src="path/to/photo" />
+    </p>
+    <p class="wrapper admin_biography">
+      Etiam porttitor eros ut diam vestibulum et blandit lectus tempor. Donec venenatis fermentum nunc ac dignissim. Pellentesque volutpat eros quis enim mollis bibendum. Ut cursus sem ac sem accumsan nec porttitor felis luctus. Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
     </p>
   </div>
 
@@ -168,3 +177,4 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 http://github.com/plataformatec/show_for/issues
 
 MIT License. Copyright 2010 Plataforma Tecnologia. http://blog.plataformatec.com.br
+
