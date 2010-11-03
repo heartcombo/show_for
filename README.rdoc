@@ -79,7 +79,9 @@ Will generate something like:
       <img src="path/to/photo" />
     </p>
     <p class="wrapper admin_biography">
-      Etiam porttitor eros ut diam vestibulum et blandit lectus tempor. Donec venenatis fermentum nunc ac dignissim. Pellentesque volutpat eros quis enim mollis bibendum. Ut cursus sem ac sem accumsan nec porttitor felis luctus. Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
+      Etiam porttitor eros ut diam vestibulum et blandit lectus tempor. Donec venenatis fermentum nunc ac dignissim.
+      Pellentesque volutpat eros quis enim mollis bibendum. Ut cursus sem ac sem accumsan nec porttitor felis luctus.
+      Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
     </p>
   </div>
 
