@@ -8,6 +8,8 @@ module ShowFor
         block
       elsif @object.respond_to?(:"human_#{attribute_name}")
         @object.send :"human_#{attribute_name}"
+      elsif @object.respond_to?(:time_of_day?) && @object.time_of_day?
+        @object.to_s
       else
         @object.send(attribute_name)
       end
