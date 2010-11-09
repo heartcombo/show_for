@@ -8,10 +8,9 @@ module ShowFor
         block
       elsif @object.respond_to?(:"human_#{attribute_name}")
         @object.send :"human_#{attribute_name}"
-      elsif @object.respond_to?(:time_of_day?) && @object.time_of_day?
-        @object.to_s
       else
-        @object.send(attribute_name)
+        value = @object.send(attribute_name)
+        value.respond_to?(:time_of_day?) && value.time_of_day? ? value.to_s : value
       end
 
       wrap_label_and_content(attribute_name, value, options, &collection_block)
