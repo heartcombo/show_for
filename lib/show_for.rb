@@ -25,7 +25,7 @@ module ShowFor
   @@collection_tag = :ul
 
   mattr_accessor :default_collection_proc
-  @@default_collection_proc = lambda { |value| "<li>#{value}</li>" }
+  @@default_collection_proc = lambda { |value| "<li>#{ERB::Util.html_escape(value)}</li>".html_safe }
 
   mattr_accessor :i18n_format
   @@i18n_format = :default
