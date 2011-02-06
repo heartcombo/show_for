@@ -24,7 +24,7 @@ class User < OpenStruct
   extend ActiveModel::Naming
 
   # Get rid of deprecation warnings
-  undef_method :id
+  undef_method :id if respond_to?(:id)
 
   def tags
     Tag.all
