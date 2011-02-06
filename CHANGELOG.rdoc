@@ -1,6 +1,11 @@
+== 0.2.4
+
 * enhancements
-  * Fix empty labels to be html_safe (label => false) (by github.com/eugenebolshakov)
   * Do not add separator if label is not present (by github.com/eugenebolshakov)
+  * Add method for output value only (by github.com/jenkek)
+
+* bug fix
+  * Fix empty labels to be html_safe (label => false) (by github.com/eugenebolshakov)
 
 == 0.2.3
 
