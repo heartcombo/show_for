@@ -1,0 +1,6 @@
+= show_for @<%= singular_name %> do |s|
+<% attributes.each do |attribute| -%>
+  = s.<%= attribute.reference? ? :association : :attribute %> :<%= attribute.name %>
+<% end -%>
+
+== #{link_to 'Edit', edit_<%= singular_name %>_path(@<%= singular_name %>) } | #{ link_to 'Back', <%= plural_name %>_path }
