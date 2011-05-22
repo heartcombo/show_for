@@ -27,7 +27,7 @@ module ShowFor
           value
       end
 
-      options[:content_html] = options.dup if apply_options
+      options[:content_html] = options.except(:content_tag) if apply_options
       wrap_with(:content, content, options)
     end
 

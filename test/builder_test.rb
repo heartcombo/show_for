@@ -244,6 +244,7 @@ class BuilderTest < ActionView::TestCase
   test "show_for#content accepts html options" do
     with_content_for @user, "Special content", :content_tag => :b, :id => "thecontent", :class => "special"
     assert_select "div.show_for b#thecontent.special.content", "Special content"
+    assert_no_select "div.show_for b[content_tag]"
   end
 
   test "show_for#content with blank value has a 'no value'-class" do

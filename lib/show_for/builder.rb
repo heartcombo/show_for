@@ -45,15 +45,13 @@ module ShowFor
     def wrap_with(type, content, options) #:nodoc:
       tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
 
-      html = if tag
+      if tag
         html_options = options.delete(:"#{type}_html") || {}
         html_options[:class] = "#{type} #{html_options[:class]}".strip
         @template.content_tag(tag, content, html_options)
       else
         content
       end
-
-      html
     end
 
     # Returns true if the block is supposed to iterate through a collection,
