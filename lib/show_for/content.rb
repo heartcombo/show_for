@@ -35,13 +35,12 @@ module ShowFor
 
     def collection_handler(value, options, &block) #:nodoc:
       iterator = collection_block?(block) ? block : ShowFor.default_collection_proc
-      response = ""
 
-      value.each do |item|
-        response << template.capture(item, &iterator)
-      end
+      response = value.map do |item|
+        template.capture(item, &iterator)
+      end.join.html_safe
 
-      wrap_with(:collection, response.html_safe, options)
+      wrap_with(:collection, response, options)
     end
   end
 end
