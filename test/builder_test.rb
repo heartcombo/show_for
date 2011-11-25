@@ -39,6 +39,15 @@ class BuilderTest < ActionView::TestCase
   end
 
   # WRAPPER
+  test "show_for allows wrapper to be configured globally" do
+    swap ShowFor, :wrapper_tag => "li", :wrapper_class => "my_wrapper" do
+      with_attribute_for @user, :name
+      assert_select "div.show_for li.user_name.my_wrapper"
+      assert_select "div.show_for li.my_wrapper strong.label"
+      assert_select "div.show_for li.my_wrapper"
+    end
+  end
+
   test "show_for attribute wraps each attribute with a label and content" do
     with_attribute_for @user, :name
     assert_select "div.show_for p.user_name.wrapper"
@@ -82,9 +91,9 @@ class BuilderTest < ActionView::TestCase
   end
 
   test "show_for allows label to be configured globally" do
-    swap ShowFor, :label_tag => :span do
+    swap ShowFor, :label_tag => :span, :label_class => "my_label" do
       with_attribute_for @user, :name
-      assert_select "div.show_for p.wrapper span.label"
+      assert_select "div.show_for p.wrapper span.my_label"
     end
   end
 
@@ -120,9 +129,9 @@ class BuilderTest < ActionView::TestCase
 
   # CONTENT
   test "show_for allows content tag to be configured globally" do
-    swap ShowFor, :content_tag => :span do
+    swap ShowFor, :content_tag => :span, :content_class => :my_content do
       with_attribute_for @user, :name
-      assert_select "div.show_for p.wrapper span.content"
+      assert_select "div.show_for p.wrapper span.my_content"
     end
   end
 
@@ -357,9 +366,9 @@ class BuilderTest < ActionView::TestCase
   end
 
   test "show_for allows collection tag to be configured globally" do
-    swap ShowFor, :collection_tag => :ol do
+    swap ShowFor, :collection_tag => :ol, :collection_class => "my_collection" do
       with_attribute_for @user, :scopes
-      assert_select "div.show_for p.wrapper ol.collection"
+      assert_select "div.show_for p.wrapper ol.my_collection"
     end
   end
 

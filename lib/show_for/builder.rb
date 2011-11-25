@@ -46,8 +46,9 @@ module ShowFor
       tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
 
       if tag
+        type_class = ShowFor.send :"#{type}_class"
         html_options = options.delete(:"#{type}_html") || {}
-        html_options[:class] = "#{type} #{html_options[:class]}".strip
+        html_options[:class] = "#{type_class} #{html_options[:class]}".strip
         @template.content_tag(tag, content, html_options)
       else
         content
