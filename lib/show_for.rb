@@ -9,11 +9,17 @@ module ShowFor
   mattr_accessor :label_tag
   @@label_tag = :strong
 
+  mattr_accessor :label_class
+  @@label_class = :label
+
   mattr_accessor :separator
   @@separator = "<br />"
 
   mattr_accessor :content_tag
   @@content_tag = nil
+
+  mattr_accessor :content_class
+  @@content_class = :content
 
   mattr_accessor :blank_content_class
   @@blank_content_class = "blank"
@@ -21,8 +27,14 @@ module ShowFor
   mattr_accessor :wrapper_tag
   @@wrapper_tag = :p
 
+  mattr_accessor :wrapper_class
+  @@wrapper_class = :wrapper
+
   mattr_accessor :collection_tag
   @@collection_tag = :ul
+
+  mattr_accessor :collection_class
+  @@collection_class = :collection
 
   mattr_accessor :default_collection_proc
   @@default_collection_proc = lambda { |value| "<li>#{ERB::Util.html_escape(value)}</li>".html_safe }
