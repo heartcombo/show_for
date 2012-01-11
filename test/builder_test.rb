@@ -230,6 +230,28 @@ class BuilderTest < ActionView::TestCase
     with_attribute_for @user, :name
     assert_select "div.show_for p.wrapper b", "hack you!"
   end
+  
+  test "show_for uses :value if supplied" do
+    with_attribute_for @user, :name, :value => "Calculated Value"
+    assert_select "div.show_for p.wrapper", /Calculated Value/
+  end
+  
+  test "show_for ignores :value if a block is supplied" do
+    with_attribute_for @user, :name, :value => "Calculated Value" do
+      @user.name.upcase
+    end
+    assert_select "div.show_for p.wrapper", /#{@user.name.upcase}/
+  end
+  
+  test "show_for treats symbol for :value as method on attribute" do
+    with_attribute_for @user, :name, :value => :upcase
+    assert_select "div.show_for p.wrapper", /#{@user.name.upcase}/
+  end
+  
+  test "show_for treats non-symbol for :value as block" do
+    with_attribute_for @user, :name, :value => lambda { @user.name.upcase }
+    assert_select "div.show_for p.wrapper", /#{@user.name.upcase}/
+  end
 
   test "show_for#content accepts any object" do
     with_content_for @user, "Special content"
@@ -354,6 +376,13 @@ class BuilderTest < ActionView::TestCase
     end
     assert_select "div.show_for p.wrapper ul.collection"
     assert_select "div.show_for p.wrapper ul.collection span", :count => 3
+  end
+  
+  test "show_for treats symbol for :value as method on each element of collection" do
+    with_attribute_for @user, :scopes, :value => :upcase
+    @user.scopes.each do |scope|
+      assert_select "div.show_for p.wrapper ul.collection", /#{scope.upcase}/
+    end
   end
 
   test "show_for allows collection tag to be configured globally" do
