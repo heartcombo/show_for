@@ -36,7 +36,7 @@ module ShowFor
       end.join.html_safe
     end
     
-private
+  private
 
     def get_block_from_value_option(attribute_name, options)
       case options[:value]
