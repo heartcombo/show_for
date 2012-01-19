@@ -12,9 +12,8 @@ Gem::Specification.new do |s|
   s.description = "Wrap your objects with a helper to easily show them"
   s.authors     = ['José Valim']
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files         = Dir["CHANGELOG.rdoc", "MIT-LICENSE", "README.rdoc", "lib/**/*"]
+  s.test_files    = Dir["test/**/*"]
   s.require_paths = ["lib"]
 
   s.rubyforge_project = "show_for"
