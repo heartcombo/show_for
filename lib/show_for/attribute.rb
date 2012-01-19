@@ -44,8 +44,6 @@ module ShowFor
         nil
       when Symbol
         get_block_from_symbol(attribute_name, options)
-      when Proc
-        options[:value]
       else
         lambda { options[:value] }
       end

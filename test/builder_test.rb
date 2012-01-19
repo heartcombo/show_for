@@ -257,11 +257,6 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /#{@user.name.upcase}/
   end
 
-  test "show_for treats non-symbol for :value as block" do
-    with_attribute_for @user, :name, :value => lambda { @user.name.upcase }
-    assert_select "div.show_for p.wrapper", /#{@user.name.upcase}/
-  end
-
   test "show_for#content accepts any object" do
     with_content_for @user, "Special content"
     assert_select "div.show_for", "Special content"
