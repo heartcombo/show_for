@@ -36,7 +36,7 @@ module ShowFor
     def apply_default_options!(name, options) #:nodoc:
       html_class = "#{object_name}_#{name}".gsub(/\W/, '')
       wrapper_html = options[:wrapper_html] ||= {}
-      wrapper_html[:class] = "#{html_class} #{wrapper_html[:class]}".strip
+      wrapper_html[:class] = "#{html_class} #{wrapper_html[:class]}".rstrip
     end
 
     # Gets the default tag set in ShowFor module and apply (if defined)
@@ -48,7 +48,7 @@ module ShowFor
       if tag
         type_class = ShowFor.send :"#{type}_class"
         html_options = options.delete(:"#{type}_html") || {}
-        html_options[:class] = "#{type_class} #{html_options[:class]}".strip
+        html_options[:class] = "#{type_class} #{html_options[:class]}".rstrip
         @template.content_tag(tag, content, html_options)
       else
         content
