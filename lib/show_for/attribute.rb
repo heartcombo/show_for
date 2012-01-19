@@ -4,7 +4,7 @@ module ShowFor
       apply_default_options!(attribute_name, options)
       block = get_block_from_value_option(attribute_name, options) unless block
       collection_block, block = block, nil if collection_block?(block)
-      
+
       value = if block
         block
       elsif @object.respond_to?(:"human_#{attribute_name}")
@@ -35,32 +35,31 @@ module ShowFor
         attribute(attribute_name)
       end.join.html_safe
     end
-    
+
   private
 
     def get_block_from_value_option(attribute_name, options)
       case options[:value]
-        when nil
-          nil
-        when Symbol
-          get_block_from_symbol(attribute_name, options)
-        when Proc
-          options[:value]
-        else
-          lambda { options[:value] } 
-      end
-    end
-    
-    def get_block_from_symbol(attribute_name, options)
-      attribute = @object.send(attribute_name)
-      case attribute
-        when Array, Hash
-          lambda { |element| element.send(options[:value]) }
-        else
-          lambda { attribute.send(options[:value]) }
+      when nil
+        nil
+      when Symbol
+        get_block_from_symbol(attribute_name, options)
+      when Proc
+        options[:value]
+      else
+        lambda { options[:value] }
       end
     end
 
+    def get_block_from_symbol(attribute_name, options)
+      attribute = @object.send(attribute_name)
+      case attribute
+      when Array, Hash
+        lambda { |element| element.send(options[:value]) }
+      else
+        lambda { attribute.send(options[:value]) }
+      end
+    end
   end
 end
 
