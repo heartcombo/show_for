@@ -21,7 +21,7 @@ module ShowFor
         block
       else
         association = @object.send(association_name)
-        values = retrieve_values_from_association(association, options)
+        values = values_from_association(association, options)
 
         if options.delete(:to_sentence)
           values.to_sentence
@@ -37,7 +37,7 @@ module ShowFor
 
   protected
 
-    def retrieve_values_from_association(association, options) #:nodoc:
+    def values_from_association(association, options) #:nodoc:
       sample = association.is_a?(Array) ? association.first : association
 
       if options[:method]

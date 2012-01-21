@@ -2,16 +2,10 @@ module ShowFor
   module Attribute
     def attribute(attribute_name, options={}, &block)
       apply_default_options!(attribute_name, options)
-      block = get_block_from_value_option(attribute_name, options) unless block
+      block = block_from_value_option(attribute_name, options) unless block
       collection_block, block = block, nil if collection_block?(block)
 
-      value = if block
-        block
-      elsif @object.respond_to?(:"human_#{attribute_name}")
-        @object.send :"human_#{attribute_name}"
-      else
-        @object.send(attribute_name)
-      end
+      value = attribute_value(attribute_name, &block)
 
       wrap_label_and_content(attribute_name, value, options, &collection_block)
     end
@@ -20,13 +14,8 @@ module ShowFor
       apply_default_options!(attribute_name, options)
       collection_block, block = block, nil if collection_block?(block)
 
-      value = if block
-        block
-      elsif @object.respond_to?(:"human_#{attribute_name}")
-        @object.send :"human_#{attribute_name}"
-      else
-        @object.send(attribute_name)
-      end
+      value = attribute_value(attribute_name, &block)
+
       wrap_content(attribute_name, value, options, &collection_block)
     end
 
@@ -38,18 +27,28 @@ module ShowFor
 
   private
 
-    def get_block_from_value_option(attribute_name, options)
+    def attribute_value(attribute_name, &block)
+      if block
+        block
+      elsif @object.respond_to?(:"human_#{attribute_name}")
+        @object.send :"human_#{attribute_name}"
+      else
+        @object.send(attribute_name)
+      end
+    end
+
+    def block_from_value_option(attribute_name, options)
       case options[:value]
       when nil
         nil
       when Symbol
-        get_block_from_symbol(attribute_name, options)
+        block_from_symbol(attribute_name, options)
       else
         lambda { options[:value] }
       end
     end
 
-    def get_block_from_symbol(attribute_name, options)
+    def block_from_symbol(attribute_name, options)
       attribute = @object.send(attribute_name)
       case attribute
       when Array, Hash

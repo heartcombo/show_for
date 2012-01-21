@@ -13,7 +13,7 @@ module ShowFor
       tag = html_options.delete(:show_for_tag) || ShowFor.show_for_tag
 
       html_options[:id]  ||= dom_id(object)
-      html_options[:class] = "show_for #{dom_class(object)} #{html_options[:class]}".strip
+      html_options[:class] = "show_for #{dom_class(object)} #{html_options[:class]}".rstrip
 
       builder = html_options.delete(:builder) || ShowFor::Builder
       content = capture(builder.new(object, self), &block)
