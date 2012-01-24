@@ -12,7 +12,7 @@ ShowFor allows you to quickly show a model information with I18n features.
     <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet",
                     :wrapper_html => { :id => "sign_in_timestamp" } %>
 
-    <% u.attribute :photo do %>
+    <%= u.attribute :photo do %>
       <%= image_tag(@user.photo_url) %>
     <% end %>
 
@@ -50,7 +50,7 @@ ShowFor allows you to quickly show a model information with I18n features.
     <%= a.attribute :last_sign_in_at, :if_blank => "Administrator did not access yet"
                     :wrapper_html => { :id => "sign_in_timestamp" } %>
 
-    <% a.attribute :photo do %>
+    <%= a.attribute :photo do %>
       <%= image_tag(@admin.photo_url) %>
     <% end %>
 
@@ -142,11 +142,11 @@ show_for also supports associations.
 
     <%= a.association :tags %>
     <%= a.association :tags, :to_sentence => true %>
-    <% a.association :tags do
+    <%= a.association :tags do
       @artwork.tags.map(&:name).to_sentence
     end %>
 
-    <% a.association :fans, :collection_tag => :ol do |fan| %>
+    <%= a.association :fans, :collection_tag => :ol do |fan| %>
       <li><%= link_to fan.name, fan %></li>
     <% end %>
   <% end %>
@@ -165,6 +165,18 @@ or :join it you want to render them inline.
 You can also pass a block which expects an argument to association. In such cases,
 a wrapper for the collection is still created and the block just iterates over the
 collection objects.
+
+Here are some other examples of the many possibilites to custom the outputted content
+ <%= u.association :relationships, :label=>'test' do  %>
+   <% @user.relationships.each do |relation| if relation.related_user_role=='supervisor'  %>
+	  <%=  relation.related_user.name   %>
+      <% end %>	
+   <% end %> 
+ <% end %>
+
+<%= u.attribute :gender do  %>
+    <%= ('<span>'+I18n.translate("helpers.enum_select.user.gender.#{@user.gender}")+'</span>').html_safe %>
+<% end %>
 
 == Maintainers
 
