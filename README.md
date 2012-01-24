@@ -210,4 +210,4 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 
 http://github.com/plataformatec/show_for/issues
 
-MIT License. Copyright 2011 Plataforma Tecnologia. http://blog.plataformatec.com.br
+MIT License. Copyright 2012 Plataforma Tecnologia. http://blog.plataformatec.com.br
