@@ -1,5 +1,7 @@
 == ShowFor
 
+{<img src="https://secure.travis-ci.org/plataformatec/show_for.png" />}[http://travis-ci.org/plataformatec/show_for]
+
 ShowFor allows you to quickly show a model information with I18n features.
 
   <%= show_for @user do |u| %>
