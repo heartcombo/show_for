@@ -1,9 +1,10 @@
-== ShowFor
+# ShowFor
 
 {<img src="https://secure.travis-ci.org/plataformatec/show_for.png" />}[http://travis-ci.org/plataformatec/show_for]
 
 ShowFor allows you to quickly show a model information with I18n features.
 
+```erb
   <%= show_for @user do |u| %>
     <%= u.attribute :name %>
     <%= u.attribute :nickname, :in => :profile %>
@@ -19,30 +20,32 @@ ShowFor allows you to quickly show a model information with I18n features.
     <%= u.association :company %>
     <%= u.association :tags, :to_sentence => true %>
   <% end %>
+```
 
-== Installation
+## Installation
 
 Install the gem:
 
-  sudo gem install show_for
+    sudo gem install show_for
 
 Or add ShowFor to your Gemfile and bundle it up:
 
-  gem 'show_for'
+    gem 'show_for'
 
 Run the generator:
 
-  rails generate show_for:install
+    rails generate show_for:install
 
 And you are ready to go. Since this branch is aims Rails 3 support,
 if you want to use it with Rails 2.3 you should check this branch:
 
-  http://github.com/plataformatec/show_for/tree/v0.1
+    http://github.com/plataformatec/show_for/tree/v0.1
 
-== Usage
+## Usage
 
 ShowFor allows you to quickly show a model information with I18n features.
 
+```erb
   <%= show_for @admin do |a| %>
     <%= a.attribute :name %>
     <%= a.attribute :confirmed? %>
@@ -56,9 +59,11 @@ ShowFor allows you to quickly show a model information with I18n features.
 
     <% a.value :biography %>
   <% end %>
+```
 
 Will generate something like:
 
+```html
   <div id="admin_1" class="show_for admin">
     <p class="wrapper admin_name">
       <strong class="label">Name</strong><br />
@@ -86,20 +91,23 @@ Will generate something like:
       Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
     </p>
   </div>
+```
 
 You also have the possibility to show a list of attributes, useful if you don't need to change any configuration:
 
+```erb
   <%= show_for @admin do |a| %>
     <%= a.attributes :name, :confirmed?, :created_at %>
   <% end %>
+```
 
-== Value lookup
+## Value lookup
 
 To show the proper value, before retrieving the attribute value, show_for first looks if a
 block without argument was given, otherwise checks if a :"human_#{attribute}" method is defined
 and, if not, only then retrieve the attribute.
 
-== Options
+## Options
 
 show_for handles a series of options. Those are:
 
@@ -114,27 +122,32 @@ options configured through the :label_html, :content_html and :wrapper_html
 options. Containers can have their tags configured on demand as well through
 :label_tag, :content_tag and :wrapper_tag options.
 
-== Label
+## Label
 
 show_for also exposes the label method. In case you want to use the default
 human_attribute_name lookup and the default wrapping:
 
+```erb
   a.label :name                     #=> <strong class="label">Name</strong>
   a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
+```
 
 Optionally, if you want to wrap the inner part of the label with some text
 (e.g. adding a semicolon), you can do so by specifying a proc for ShowFor.label_proc
 that will be called with any label text. E.g.:
 
+```erb
   ShowFor.label_proc = lambda { |l| l + ":" }
+```
 
 When taking this route, you can also skip on a per label basis by passing the
 :wrap_label option with a value of false.
 
-== Associations
+## Associations
 
 show_for also supports associations.
 
+```erb
   <%= show_for @artwork do |a| %>
     <%= a.association :artist %>
     <%= a.association :artist, :using => :name_with_title %>
@@ -150,6 +163,7 @@ show_for also supports associations.
       <li><%= link_to fan.name, fan %></li>
     <% end %>
   <% end %>
+```
 
 The first is a has_one or belongs_to association, which works like an attribute
 to show_for, except it will retrieve the artist association and try to find a
@@ -158,8 +172,8 @@ the option :using to tell (and not guess) which method from the association
 to use.
 
 :tags is a has_and_belongs_to_many association which will return a collection.
-show_for can handle collections by default by wrapping them in list (<ul> with
-each item wrapped by an <li>). However, it also allows you to give :to_sentence
+show_for can handle collections by default by wrapping them in list (`<ul>` with
+each item wrapped by an `<li>`). However, it also allows you to give :to_sentence
 or :join it you want to render them inline.
 
 You can also pass a block which expects an argument to association. In such cases,
@@ -167,27 +181,28 @@ a wrapper for the collection is still created and the block just iterates over t
 collection objects.
 
 Here are some other examples of the many possibilites to custom the outputted content
- <%= u.association :relationships, :label=>'test' do  %>
-   <% @user.relationships.each do |relation| if relation.related_user_role=='supervisor'  %>
-	  <%=  relation.related_user.name   %>
-      <% end %>	
-   <% end %> 
- <% end %>
+```erb
+  <%= u.association :relationships, :label=>'test' do  %>
+    <% @user.relationships.each do |relation| %>
+      <%= relation.related_user.name if relation.related_user_role == 'supervisor' %>
+    <% end %>
+  <% end %>
 
-<%= u.attribute :gender do  %>
-    <%= ('<span>'+I18n.translate("helpers.enum_select.user.gender.#{@user.gender}")+'</span>').html_safe %>
-<% end %>
+  <%= u.attribute :gender do  %>
+    <%= content_tag :span, t("helpers.enum_select.user.gender.#{@user.gender}") %>
+  <% end %>
+```
 
-== Maintainers
+## Maintainers
 
 * José Valim (http://github.com/josevalim)
 * Carlos Antonio da Silva (https://github.com/carlosantoniodasilva)
 
-== Contributors
+## Contributors
 
 * Jonas Grimfelt (http://github.com/grimen)
 
-== Bugs and Feedback
+## Bugs and Feedback
 
 If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
 
