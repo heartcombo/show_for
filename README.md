@@ -104,13 +104,13 @@ You also have the possibility to show a list of attributes, useful if you don't 
 
 ## Value lookup
 
-To show the proper value, before retrieving the attribute value, show_for first looks if a
-block without argument was given, otherwise checks if a :"human_#{attribute}" method is defined
+To show the proper value, before retrieving the attribute value, ShowFor first looks if a
+block without argument was given, otherwise checks if a `:"human_#{attribute}"` method is defined
 and, if not, only then retrieve the attribute.
 
 ## Options
 
-show_for handles a series of options. Those are:
+ShowFor handles a series of options. Those are:
 
 * :escape * - When the attribute should be escaped. True by default.
 
@@ -118,15 +118,15 @@ show_for handles a series of options. Those are:
 
 * :if_blank * - An object to be used if the value is blank. Not escaped as well.
 
-Besides, all containers (:label, :content and :wrapper) can have their html
-options configured through the :label_html, :content_html and :wrapper_html
+Besides, all containers (`:label`, `:content` and `:wrapper`) can have their html
+options configured through the `:label_html`, `:content_html` and `:wrapper_html`
 options. Containers can have their tags configured on demand as well through
-:label_tag, :content_tag and :wrapper_tag options.
+`:label_tag,` `:content_tag` and `:wrapper_tag` options.
 
 ## Label
 
-show_for also exposes the label method. In case you want to use the default
-human_attribute_name lookup and the default wrapping:
+ShowFor also exposes the label method. In case you want to use the default
+`human_attribute_name` lookup and the default wrapping:
 
 ```ruby
 a.label :name                     #=> <strong class="label">Name</strong>
@@ -134,7 +134,7 @@ a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</s
 ```
 
 Optionally, if you want to wrap the inner part of the label with some text
-(e.g. adding a semicolon), you can do so by specifying a proc for ShowFor.label_proc
+(e.g. adding a semicolon), you can do so by specifying a proc for `ShowFor.label_proc`
 that will be called with any label text. E.g.:
 
 ```ruby
@@ -146,7 +146,7 @@ When taking this route, you can also skip on a per label basis by passing the
 
 ## Associations
 
-show_for also supports associations.
+ShowFor also supports associations.
 
 ```erb
 <%= show_for @artwork do |a| %>
@@ -166,22 +166,22 @@ show_for also supports associations.
 <% end %>
 ```
 
-The first is a has_one or belongs_to association, which works like an attribute
-to show_for, except it will retrieve the artist association and try to find a
-proper method from ShowFor.association_methods to be used. You can pass
+The first is a `has_one` or `belongs_to` association, which works like an attribute
+to ShowFor, except it will retrieve the artist association and try to find a
+proper method from `ShowFor.association_methods` to be used. You can pass
 the option :using to tell (and not guess) which method from the association
 to use.
 
-:tags is a has_and_belongs_to_many association which will return a collection.
-show_for can handle collections by default by wrapping them in list (`<ul>` with
-each item wrapped by an `<li>`). However, it also allows you to give :to_sentence
-or :join it you want to render them inline.
+:tags is a `has_and_belongs_to_many` association which will return a collection.
+ShowFor can handle collections by default by wrapping them in list (`<ul>` with
+each item wrapped by an `<li>`). However, it also allows you to give `:to_sentence`
+or `:join` it you want to render them inline.
 
 You can also pass a block which expects an argument to association. In such cases,
 a wrapper for the collection is still created and the block just iterates over the
 collection objects.
 
-Here are some other examples of the many possibilites to custom the outputted content:
+Here are some other examples of the many possibilites to custom the output content:
 
 ```erb
 <%= u.association :relationships, :label => 'test' do  %>
