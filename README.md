@@ -1,25 +1,25 @@
 # ShowFor
 
-{<img src="https://secure.travis-ci.org/plataformatec/show_for.png" />}[http://travis-ci.org/plataformatec/show_for]
+[![Build Status](https://secure.travis-ci.org/plataformatec/show_for.png)](http://travis-ci.org/plataformatec/show_for)
 
 ShowFor allows you to quickly show a model information with I18n features.
 
 ```erb
-  <%= show_for @user do |u| %>
-    <%= u.attribute :name %>
-    <%= u.attribute :nickname, :in => :profile %>
-    <%= u.attribute :confirmed? %>
-    <%= u.attribute :created_at, :format => :short %>
-    <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet",
-                    :wrapper_html => { :id => "sign_in_timestamp" } %>
+<%= show_for @user do |u| %>
+  <%= u.attribute :name %>
+  <%= u.attribute :nickname, :in => :profile %>
+  <%= u.attribute :confirmed? %>
+  <%= u.attribute :created_at, :format => :short %>
+  <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet",
+                  :wrapper_html => { :id => "sign_in_timestamp" } %>
 
-    <%= u.attribute :photo do %>
-      <%= image_tag(@user.photo_url) %>
-    <% end %>
-
-    <%= u.association :company %>
-    <%= u.association :tags, :to_sentence => true %>
+  <%= u.attribute :photo do %>
+    <%= image_tag(@user.photo_url) %>
   <% end %>
+
+  <%= u.association :company %>
+  <%= u.association :tags, :to_sentence => true %>
+<% end %>
 ```
 
 ## Installation
@@ -46,59 +46,60 @@ if you want to use it with Rails 2.3 you should check this branch:
 ShowFor allows you to quickly show a model information with I18n features.
 
 ```erb
-  <%= show_for @admin do |a| %>
-    <%= a.attribute :name %>
-    <%= a.attribute :confirmed? %>
-    <%= a.attribute :created_at, :format => :short %>
-    <%= a.attribute :last_sign_in_at, :if_blank => "Administrator did not access yet"
-                    :wrapper_html => { :id => "sign_in_timestamp" } %>
+<%= show_for @admin do |a| %>
+  <%= a.attribute :name %>
+  <%= a.attribute :confirmed? %>
+  <%= a.attribute :created_at, :format => :short %>
+  <%= a.attribute :last_sign_in_at, :if_blank => "Administrator did not access yet"
+                  :wrapper_html => { :id => "sign_in_timestamp" } %>
 
-    <%= a.attribute :photo do %>
-      <%= image_tag(@admin.photo_url) %>
-    <% end %>
-
-    <% a.value :biography %>
+  <%= a.attribute :photo do %>
+    <%= image_tag(@admin.photo_url) %>
   <% end %>
+
+  <% a.value :biography %>
+<% end %>
 ```
 
 Will generate something like:
 
 ```html
-  <div id="admin_1" class="show_for admin">
-    <p class="wrapper admin_name">
-      <strong class="label">Name</strong><br />
-      José Valim
-    </p>
-    <p class="wrapper admin_confirmed">
-      <strong class="label">Confirmed?</strong><br />
-      Yes
-    </p>
-    <p class="wrapper admin_created_at">
-      <strong class="label">Created at</strong><br />
-      13/12/2009 - 19h17
-    </p>
-    <p id="sign_in_timestamp" class="wrapper admin_last_sign_in_at">
-      <strong class="label">Last sign in at</strong><br />
-      Administrator did not access yet
-    </p>
-    <p class="wrapper admin_photo">
-      <strong class="label">Photo</strong><br />
-      <img src="path/to/photo" />
-    </p>
-    <p class="wrapper admin_biography">
-      Etiam porttitor eros ut diam vestibulum et blandit lectus tempor. Donec venenatis fermentum nunc ac dignissim.
-      Pellentesque volutpat eros quis enim mollis bibendum. Ut cursus sem ac sem accumsan nec porttitor felis luctus.
-      Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
-    </p>
-  </div>
+<div id="admin_1" class="show_for admin">
+  <p class="wrapper admin_name">
+    <strong class="label">Name</strong><br />
+    José Valim
+  </p>
+  <p class="wrapper admin_confirmed">
+    <strong class="label">Confirmed?</strong><br />
+    Yes
+  </p>
+  <p class="wrapper admin_created_at">
+    <strong class="label">Created at</strong><br />
+    13/12/2009 - 19h17
+  </p>
+  <p id="sign_in_timestamp" class="wrapper admin_last_sign_in_at">
+    <strong class="label">Last sign in at</strong><br />
+    Administrator did not access yet
+  </p>
+  <p class="wrapper admin_photo">
+    <strong class="label">Photo</strong><br />
+    <img src="path/to/photo" />
+  </p>
+  <p class="wrapper admin_biography">
+    Etiam porttitor eros ut diam vestibulum et blandit lectus tempor. Donec
+    venenatis fermentum nunc ac dignissim. Pellentesque volutpat eros quis enim
+    mollis bibendum. Ut cursus sem ac sem accumsan nec porttitor felis luctus.
+    Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
+  </p>
+</div>
 ```
 
 You also have the possibility to show a list of attributes, useful if you don't need to change any configuration:
 
 ```erb
-  <%= show_for @admin do |a| %>
-    <%= a.attributes :name, :confirmed?, :created_at %>
-  <% end %>
+<%= show_for @admin do |a| %>
+  <%= a.attributes :name, :confirmed?, :created_at %>
+<% end %>
 ```
 
 ## Value lookup
@@ -127,42 +128,42 @@ options. Containers can have their tags configured on demand as well through
 show_for also exposes the label method. In case you want to use the default
 human_attribute_name lookup and the default wrapping:
 
-```erb
-  a.label :name                     #=> <strong class="label">Name</strong>
-  a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
+```ruby
+a.label :name                     #=> <strong class="label">Name</strong>
+a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
 ```
 
 Optionally, if you want to wrap the inner part of the label with some text
 (e.g. adding a semicolon), you can do so by specifying a proc for ShowFor.label_proc
 that will be called with any label text. E.g.:
 
-```erb
+```ruby
   ShowFor.label_proc = lambda { |l| l + ":" }
 ```
 
 When taking this route, you can also skip on a per label basis by passing the
-:wrap_label option with a value of false.
+`:wrap_label` option with a value of false.
 
 ## Associations
 
 show_for also supports associations.
 
 ```erb
-  <%= show_for @artwork do |a| %>
-    <%= a.association :artist %>
-    <%= a.association :artist, :using => :name_with_title %>
-    <%= a.attribute :name_with_title, :in => :artist %>
+<%= show_for @artwork do |a| %>
+  <%= a.association :artist %>
+  <%= a.association :artist, :using => :name_with_title %>
+  <%= a.attribute :name_with_title, :in => :artist %>
 
-    <%= a.association :tags %>
-    <%= a.association :tags, :to_sentence => true %>
-    <%= a.association :tags do
-      @artwork.tags.map(&:name).to_sentence
-    end %>
+  <%= a.association :tags %>
+  <%= a.association :tags, :to_sentence => true %>
+  <%= a.association :tags do
+    @artwork.tags.map(&:name).to_sentence
+  end %>
 
-    <%= a.association :fans, :collection_tag => :ol do |fan| %>
-      <li><%= link_to fan.name, fan %></li>
-    <% end %>
+  <%= a.association :fans, :collection_tag => :ol do |fan| %>
+    <li><%= link_to fan.name, fan %></li>
   <% end %>
+<% end %>
 ```
 
 The first is a has_one or belongs_to association, which works like an attribute
@@ -180,17 +181,18 @@ You can also pass a block which expects an argument to association. In such case
 a wrapper for the collection is still created and the block just iterates over the
 collection objects.
 
-Here are some other examples of the many possibilites to custom the outputted content
-```erb
-  <%= u.association :relationships, :label=>'test' do  %>
-    <% @user.relationships.each do |relation| %>
-      <%= relation.related_user.name if relation.related_user_role == 'supervisor' %>
-    <% end %>
-  <% end %>
+Here are some other examples of the many possibilites to custom the outputted content:
 
-  <%= u.attribute :gender do  %>
-    <%= content_tag :span, t("helpers.enum_select.user.gender.#{@user.gender}") %>
+```erb
+<%= u.association :relationships, :label => 'test' do  %>
+  <% @user.relationships.each do |relation| %>
+    <%= relation.related_user.name if relation.related_user_role == 'supervisor' %>
   <% end %>
+<% end %>
+
+<%= u.attribute :gender do  %>
+  <%= content_tag :span, t("helpers.enum_select.user.gender.#{@user.gender}") %>
+<% end %>
 ```
 
 ## Maintainers
@@ -209,4 +211,3 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 http://github.com/plataformatec/show_for/issues
 
 MIT License. Copyright 2011 Plataforma Tecnologia. http://blog.plataformatec.com.br
-
