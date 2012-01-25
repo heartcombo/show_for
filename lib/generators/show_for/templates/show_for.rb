@@ -22,7 +22,7 @@ ShowFor.setup do |config|
   # config.collection_tag = :ul
 
   # The default iterator to be used when invoking a collection/association.
-  # config.default_collection_proc = lambda { |value| "<li>#{value}</li>" }
+  # config.default_collection_proc = lambda { |value| "<li>#{ERB::Util.h(value)}</li>".html_safe }
 
   # The default format to be used in I18n when localizing a Date/Time.
   # config.i18n_format = :default
