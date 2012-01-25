@@ -12,6 +12,11 @@ class LabelTest < ActionView::TestCase
     assert_no_select "div.show_for p.wrapper br"
   end
 
+  test "show_for uses custom content_tag and skips label if requested" do
+    with_attribute_for @user, :name, :label => false, :content_tag => :h2
+    assert_select "div.show_for p.wrapper h2.content", "ShowFor"
+  end
+
   test "show_for allows label to be configured globally" do
     swap ShowFor, :label_tag => :span, :label_class => "my_label" do
       with_attribute_for @user, :name

@@ -9,7 +9,7 @@ module ShowFor
         human_attribute_name(text_or_attribute)
       end
 
-      return nil.to_s if label == false
+      return ''.html_safe if label == false
       options[:label_html] = options.dup if apply_options
 
       label = ShowFor.label_proc.call(label) if options.fetch(:wrap_label, true) && ShowFor.label_proc
