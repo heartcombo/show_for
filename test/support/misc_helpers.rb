@@ -24,4 +24,40 @@ module MiscHelpers
       object.send :"#{key}=", value
     end
   end
+
+  def with_attribute_for(object, attribute, options={}, &block)
+    concat(show_for(object) do |o|
+      concat o.attribute(attribute, options, &block)
+    end)
+  end
+
+  def with_value_for(object, attribute, options={}, &block)
+    concat(show_for(object) do |o|
+      concat o.value(attribute, options, &block)
+    end)
+  end
+
+  def with_association_for(object, association, options={}, &block)
+     concat(show_for(object) do |o|
+       concat o.association(association, options, &block)
+     end)
+   end
+
+  def with_label_for(object, attribute, options={})
+    concat(show_for(object) do |o|
+      concat o.label(attribute, options)
+    end)
+  end
+
+  def with_content_for(object, value, options={})
+    concat(show_for(object) do |o|
+      concat o.content(value, options)
+    end)
+  end
+
+  def with_attributes_for(object, *attributes)
+    concat(show_for(object) do |o|
+      concat o.attributes(*attributes)
+    end)
+  end
 end
