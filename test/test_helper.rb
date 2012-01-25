@@ -37,4 +37,3 @@ class ActionView::TestCase
     }.merge(options))
   end
 end
-
