@@ -48,6 +48,7 @@ ShowFor allows you to quickly show a model information with I18n features.
 ```erb
 <%= show_for @admin do |a| %>
   <%= a.attribute :name %>
+  <%= a.attribute :login, :value => :upcase %>
   <%= a.attribute :confirmed? %>
   <%= a.attribute :created_at, :format => :short %>
   <%= a.attribute :last_sign_in_at, :if_blank => "Administrator did not access yet"
@@ -68,6 +69,10 @@ Will generate something like:
   <p class="wrapper admin_name">
     <strong class="label">Name</strong><br />
     José Valim
+  </p>
+  <p class="wrapper admin_login">
+    <strong class="label">Login</strong><br />
+    JVALIM
   </p>
   <p class="wrapper admin_confirmed">
     <strong class="label">Confirmed?</strong><br />
@@ -94,7 +99,7 @@ Will generate something like:
 </div>
 ```
 
-You also have the possibility to show a list of attributes, useful if you don't need to change any configuration:
+You can also show a list of attributes, useful if you don't need to change any configuration:
 
 ```erb
 <%= show_for @admin do |a| %>
@@ -104,21 +109,26 @@ You also have the possibility to show a list of attributes, useful if you don't 
 
 ## Value lookup
 
-To show the proper value, before retrieving the attribute value, ShowFor first looks if a
-block without argument was given, otherwise checks if a `:"human_#{attribute}"` method is defined
-and, if not, only then retrieve the attribute.
+ShowFor uses the following sequence to get the attribute value:
+
+* use the output of a block argument if given
+* use the output of the `:value` argument if given
+* check if a `:"human_#{attribute}"` method is defined
+* retrieve the attribute directly.
 
 ## Options
 
 ShowFor handles a series of options. Those are:
 
-* :escape * - When the attribute should be escaped. True by default.
+* __:escape__ - When the attribute should be escaped. True by default.
 
-* :format * - Sent to I18n.localize when the attribute is a date/time object.
+* __:format__ - Sent to I18n.localize when the attribute is a date/time object.
 
-* :if_blank * - An object to be used if the value is blank. Not escaped as well.
+* __:value__ - Can be used instead of block. If a Symbol is called as instance method.
 
-Besides, all containers (`:label`, `:content` and `:wrapper`) can have their html
+* __:if_blank__ - An object to be used if the value is blank. Not escaped as well.
+
+In addition, all containers (`:label`, `:content` and `:wrapper`) can have their html
 options configured through the `:label_html`, `:content_html` and `:wrapper_html`
 options. Containers can have their tags configured on demand as well through
 `:label_tag,` `:content_tag` and `:wrapper_tag` options.
