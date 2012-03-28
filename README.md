@@ -205,6 +205,14 @@ Here are some other examples of the many possibilites to custom the output conte
 <% end %>
 ```
 
+Optionally, if you want to wrap the inner part of the value with some text
+(e.g. adding quotes), you can do so by specifying a proc for `ShowFor.association_proc`
+that will be called with any association text. E.g.:
+
+```ruby
+  ShowFor.association_proc = lambda { |association, t| "'#{t}'" }
+```
+
 ## Maintainers
 
 * José Valim (http://github.com/josevalim)
