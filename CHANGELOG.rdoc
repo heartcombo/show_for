@@ -1,3 +1,12 @@
+== 0.2.5
+
+* enhancements
+  * Add a :value option for attribute (by github.com/ml-gt)
+  * Add label_class, content_class, wrapper_class and content_class configuration options (by github.com/wojtekmach)
+
+* bug fix
+  * Fix problem with label => false and html_safe (label => false) (by github.com/nashby)
+
 == 0.2.4
 
 * enhancements
