@@ -69,4 +69,21 @@ class AssociationTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper p.collection span", "Tag 2"
     assert_select "div.show_for p.wrapper p.collection span", "Tag 3"
   end
+
+  test "should let you override the association wrapper" do
+    swap ShowFor, :association_proc => proc { |a, v| "|#{v}|" } do
+      with_association_for @user, :company
+      assert_select "div.show_for p.wrapper", /|PlataformaTec|/
+    end
+  end
+
+  test "should let you override the association wrapper with has_many/has_and_belongs_to_many" do
+    swap ShowFor, :association_proc => proc { |a, v| "|#{v}|" } do
+      with_association_for @user, :tags
+      assert_select "div.show_for p.wrapper ul.collection"
+      assert_select "div.show_for p.wrapper ul.collection li", "|Tag 1|"
+      assert_select "div.show_for p.wrapper ul.collection li", "|Tag 2|"
+      assert_select "div.show_for p.wrapper ul.collection li", "|Tag 3|"
+    end
+  end
 end

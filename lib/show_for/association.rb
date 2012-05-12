@@ -46,7 +46,12 @@ module ShowFor
       end
 
       method = options.delete(:using) || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
-      association.is_a?(Array) ? association.map(&method) : association.try(method)
+
+      association.is_a?(Array) ? association.map{ |a| apply_association_proc(a, method) } : apply_association_proc(association, method)
+    end
+
+    def apply_association_proc(association, method)
+      ShowFor.association_proc ? template.instance_exec(association, association.try(method), &ShowFor.association_proc) : association.try(method)
     end
   end
 end
