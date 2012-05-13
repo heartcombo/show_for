@@ -8,3 +8,7 @@ gemfile:
   - gemfiles/Gemfile-rails.3.0.x
   - gemfiles/Gemfile-rails.3.1.x
   - Gemfile
+notifications:
+  recipients:
+    - jose.valim@plataformatec.com.br
+    - carlos@plataformatec.com.br
