@@ -46,7 +46,10 @@ module ShowFor
       end
 
       method = options.delete(:using) || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
-      association.is_a?(Array) ? association.map(&method) : association.try(method)
+
+      if method
+        association.is_a?(Array) ? association.map(&method) : association.try(method)
+      end
     end
   end
 end
