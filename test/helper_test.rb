@@ -37,4 +37,11 @@ class HelperTest < ActionView::TestCase
       assert_select "p.show_for"
     end
   end
+
+  test "show for class should be configurable" do
+    swap ShowFor, :show_for_class => :awesome do
+      concat(show_for(@user) do |f| end)
+      assert_select "div.show_for.user.awesome"
+    end
+  end
 end
