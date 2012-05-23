@@ -3,6 +3,9 @@ ShowFor.setup do |config|
   # The tag which wraps show_for calls.
   # config.show_for_tag = :div
 
+  # The DOM class set for show_for tag. Default is nil
+  # config.show_for_class = :custom
+
   # The tag which wraps each attribute/association call. Default is :p.
   # config.wrapper_tag = :dl
 
