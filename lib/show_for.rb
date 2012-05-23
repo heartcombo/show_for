@@ -7,6 +7,9 @@ module ShowFor
   mattr_accessor :show_for_tag
   @@show_for_tag = :div
 
+  mattr_accessor :show_for_class
+  @@show_for_class = nil
+
   mattr_accessor :label_tag
   @@label_tag = :strong
 
