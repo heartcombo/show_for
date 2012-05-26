@@ -2,7 +2,7 @@ module ShowFor
   module Content
     def content(value, options={}, apply_options=true, &block)
       if value.blank? && value != false
-        value = options.delete(:if_blank) || I18n.t(:'show_for.blank', :default => "Not specified")
+        value = blank_value(options)
         options[:class] = [options[:class], ShowFor.blank_content_class].join(' ')
       end
 
@@ -41,6 +41,18 @@ module ShowFor
       end.join.html_safe
 
       wrap_with(:collection, response, options)
+    end
+
+    def translate_blank_html
+      template.t(:'show_for.blank_html', :default => translate_blank_text)
+    end
+
+    def translate_blank_text
+      I18n.t(:'show_for.blank', :default => "Not specified")
+    end
+
+    def blank_value(options)
+      options.delete(:if_blank) || translate_blank_html
     end
   end
 end
