@@ -120,8 +120,6 @@ ShowFor uses the following sequence to get the attribute value:
 
 ShowFor handles a series of options. Those are:
 
-* __:escape__ - When the attribute should be escaped. True by default.
-
 * __:format__ - Sent to I18n.localize when the attribute is a date/time object.
 
 * __:value__ - Can be used instead of block. If a Symbol is called as instance method.
