@@ -114,6 +114,13 @@ class AttributeTest < ActionView::TestCase
     end
   end
 
+  test "show_for accepts not spcified message can be localized with html" do
+    store_translations(:en, :show_for => { :blank_html => "<span>OMG! It's blank!</span>" }) do
+      with_attribute_for @user, :description
+      assert_select "div.show_for p.wrapper span", "OMG! It's blank!"
+    end
+  end
+
   test "show_for uses :if_blank if attribute is blank" do
     with_attribute_for @user, :description, :if_blank => "No description provided"
     assert_select "div.show_for p.wrapper", /No description provided/
