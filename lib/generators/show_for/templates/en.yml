@@ -1,5 +1,7 @@
 en:
   show_for:
     blank: "Not specified"
+    # If you want to use html tags with blank value use blank html translation
+    # blank_html: "<span>Not specified</span>"
     "yes": "Yes"
     "no": "No"
