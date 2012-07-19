@@ -44,4 +44,11 @@ class HelperTest < ActionView::TestCase
       assert_select "div.show_for.user.awesome"
     end
   end
+  
+  test "show for tag should be configurable for each iteration" do
+    html_options = {:show_for_tag => :li}
+    concat( [@user, @user, @user].collect{ |user| show_for(user, html_options){|f|} }.join.html_safe )
+    assert_select "div.show_for.user", false
+  end
+  
 end
