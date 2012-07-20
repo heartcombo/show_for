@@ -44,4 +44,11 @@ class HelperTest < ActionView::TestCase
       assert_select "div.show_for.user.awesome"
     end
   end
+  
+  test "show for options hash should not be modified" do
+    html_options = { :show_for_tag => :li }
+    concat(show_for(@user, html_options) do |f| end)
+    assert_equal({ :show_for_tag => :li }, html_options)
+  end
+  
 end
