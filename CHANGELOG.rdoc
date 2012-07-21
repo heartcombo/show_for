@@ -1,3 +1,15 @@
+== master
+
+* enhancements
+  * Add `blank_html` tanslation. (by github.com/nashby)
+  * Add `show_for_class` configuration option. (by github.com/nashby)
+
+* bug fix
+  * Add `blank_content_class` to the attributes. (by
+  github.com/blakehilscher). Closes #24.
+  * Don't call `association.map` if association method is nil (by
+  github.com/nashby). Closes #40.
+
 == 0.2.5
 
 * enhancements
