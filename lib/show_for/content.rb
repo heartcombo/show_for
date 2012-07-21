@@ -1,9 +1,12 @@
 module ShowFor
   module Content
     def content(value, options={}, apply_options=true, &block)
+
+      # cache value for apply_wrapper_options!
+      sample_value = value
+
       if value.blank? && value != false
         value = blank_value(options)
-        options[:class] = [options[:class], ShowFor.blank_content_class].join(' ')
       end
 
       # We need to convert value to_a because when dealing with ActiveRecord
@@ -28,7 +31,7 @@ module ShowFor
       end
 
       options[:content_html] = options.except(:content_tag) if apply_options
-      wrap_with(:content, content, options)
+      wrap_with(:content, content, apply_wrapper_options!(:content, options, sample_value) )
     end
 
   protected
