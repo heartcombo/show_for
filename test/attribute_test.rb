@@ -172,7 +172,7 @@ class AttributeTest < ActionView::TestCase
     assert_select "p.user_email strong.label", "Email"
   end
   
-  test "show_for should wrap blank attributes with no_content" do
+  test "show_for should wrap blank attributes with no_attribute" do
     swap ShowFor, :blank_content_class => 'no_attribute' do
       with_attributes_for @user, :name, :birthday
       assert_select ".wrapper.user_birthday.no_attribute"
