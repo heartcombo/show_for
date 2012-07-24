@@ -5,6 +5,7 @@
   * Add `show_for_class` configuration option. (by github.com/nashby)
 
 * bug fix
+  * Make show_for works with namespaced models. (by github.com/fabiokr)
   * Add `blank_content_class` to the attributes. (by
   github.com/blakehilscher). Closes #24.
   * Don't call `association.map` if association method is nil (by
