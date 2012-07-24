@@ -18,6 +18,15 @@ class BuilderTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper"
   end
 
+  test "show_for properly deals with namespaced models" do
+    @user = Namespaced::User.new(:id => 1, :name => "ShowFor")
+
+    with_attribute_for @user, :name
+    assert_select "div.show_for p.namespaced_user_name.wrapper"
+    assert_select "div.show_for p.wrapper strong.label"
+    assert_select "div.show_for p.wrapper"
+  end
+
   test "show_for allows wrapper tag to be changed by attribute" do
     with_attribute_for @user, :name, :wrapper_tag => :span
     assert_select "div.show_for span.user_name.wrapper"
