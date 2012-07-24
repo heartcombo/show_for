@@ -49,3 +49,8 @@ class User < OpenStruct
     "User"
   end
 end
+
+module Namespaced
+  class User < ::User
+  end
+end

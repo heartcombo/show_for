@@ -19,7 +19,7 @@ module ShowFor
   protected
 
     def object_name #:nodoc:
-      @object_name ||= @object.class.name.underscore
+      @object_name ||= @object.class.model_name.param_key
     end
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
@@ -38,13 +38,13 @@ module ShowFor
       wrapper_html = options[:wrapper_html] ||= {}
       wrapper_html[:class] = "#{html_class} #{wrapper_html[:class]}".rstrip
     end
-    
+
     def apply_wrapper_options!(type, options, value)
       options[:"#{type}_html"] ||= {}
       options[:"#{type}_html"][:class] = [options[:"#{type}_html"][:class], ShowFor.blank_content_class].join(' ') if value.blank? && value != false
       options
     end
-    
+
     # Gets the default tag set in ShowFor module and apply (if defined)
     # around the given content. It also check for html_options in @options
     # hash related to the current type.
