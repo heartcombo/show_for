@@ -19,7 +19,16 @@ module ShowFor
   protected
 
     def object_name #:nodoc:
-      @object_name ||= @object.class.model_name.param_key
+      @object_name ||= begin
+                         model_name = @object.class.model_name
+
+                         # TODO Remove this check when we drop support to Rails 3.0
+                         if model_name.respond_to?(:param_key)
+                           model_name.param_key
+                         else
+                           model_name.singular
+                         end
+                       end
     end
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
