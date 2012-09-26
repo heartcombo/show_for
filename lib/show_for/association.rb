@@ -16,7 +16,9 @@ module ShowFor
       # since we want the collection to be yielded. Otherwise, calculate the values.
       value = if collection_block?(block)
         collection_block = block
-        @object.send(association_name)
+        associations = @object.send(association_name)
+        options[:collection_tag] = '' unless associations.kind_of? Array
+        Array.wrap associations
       elsif block
         block
       else
