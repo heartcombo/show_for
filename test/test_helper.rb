@@ -9,6 +9,9 @@ require 'action_view'
 require 'action_view/template'
 require 'action_view/test_case'
 
+require "rails/generators/test_case"
+require 'generators/show_for/install_generator'
+
 $:.unshift File.expand_path("../../lib", __FILE__)
 require 'show_for'
 
