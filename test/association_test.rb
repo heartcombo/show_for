@@ -42,6 +42,14 @@ class AssociationTest < ActionView::TestCase
     end
   end
 
+  test "show_for accepts a block with an argument in belongs_to associations" do
+    with_association_for @user, :company do |company|
+      company.name.upcase
+    end
+
+    assert_select "div.show_for p.wrapper", /PLATAFORMATEC/
+  end
+
   test "show_for accepts :using as option to tell how to retrieve association values" do
     with_association_for @user, :tags, :using => :alternate_name
     assert_select "div.show_for p.wrapper ul.collection"

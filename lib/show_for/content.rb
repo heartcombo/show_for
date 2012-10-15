@@ -27,7 +27,11 @@ module ShowFor
         when NilClass, Numeric
           value.to_s
         else
-          value
+          if block
+            template.capture(value, &block)
+          else
+            value
+          end
       end
 
       options[:content_html] = options.except(:content_tag) if apply_options
