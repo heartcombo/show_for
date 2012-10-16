@@ -133,6 +133,13 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /This description/
   end
 
+  test "show_for#content given a block should be wrapped in the result" do
+    with_attribute_for @user, :name do |name|
+      "<div class='block'>#{name}</div>".html_safe
+    end
+    assert_select "p.wrapper.user_name div.block", /ShowFor/
+  end
+
   test "show_for escapes content by default" do
     @user.name = "<b>hack you!</b>"
     with_attribute_for @user, :name
@@ -171,7 +178,7 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for p.user_email.wrapper", /Not specified/
     assert_select "p.user_email strong.label", "Email"
   end
-  
+
   test "show_for should wrap blank attributes with no_attribute" do
     swap ShowFor, :blank_content_class => 'no_attribute' do
       with_attributes_for @user, :name, :birthday
@@ -179,5 +186,5 @@ class AttributeTest < ActionView::TestCase
       assert_select ".wrapper.user_name.no_attribute", false
     end
   end
-  
+
 end
