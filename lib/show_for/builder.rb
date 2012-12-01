@@ -83,7 +83,7 @@ module ShowFor
     # return true if the value is blank and show_for is configured to skip
     # blank values.
     def skip?(value) #:nodoc:
-      !!(value.blank? && value != false && ShowFor.skip_blanks)
+      ShowFor.skip_blanks && value.blank? && value != false
     end
   end
 end
