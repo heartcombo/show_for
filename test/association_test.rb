@@ -89,4 +89,27 @@ class AssociationTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper p.collection span", "Tag 2"
     assert_select "div.show_for p.wrapper p.collection span", "Tag 3"
   end
+
+  test "show_for does not display empty has_many/has_and_belongs_to_many association if skip_blanks option is passed" do
+    def @user.tags
+      []
+    end
+
+    swap ShowFor, :skip_blanks => true do
+      with_association_for @user, :tags
+      assert_no_select "div.show_for p.wrapper"
+    end
+  end
+
+  test "show_for does not display empty belongs_to/has_one association if skip_blanks option is passed" do
+    def @user.company
+      nil
+    end
+
+    swap ShowFor, :skip_blanks => true do
+      with_association_for @user, :company
+      assert_no_select "div.show_for p.wrapper"
+    end
+  end
+
 end

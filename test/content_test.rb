@@ -23,4 +23,11 @@ class ContentTest < ActionView::TestCase
       assert_select "div.show_for b.nothing"
     end
   end
+
+  test "show_for#content with blank value does not display content if skip_blanks option is passed" do
+    swap ShowFor, :skip_blanks => true do
+      with_content_for @user, nil, :content_tag => :b
+      assert_no_select "div.show_for b"
+    end
+  end
 end
