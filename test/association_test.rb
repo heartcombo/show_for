@@ -111,5 +111,4 @@ class AssociationTest < ActionView::TestCase
       assert_no_select "div.show_for p.wrapper"
     end
   end
-
 end
