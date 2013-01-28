@@ -1,4 +1,5 @@
 require 'ostruct'
+require 'delegate'
 
 class Company < Struct.new(:id, :name)
   extend ActiveModel::Naming
