@@ -24,13 +24,11 @@ module ShowFor
           collection_handler(value, options, &block)
         when Proc
           @template.capture(&value)
-        when NilClass, Numeric
-          value.to_s
         else
           if block
             template.capture(value, &block)
           else
-            value
+            value.to_s
           end
       end
 

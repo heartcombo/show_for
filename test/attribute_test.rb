@@ -126,6 +126,11 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /No description provided/
   end
 
+  test "show_for accepts SimpleDelegator attributes" do
+    with_attribute_for @user, :net_worth
+    assert_select "div.show_for p.wrapper", /\$12345678/
+  end
+
   test "show_for accepts a block to supply the content" do
     with_attribute_for @user, :description do
       "This description is not blank"

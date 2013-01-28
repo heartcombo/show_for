@@ -20,6 +20,12 @@ class Tag < Struct.new(:id, :name)
   end
 end
 
+class Money < SimpleDelegator
+  def to_s
+    "$#{super}"
+  end
+end
+
 class User < OpenStruct
   extend ActiveModel::Naming
 
@@ -32,6 +38,10 @@ class User < OpenStruct
 
   def company
     Company.new(1, "PlataformaTec")
+  end
+
+  def net_worth
+    Money.new(12_345_678)
   end
 
   def self.human_attribute_name(attribute)
