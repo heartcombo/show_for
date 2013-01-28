@@ -13,7 +13,7 @@ module ShowFor
       html_options = html_options.dup
 
       tag = html_options.delete(:show_for_tag) || ShowFor.show_for_tag
-    
+
       html_options[:id]  ||= dom_id(object)
       html_options[:class] = show_for_html_class(object, html_options)
 
