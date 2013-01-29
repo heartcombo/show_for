@@ -9,7 +9,9 @@ gemfile:
   - gemfiles/Gemfile-rails.3.1.x
   - Gemfile
 notifications:
-  recipients:
-    - jose.valim@plataformatec.com.br
-    - carlos@plataformatec.com.br
-    - rafael.franca@plataformatec.com.br
+  email: false
+  campfire:
+    on_success: change
+    on_failure: always
+    rooms:
+      - secure: "1jM45T9Qz66U8toE0hD+jlFrXq6tamt28sAcCwmE5DXw/tJUMhdAcWcjjOXi\nT/u/dIvLtsuF9epXzzk4+iyywTKa4wW33+GGd5AtdA7IZZI0y37VnaaTZBF3\nz+vEmQmGAT91VxUo6BOn9Xljb4qp5mBAR+Ug8PvCnmvKNxkMJxs="
