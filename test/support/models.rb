@@ -23,7 +23,7 @@ end
 
 class Money < SimpleDelegator
   def to_s
-    "$#{super}"
+    "$#{__getobj__}"
   end
 end
 
