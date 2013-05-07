@@ -1,6 +1,8 @@
 # ShowFor
 
-[![Build Status](https://secure.travis-ci.org/plataformatec/show_for.png)](http://travis-ci.org/plataformatec/show_for)
+[![Gem Version](https://fury-badge.herokuapp.com/rb/show_for.png)](http://badge.fury.io/rb/show_for)
+[![Build Status](https://api.travis-ci.org/plataformatec/show_for.png?branch=master)](http://travis-ci.org/plataformatec/show_for)
+[![Code Climate](https://codeclimate.com/github/plataformatec/show_for.png)](https://codeclimate.com/github/plataformatec/show_for)
 
 ShowFor allows you to quickly show a model information with I18n features.
 
