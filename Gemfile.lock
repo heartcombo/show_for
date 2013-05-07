@@ -6,7 +6,7 @@ PATH
       activemodel (~> 3.0)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actionpack (3.2.13)
       activemodel (= 3.2.13)
