@@ -1,6 +1,7 @@
 == master
 
 * enhancements
+  * Ruby 2.0 support.
   * Add Haml template. (by github.com/nashby) Closes #12.
   * Add `blank_html` tanslation. (by github.com/nashby)
   * Add `show_for_class` configuration option. (by github.com/nashby)
