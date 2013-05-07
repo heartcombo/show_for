@@ -1,21 +1,10 @@
 script: "bundle exec rake"
-before_install: gem update --system
 rvm:
   - 2.0.0
   - 1.9.3
-  - 1.8.7
-  - jruby
 gemfile:
-  - gemfiles/Gemfile-rails.3.0.x
-  - gemfiles/Gemfile-rails.3.1.x
   - gemfiles/Gemfile-rails.3.2.x
   - Gemfile
-matrix:
-  exclude:
-    - rvm: 1.8.7
-      gemfile: Gemfile
-    - rvm: jruby
-      gemfile: Gemfile
 notifications:
   email: false
   campfire:
