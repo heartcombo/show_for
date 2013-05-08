@@ -1,4 +1,4 @@
-== master
+== 0.2.6
 
 * enhancements
   * Ruby 2.0 support.
