@@ -1,4 +1,4 @@
-== master
+== 0.3.0.rc
 
 * enhancements
   * Support Rails 4.
