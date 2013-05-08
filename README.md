@@ -38,10 +38,10 @@ Run the generator:
 
     rails generate show_for:install
 
-And you are ready to go. Since this branch is aims Rails 3 support,
-if you want to use it with Rails 2.3 you should check this branch:
+And you are ready to go.
 
-    http://github.com/plataformatec/show_for/tree/v0.1
+Note: This branch aims Rails 3.2 and 4 support, so if you want to use it with
+older versions of Rails, check out the available branches.
 
 ## Usage
 
