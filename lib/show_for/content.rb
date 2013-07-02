@@ -5,7 +5,7 @@ module ShowFor
       # cache value for apply_wrapper_options!
       sample_value = value
 
-      if value.blank? && value != false
+      if value.blank? && value != false && ShowFor.skip_blanks == false
         value = blank_value(options)
       end
 
