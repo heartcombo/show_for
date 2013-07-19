@@ -44,7 +44,7 @@ module ShowFor
       when Symbol
         block_from_symbol(attribute_name, options)
       else
-        lambda { options[:value] }
+        lambda { options[:value].to_s }
       end
     end
 

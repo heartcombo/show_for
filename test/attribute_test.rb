@@ -158,6 +158,11 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /Calculated Value/
   end
 
+  test "show_for uses :value and casts to string if supplied" do
+    with_attribute_for @user, :name, :value => 123
+    assert_select "div.show_for p.wrapper", /123/
+  end
+
   test "show_for ignores :value if a block is supplied" do
     with_attribute_for @user, :name, :value => "Calculated Value" do
       @user.name.upcase
