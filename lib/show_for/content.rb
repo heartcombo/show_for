@@ -5,10 +5,6 @@ module ShowFor
       # cache value for apply_wrapper_options!
       sample_value = value
 
-      if value.blank? && value != false
-        value = blank_value(options)
-      end
-
       # We need to convert value to_a because when dealing with ActiveRecord
       # Array proxies, the follow statement Array# === value return false
       value = value.to_a if value.is_a?(Array)
@@ -24,10 +20,12 @@ module ShowFor
           collection_handler(value, options, &block)
         when Proc
           @template.capture(&value)
-        when NilClass, Numeric
+        when Numeric
           value.to_s
         else
-          if block
+          if value.blank?
+            blank_value(options)
+          elsif block
             template.capture(value, &block)
           else
             value
@@ -41,6 +39,8 @@ module ShowFor
   protected
 
     def collection_handler(value, options, &block) #:nodoc:
+      return blank_value(options) if value.blank?
+
       iterator = collection_block?(block) ? block : ShowFor.default_collection_proc
 
       response = value.map do |item|

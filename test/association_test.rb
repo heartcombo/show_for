@@ -42,6 +42,20 @@ class AssociationTest < ActionView::TestCase
     end
   end
 
+  test "show_for accepts a block with has_many/has_and_belongs_to_many blank associations" do
+    def @user.tags
+      []
+    end
+
+    swap ShowFor, :association_methods => [:name] do
+      with_association_for @user, :tags do |tag|
+        tag.name
+      end
+      assert_no_select "div.show_for p.wrapper ul.collection"
+      assert_no_select "div.show_for p.wrapper", /Enumerator/
+    end
+  end
+
   test "show_for accepts a block with an argument in belongs_to associations" do
     with_association_for @user, :company do |company|
       company.name.upcase
