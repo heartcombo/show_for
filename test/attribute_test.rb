@@ -133,6 +133,13 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /This description/
   end
 
+  test "show_for uses :if_blank if the block content is blank" do
+    with_attribute_for @user, :description, :if_blank => "No description provided" do
+      ""
+    end
+    assert_select "div.show_for p.wrapper", /No description provided/
+  end
+
   test "show_for#content given a block should be wrapped in the result" do
     with_attribute_for @user, :name do |name|
       "<div class='block'>#{name}</div>".html_safe

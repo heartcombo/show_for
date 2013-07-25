@@ -5,10 +5,6 @@ module ShowFor
       # cache value for apply_wrapper_options!
       sample_value = value
 
-      if value.blank? && value != false
-        value = blank_value(options)
-      end
-
       # We need to convert value to_a because when dealing with ActiveRecord
       # Array proxies, the follow statement Array# === value return false
       value = value.to_a if value.is_a?(Array)
@@ -32,6 +28,10 @@ module ShowFor
           else
             value
           end
+      end
+
+      if content.blank?
+        content = blank_value(options)
       end
 
       options[:content_html] = options.except(:content_tag) if apply_options
