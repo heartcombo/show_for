@@ -11,7 +11,7 @@ module ShowFor
 
       # We need to convert value to_a because when dealing with ActiveRecord
       # Array proxies, the follow statement Array# === value return false
-      value = value.to_a if value.is_a?(Array)
+      value = value.to_a if value.is_a?(Array) || value.respond_to?(:load_target)
 
       content = case value
         when Date, Time, DateTime
