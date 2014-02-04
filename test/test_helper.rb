@@ -15,6 +15,7 @@ $:.unshift File.expand_path("../../lib", __FILE__)
 require 'show_for'
 
 Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
+I18n.enforce_available_locales = true
 I18n.default_locale = :en
 
 class ActionView::TestCase
