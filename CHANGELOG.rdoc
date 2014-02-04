@@ -1,4 +1,4 @@
-== 0.3.0
+== master (unreleased)
 
 * bug fix
   * Fix blank value not being applied when using a block. (by github.com/tfwright)
