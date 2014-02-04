@@ -1,3 +1,8 @@
+== 0.3.0
+
+* bug fix
+  * Fix blank value not being applied when using a block. (by github.com/tfwright)
+
 == 0.3.0.rc
 
 * enhancements
