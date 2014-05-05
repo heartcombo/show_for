@@ -1,6 +1,6 @@
 require 'bundler/setup'
 
-require 'test/unit'
+require 'minitest/autorun'
 
 require 'active_model'
 require 'action_controller'
