@@ -32,11 +32,10 @@ module ShowFor
     end
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
-      unless skip?(value)
-        label = label(name, options, false)
-        label += ShowFor.separator.to_s.html_safe if label.present?
-        wrap_with(:wrapper, label + content(value, options, false, &block), apply_wrapper_options!(:wrapper, options, value))
-      end
+      return if skip_blanks?(value)
+      label = label(name, options, false)
+      label += ShowFor.separator.to_s.html_safe if label.present?
+      wrap_with(:wrapper, label + content(value, options, false, &block), apply_wrapper_options!(:wrapper, options, value))
     end
 
     def wrap_content(name, value, options, &block) #:nodoc:
@@ -60,17 +59,16 @@ module ShowFor
     # around the given content. It also check for html_options in @options
     # hash related to the current type.
     def wrap_with(type, content, options) #:nodoc:
-      unless skip?(content)
-        tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
+      return if skip_blanks?(content)
+      tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
 
-        if tag
-          type_class = ShowFor.send :"#{type}_class"
-          html_options = options.delete(:"#{type}_html") || {}
-          html_options[:class] = "#{type_class} #{html_options[:class]}".rstrip
-          @template.content_tag(tag, content, html_options)
-        else
-          content
-        end
+      if tag
+        type_class = ShowFor.send :"#{type}_class"
+        html_options = options.delete(:"#{type}_html") || {}
+        html_options[:class] = "#{type_class} #{html_options[:class]}".rstrip
+        @template.content_tag(tag, content, html_options)
+      else
+        content
       end
     end
 
@@ -80,9 +78,8 @@ module ShowFor
       block && block.arity == 1
     end
 
-    # return true if the value is blank and show_for is configured to skip
-    # blank values.
-    def skip?(value) #:nodoc:
+    # Verifies whether the value is blank and its configured to skip blank values.
+    def skip_blanks?(value) #:nodoc:
       ShowFor.skip_blanks && value.blank? && value != false
     end
   end

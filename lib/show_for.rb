@@ -28,6 +28,9 @@ module ShowFor
   mattr_accessor :blank_content_class
   @@blank_content_class = "blank"
 
+  mattr_accessor :skip_blanks
+  @@skip_blanks = false
+
   mattr_accessor :wrapper_tag
   @@wrapper_tag = :p
 
@@ -51,9 +54,6 @@ module ShowFor
 
   mattr_accessor :label_proc
   @@label_proc = nil
-
-  mattr_accessor :skip_blanks
-  @@skip_blanks = false
 
   # Yield self for configuration block:
   #

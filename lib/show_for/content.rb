@@ -16,34 +16,28 @@ module ShowFor
         when FalseClass
           I18n.t :"show_for.no", :default => "No"
         when Array, Hash
-          collection_handler(value, options, &block)
+          collection_handler(value, options, &block) unless value.empty?
         when Proc
           @template.capture(&value)
         when Numeric
           value.to_s
         else
-          if value.blank? && ShowFor.skip_blanks == false
-            blank_value(options)
-          elsif block
-            template.capture(value, &block)
-          else
-            value
+          unless value.blank?
+            block ? template.capture(value, &block) : value
           end
       end
 
-      if content.blank? && ShowFor.skip_blanks == false
+      if content.blank? && !ShowFor.skip_blanks
         content = blank_value(options)
       end
 
       options[:content_html] = options.except(:content_tag) if apply_options
-      wrap_with(:content, content, apply_wrapper_options!(:content, options, sample_value) )
+      wrap_with(:content, content, apply_wrapper_options!(:content, options, sample_value))
     end
 
   protected
 
     def collection_handler(value, options, &block) #:nodoc:
-      return blank_value(options) if value.blank?
-
       iterator = collection_block?(block) ? block : ShowFor.default_collection_proc
 
       response = value.map do |item|
