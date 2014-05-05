@@ -1,7 +1,8 @@
 ## Unreleased
 
 ### enhancements
-  * Support Rails 4.1.
+  * Improve support to Rails 4.x associations with more duck typing instead of Array checks.
+  * Support Rails 4.1 and Ruby 2.1.1.
 
 ## 0.3.0
 
