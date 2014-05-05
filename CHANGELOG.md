@@ -4,6 +4,9 @@
   * Improve support to Rails 4.x associations with more duck typing instead of Array checks.
   * Support Rails 4.1 and Ruby 2.1.1.
 
+### bugfix
+  * Do not yield default blank value to the block when using an empty association. (by github.com/aptinio)
+
 ## 0.3.0
 
 ### bug fix
@@ -84,7 +87,7 @@
 ### enhancements
   * allow builder to be given to show_for
 
-### bugfix
+### bug fix
   * Fix typo in yaml
 
 ## 0.1.2
