@@ -20,10 +20,12 @@ module ShowFor
           collection_handler(value, options, &block)
         when Proc
           @template.capture(&value)
-        when NilClass, Numeric
+        when Numeric
           value.to_s
         else
-          if block
+          if value.blank?
+            blank_value(options)
+          elsif block
             template.capture(value, &block)
           else
             value
@@ -41,6 +43,8 @@ module ShowFor
   protected
 
     def collection_handler(value, options, &block) #:nodoc:
+      return blank_value(options) if value.blank?
+
       iterator = collection_block?(block) ? block : ShowFor.default_collection_proc
 
       response = value.map do |item|
