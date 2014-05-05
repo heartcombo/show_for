@@ -22,7 +22,7 @@ module ShowFor
         when Numeric
           value.to_s
         else
-          if value.blank?
+          if value.blank? && ShowFor.skip_blanks == false
             blank_value(options)
           elsif block
             template.capture(value, &block)
@@ -31,7 +31,7 @@ module ShowFor
           end
       end
 
-      if content.blank?
+      if content.blank? && ShowFor.skip_blanks == false
         content = blank_value(options)
       end
 
