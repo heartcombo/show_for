@@ -38,7 +38,7 @@ module ShowFor
   protected
 
     def values_from_association(association, options) #:nodoc:
-      sample = association.respond_to?(:first) ? association.first : association
+      sample = association.respond_to?(:to_ary) ? association.first : association
 
       if options[:method]
         options[:using] = options.delete(:method)
@@ -48,7 +48,7 @@ module ShowFor
       method = options.delete(:using) || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
 
       if method
-        association.respond_to?(:map) ? association.map(&method) : association.try(method)
+        association.respond_to?(:to_ary) ? association.map(&method) : association.try(method)
       end
     end
   end
