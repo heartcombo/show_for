@@ -32,6 +32,7 @@ module ShowFor
     end
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
+      return if skip_blanks?(value)
       label = label(name, options, false)
       label += ShowFor.separator.to_s.html_safe if label.present?
       wrap_with(:wrapper, label + content(value, options, false, &block), apply_wrapper_options!(:wrapper, options, value))
@@ -58,6 +59,7 @@ module ShowFor
     # around the given content. It also check for html_options in @options
     # hash related to the current type.
     def wrap_with(type, content, options) #:nodoc:
+      return if skip_blanks?(content)
       tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
 
       if tag
@@ -74,6 +76,11 @@ module ShowFor
     # i.e. it has arity equals to one.
     def collection_block?(block) #:nodoc:
       block && block.arity == 1
+    end
+
+    # Verifies whether the value is blank and its configured to skip blank values.
+    def skip_blanks?(value) #:nodoc:
+      ShowFor.skip_blanks && value.blank? && value != false
     end
   end
 end

@@ -18,6 +18,9 @@ ShowFor.setup do |config|
   # The DOM class set for blank content tags. Default is "blank".
   # config.blank_content_class = 'no_content'
 
+  # Skip blank attributes instead of generating with a default message. Default is false.
+  # config.skip_blanks = true
+
   # The separator between label and content. Default is "<br />".
   # config.separator = "<br />"
 

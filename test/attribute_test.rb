@@ -182,6 +182,20 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for p.wrapper", /#{@user.name.upcase}/
   end
 
+  test "show_for does not display blank attribute if skip_blanks option is passed" do
+    swap ShowFor, :skip_blanks => true do
+      with_attribute_for @user, :description
+      assert_no_select "div.show_for p.wrapper"
+    end
+  end
+
+  test "show_for display false attribute if skip_blanks option is passed" do
+    swap ShowFor, :skip_blanks => true do
+      with_attribute_for @user, :invalid
+      assert_select "div.show_for p.wrapper", /No/
+    end
+  end
+
   # ATTRIBUTES
   test "show_for attributes wraps each attribute with a label and content" do
     with_attributes_for @user, :name, :email
