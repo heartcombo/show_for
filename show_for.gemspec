@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "Wrap your objects with a helper to easily show them"
   s.authors     = ['José Valim']
 
-  s.files         = Dir["CHANGELOG.rdoc", "MIT-LICENSE", "README.rdoc", "lib/**/*"]
+  s.files         = Dir["CHANGELOG.md", "MIT-LICENSE", "README.md", "lib/**/*"]
   s.test_files    = Dir["test/**/*"]
   s.require_paths = ["lib"]
 
