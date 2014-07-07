@@ -38,10 +38,10 @@ module MiscHelpers
   end
 
   def with_association_for(object, association, options={}, &block)
-     concat(show_for(object) do |o|
-       concat o.association(association, options, &block)
-     end)
-   end
+    concat(show_for(object) do |o|
+      concat o.association(association, options, &block)
+    end)
+  end
 
   def with_label_for(object, attribute, options={})
     concat(show_for(object) do |o|
