@@ -17,7 +17,7 @@ class ShowForGeneratorTest < Rails::Generators::TestCase
       /config.show_for_tag = :div/
   end
 
-  %W(erb haml).each do |engine|
+  %W(erb haml slim).each do |engine|
     test "generates the scaffold template when using #{engine}" do
       run_generator ['-e', engine]
       assert_file "lib/templates/#{engine}/scaffold/show.html.#{engine}"
