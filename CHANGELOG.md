@@ -6,6 +6,7 @@
   * Add `skip_blanks` configuration option to skip generating blank attributes
     instead of generating them with a default message. (by github.com/moktin)
   * Add `slim` template for the install generator. (by github.com/voanhduy1512)
+  * Add `separator` option that overrides the global configuration (by github.com/bernardofire)
 
 ### bugfix
   * Do not yield default blank value to the block when using an empty association. (by github.com/aptinio)

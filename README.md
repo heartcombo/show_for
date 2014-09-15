@@ -122,17 +122,18 @@ ShowFor uses the following sequence to get the attribute value:
 
 ShowFor handles a series of options. Those are:
 
-* __:format__ - Sent to I18n.localize when the attribute is a date/time object.
+* __:format__ - Sent to `I18n.localize` when the attribute is a date/time object.
 
-* __:value__ - Can be used instead of block. If a Symbol is called as instance method.
+* __:value__ - Can be used instead of block. If a `Symbol` is called as instance method.
 
 * __:if_blank__ - An object to be used if the value is blank. Not escaped as well.
+
+* __:separator__ - The piece of html that separates label and content, overriding the global configuration.
 
 In addition, all containers (`:label`, `:content` and `:wrapper`) can have their html
 options configured through the `:label_html`, `:content_html` and `:wrapper_html`
 options. Containers can have their tags configured on demand as well through
-`:label_tag,` `:content_tag` and `:wrapper_tag` options. Separator can also be cofigured
-through `:separator` option.
+`:label_tag,` `:content_tag` and `:wrapper_tag` options.
 
 ## Label
 

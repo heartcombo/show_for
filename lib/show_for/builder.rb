@@ -34,7 +34,9 @@ module ShowFor
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
       return if skip_blanks?(value)
       label = label(name, options, false)
-      label += (options[:separator] || ShowFor.separator).to_s.html_safe if label.present?
+      if label.present? && separator = options.fetch(:separator) { ShowFor.separator }
+        label += separator.html_safe
+      end
       wrap_with(:wrapper, label + content(value, options, false, &block), apply_wrapper_options!(:wrapper, options, value))
     end
 
