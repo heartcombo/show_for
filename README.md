@@ -131,7 +131,8 @@ ShowFor handles a series of options. Those are:
 In addition, all containers (`:label`, `:content` and `:wrapper`) can have their html
 options configured through the `:label_html`, `:content_html` and `:wrapper_html`
 options. Containers can have their tags configured on demand as well through
-`:label_tag,` `:content_tag` and `:wrapper_tag` options.
+`:label_tag,` `:content_tag` and `:wrapper_tag` options. Separator can also be cofigured
+through `:separator` option.
 
 ## Label
 
