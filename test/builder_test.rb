@@ -38,6 +38,19 @@ class BuilderTest < ActionView::TestCase
   end
 
   # SEPARATOR
+  test "show_for allows separator to be configured globally" do
+    swap ShowFor, :separator => "<span class='separator'></span>" do
+      with_attribute_for @user, :name
+      assert_select "div.show_for p.user_name span.separator"
+      assert_select "div.show_for p.wrapper span.separator"
+    end
+  end
+
+  test "show_for allows separator to be changed by attribute"do
+    with_attribute_for @user, :name, :separator => "<span class='separator'></span>"
+    assert_select "div.show_for p.wrapper span.separator"
+  end
+
   test "show_for uses a separator if requested" do
     with_attribute_for @user, :name
     assert_select "div.show_for p.wrapper br"
