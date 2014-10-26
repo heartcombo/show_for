@@ -10,13 +10,28 @@ module ShowFor
       end
 
       return ''.html_safe if label == false
+
+      label_wrapper = options.try(:delete, :l_wrapper_tags)
       options[:label_html] = options.dup if apply_options
 
       label = ShowFor.label_proc.call(label) if options.fetch(:wrap_label, true) && ShowFor.label_proc
-      wrap_with :label, label, options
+      
+      
+      label = wrap_with :label, label, options
+      
+      if label_wrapper
+        if !label_wrapper.respond_to? :each  
+          label_wrapper = [label_wrapper]
+        end
+        label_wrapper.each do |option|
+          puts 'entered'
+          label = wrap_with :l_wrapper, label, { l_wrapper_tag: option }
+        end
+      end
+      label
     end
 
-  protected
+    protected
 
     def human_attribute_name(attribute) #:nodoc:
       @object.class.human_attribute_name(attribute.to_s)

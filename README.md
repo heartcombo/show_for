@@ -143,6 +143,8 @@ ShowFor also exposes the label method. In case you want to use the default
 ```ruby
 a.label :name                     #=> <strong class="label">Name</strong>
 a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
+a.label :name, l_wrapper_tags: :h2 #=> <h2><strong class="label">Name</strong></h2>
+a.label :name, l_wrapper_tags: [[:h2, "someclass"]] #=> <h2 class="someclass"><strong class="label">Name</strong></h2>
 ```
 
 Optionally, if you want to wrap the inner part of the label with some text
@@ -155,6 +157,9 @@ that will be called with any label text. E.g.:
 
 When taking this route, you can also skip on a per label basis by passing the
 `:wrap_label` option with a value of false.
+
+In the last case, you can easily add an only for label wrapper(or multiple)
+specifing the l_wrapper_tags: options.
 
 ## Associations
 
