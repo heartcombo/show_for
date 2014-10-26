@@ -33,6 +33,7 @@ module ShowFor
 
     def wrap_label_and_content(name, value, options, &block) #:nodoc:
       return if skip_blanks?(value)
+
       label = label(name, options, false)
       if label.present? && separator = options.fetch(:separator) { ShowFor.separator }
         label += separator.html_safe
@@ -63,15 +64,19 @@ module ShowFor
     def wrap_with(type, content, options) #:nodoc:
       return if skip_blanks?(content)
       tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
-
+      # binding.pry
       if tag
-        type_class = ShowFor.send :"#{type}_class"
+        type_class =  if not type.to_s == "l_wrapper" then ShowFor.send :"#{type}_class" else tag.try(:[],1) unless !tag.respond_to?(:each) end
+
         html_options = options.delete(:"#{type}_html") || {}
         html_options[:class] = "#{type_class} #{html_options[:class]}".rstrip
+        
         @template.content_tag(tag, content, html_options)
+        
       else
         content
       end
+      # binding.pry
     end
 
     # Returns true if the block is supposed to iterate through a collection,

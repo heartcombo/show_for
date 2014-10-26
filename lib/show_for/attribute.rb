@@ -6,7 +6,6 @@ module ShowFor
       collection_block, block = block, nil if collection_block?(block)
 
       value = attribute_value(attribute_name, &block)
-
       wrap_label_and_content(attribute_name, value, options, &collection_block)
     end
 
