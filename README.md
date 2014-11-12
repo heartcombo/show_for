@@ -38,6 +38,10 @@ Run the generator:
 
     rails generate show_for:install
 
+Or, if you want the Twitter Bootstrap's way:
+
+    rails generate show_for:install --bootstrap
+
 And you are ready to go.
 
 Note: This branch aims Rails 3.2 and 4 support, so if you want to use it with
