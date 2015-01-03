@@ -84,6 +84,7 @@ class ValueTest < ActionView::TestCase
     assert_no_select "div.show_for div.wrapper strong.label"
     assert_no_select "div.show_for div.wrapper br"
     assert_no_select "div.show_for div.wrapper b"
-    assert_select "div.show_for div.wrapper", /&lt;b&gt;/
+    assert_select "div.show_for div.wrapper",
+      rails_42? ? "<b>hack you!</b>" : "&lt;b&gt;hack you!&lt;/b&gt;"
   end
 end
