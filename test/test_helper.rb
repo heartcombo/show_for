@@ -18,6 +18,8 @@ Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
 I18n.enforce_available_locales = true
 I18n.default_locale = :en
 
+ActiveSupport::TestCase.test_order = :random if ActiveSupport::TestCase.respond_to?(:test_order=)
+
 class ActionView::TestCase
   include MiscHelpers
   include ShowFor::Helper

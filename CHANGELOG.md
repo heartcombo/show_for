@@ -3,7 +3,7 @@
 ### enhancements
   * Remove deprecated `:method` in favor of `:using`.
   * Improve support to Rails 4.x associations with more duck typing instead of Array checks.
-  * Support Rails 4.1 and Ruby 2.1.1.
+  * Support Rails 4.1/4.2 and Ruby 2.1/2.2.
   * Add `skip_blanks` configuration option to skip generating blank attributes
     instead of generating them with a default message. (by github.com/moktin)
   * Add `slim` template for the install generator. (by github.com/voanhduy1512)
