@@ -39,12 +39,6 @@ module ShowFor
 
     def values_from_association(association, options) #:nodoc:
       sample = association.respond_to?(:to_ary) ? association.first : association
-
-      if options[:method]
-        options[:using] = options.delete(:method)
-        ActiveSupport::Deprecation.warn ":method is deprecated. Please use :using instead", caller
-      end
-
       method = options.delete(:using) || ShowFor.association_methods.find { |m| sample.respond_to?(m) }
 
       if method

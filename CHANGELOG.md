@@ -1,6 +1,7 @@
 ## Unreleased
 
 ### enhancements
+  * Remove deprecated `:method` in favor of `:using`.
   * Improve support to Rails 4.x associations with more duck typing instead of Array checks.
   * Support Rails 4.1 and Ruby 2.1.1.
   * Add `skip_blanks` configuration option to skip generating blank attributes
