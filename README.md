@@ -68,36 +68,36 @@ Will generate something like:
 
 ```html
 <div id="admin_1" class="show_for admin">
-  <p class="wrapper admin_name">
+  <div class="wrapper admin_name">
     <strong class="label">Name</strong><br />
     José Valim
-  </p>
-  <p class="wrapper admin_login">
+  </div>
+  <div class="wrapper admin_login">
     <strong class="label">Login</strong><br />
     JVALIM
-  </p>
-  <p class="wrapper admin_confirmed">
+  </div>
+  <div class="wrapper admin_confirmed">
     <strong class="label">Confirmed?</strong><br />
     Yes
-  </p>
-  <p class="wrapper admin_created_at">
+  </div>
+  <div class="wrapper admin_created_at">
     <strong class="label">Created at</strong><br />
     13/12/2009 - 19h17
-  </p>
-  <p id="sign_in_timestamp" class="wrapper admin_last_sign_in_at">
+  </div>
+  <div id="sign_in_timestamp" class="wrapper admin_last_sign_in_at">
     <strong class="label">Last sign in at</strong><br />
     Administrator did not access yet
-  </p>
-  <p class="wrapper admin_photo">
+  </div>
+  <div class="wrapper admin_photo">
     <strong class="label">Photo</strong><br />
     <img src="path/to/photo" />
-  </p>
-  <p class="wrapper admin_biography">
+  </div>
+  <div class="wrapper admin_biography">
     Etiam porttitor eros ut diam vestibulum et blandit lectus tempor. Donec
     venenatis fermentum nunc ac dignissim. Pellentesque volutpat eros quis enim
     mollis bibendum. Ut cursus sem ac sem accumsan nec porttitor felis luctus.
     Sed purus nunc, auctor vitae consectetur pharetra, tristique non nisi.
-  </p>
+  </div>
 </div>
 ```
 
