@@ -1,6 +1,9 @@
 ## Unreleased
 
 ### enhancements
+  * Change default `wrapper_tag` to generate a `div` instead of `p`. The `p` tag generates
+    invalid HTML with collections: `p > ul`, and failed tests on Rails 4.2. If you depend
+    on the `p` tag being generated, change your Show For config to set `wrapper_tag` to `:p`.
   * Remove deprecated `:method` in favor of `:using`.
   * Improve support to Rails 4.x associations with more duck typing instead of Array checks.
   * Support Rails 4.1/4.2 and Ruby 2.1/2.2.
