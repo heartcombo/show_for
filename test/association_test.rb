@@ -56,6 +56,30 @@ class AssociationTest < ActionView::TestCase
     end
   end
 
+  test "show_for uses :if_blank when has_many/has_and_belongs_to_many association is blank" do
+    def @user.tags
+      []
+    end
+
+    with_association_for @user, :tags, if_blank: 'No tags' do |tag|
+      tag.name
+    end
+    assert_select "div.show_for p.wrapper.blank", /No tags/
+    assert_no_select "div.show_for p.wrapper ul.collection"
+    assert_no_select "div.show_for p.wrapper", /Enumerator/
+  end
+
+  test "show_for uses :if_blank if given a block when has_many/has_and_belongs_to_many association is blank" do
+    def @user.tags
+      []
+    end
+
+    with_association_for @user, :tags, if_blank: 'No tags'
+    assert_select "div.show_for p.wrapper.blank", /No tags/
+    assert_no_select "div.show_for p.wrapper ul.collection"
+    assert_no_select "div.show_for p.wrapper", /Enumerator/
+  end
+
   test "show_for accepts a block with an argument in belongs_to associations" do
     with_association_for @user, :company do |company|
       company.name.upcase
