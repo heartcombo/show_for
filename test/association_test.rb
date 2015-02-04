@@ -3,17 +3,17 @@ require 'test_helper'
 class AssociationTest < ActionView::TestCase
   test "show_for works with belongs_to/has_one associations" do
     with_association_for @user, :company
-    assert_select "div.show_for p.wrapper", /PlataformaTec/
+    assert_select "div.show_for p.wrapper", /Plataformatec/
   end
 
   test "show_for accepts :using as option to tell how to retrieve association value" do
     with_association_for @user, :company, :using => :alternate_name
-    assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
+    assert_select "div.show_for p.wrapper", /Alternate Plataformatec/
   end
 
   test "show_for accepts :in to tell to retrieve an attribute from association" do
     with_attribute_for @user, :alternate_name, :in => :company
-    assert_select "div.show_for p.wrapper", /Alternate PlataformaTec/
+    assert_select "div.show_for p.wrapper", /Alternate Plataformatec/
   end
 
   test "show_for forwards all options send with :in to association" do

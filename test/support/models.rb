@@ -32,7 +32,7 @@ class User < OpenStruct
   end
 
   def company
-    Company.new(1, "PlataformaTec")
+    Company.new(1, "Plataformatec")
   end
 
   def self.human_attribute_name(attribute)
