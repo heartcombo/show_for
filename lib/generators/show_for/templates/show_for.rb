@@ -11,6 +11,9 @@ ShowFor.setup do |config|
 
   # The tag used to wrap each label. Default is :strong.
   # config.label_tag = :dt
+  
+  # The DOM class of each label tag. Default is :label.
+  # config.label_class = :custom
 
   # The tag used to wrap each content (value). Default is nil.
   # config.content_tag = :dd
