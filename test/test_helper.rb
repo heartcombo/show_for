@@ -18,6 +18,8 @@ Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
 I18n.enforce_available_locales = true
 I18n.default_locale = :en
 
+ActiveSupport::TestCase.test_order = :random if ActiveSupport::TestCase.respond_to?(:test_order=)
+
 class ActionView::TestCase
   include MiscHelpers
   include ShowFor::Helper
@@ -36,5 +38,10 @@ class ActionView::TestCase
       :created_at => Time.now,
       :updated_at => Date.today
     }.merge(options))
+  end
+
+  # TODO: remove after supporting Rails 4.2+ only.
+  def rails_42?
+    ActiveModel::VERSION::STRING >= "4.2.0"
   end
 end

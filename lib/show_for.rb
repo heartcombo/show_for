@@ -32,7 +32,7 @@ module ShowFor
   @@skip_blanks = false
 
   mattr_accessor :wrapper_tag
-  @@wrapper_tag = :p
+  @@wrapper_tag = :div
 
   mattr_accessor :wrapper_class
   @@wrapper_class = :wrapper
