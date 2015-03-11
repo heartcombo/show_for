@@ -40,7 +40,7 @@
 
 ### enhancements
   * Add a `:value` option for attribute (by github.com/ml-gt)
-  * Add `label_class`, `content_class`, `wrapper_class` and `content_class` configuration options (by github.com/wojtekmach)
+  * Add `label_class`, `content_class`, `wrapper_class` and `collection_class` configuration options (by github.com/wojtekmach)
 
 ### bug fix
   * Fix problem with `label => false` and `html_safe` (label => false) (by github.com/nashby)
