@@ -9,14 +9,20 @@ ShowFor.setup do |config|
   # The tag which wraps each attribute/association call. Default is :p.
   # config.wrapper_tag = :dl
 
+  # The DOM class set for the wrapper tag. Default is :wrapper.
+  # config.wrapper_class = :custom
+
   # The tag used to wrap each label. Default is :strong.
   # config.label_tag = :dt
-  
+
   # The DOM class of each label tag. Default is :label.
   # config.label_class = :custom
 
   # The tag used to wrap each content (value). Default is nil.
   # config.content_tag = :dd
+
+  # The DOM class of each content tag. Default is :content.
+  # config.content_class = :custom
 
   # The DOM class set for blank content tags. Default is "blank".
   # config.blank_content_class = 'no_content'
@@ -29,6 +35,9 @@ ShowFor.setup do |config|
 
   # The tag used to wrap collections. Default is :ul.
   # config.collection_tag = :ul
+
+  # The DOM class set for the collection tag. Default is :collection.
+  # config.collection_class = :custom
 
   # The default iterator to be used when invoking a collection/association.
   # config.default_collection_proc = lambda { |value| "<li>#{ERB::Util.h(value)}</li>".html_safe }
