@@ -1,4 +1,4 @@
-## Unreleased
+## 0.4.0
 
 ### enhancements
   * Change default `wrapper_tag` to generate a `div` instead of `p`. The `p` tag generates
