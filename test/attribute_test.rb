@@ -30,6 +30,14 @@ class AttributeTest < ActionView::TestCase
     end
   end
 
+  test "show_for allows collection class to be disabled globally" do
+    swap ShowFor, :collection_tag => :ol, :collection_class => nil do
+      with_attribute_for @user, :scopes
+      assert_select "div.show_for div.wrapper ol"
+      assert_no_select "ol[class]"
+    end
+  end
+
   test "show_for allows collection tag to be changed by attribute" do
     with_attribute_for @user, :scopes, :collection_tag => :ol
     assert_select "div.show_for div.wrapper ol.collection"
@@ -45,6 +53,14 @@ class AttributeTest < ActionView::TestCase
     swap ShowFor, :content_tag => :span, :content_class => :my_content do
       with_attribute_for @user, :name
       assert_select "div.show_for div.wrapper span.my_content"
+    end
+  end
+
+  test "show_for allows content class to be disabled globally" do
+    swap ShowFor, :content_tag => :span, :content_class => nil do
+      with_attribute_for @user, :name
+      assert_select "div.show_for div.wrapper span"
+      assert_no_select "span[class]"
     end
   end
 

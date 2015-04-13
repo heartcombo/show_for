@@ -1,3 +1,9 @@
+## Unreleased
+
+### enhancements
+
+  * Do not generate label/content/wrapper/collection classes when config is set to `nil`.
+
 ## 0.4.0
 
 ### enhancements

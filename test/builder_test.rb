@@ -11,6 +11,13 @@ class BuilderTest < ActionView::TestCase
     end
   end
 
+  test "show_for allows wrapper class to be disabled globally" do
+    swap ShowFor, :wrapper_tag => "li", :wrapper_class => nil do
+      with_attribute_for @user, :name
+      assert_select "div.show_for li[class='user_name']"
+    end
+  end
+
   test "show_for attribute wraps each attribute with a label and content" do
     with_attribute_for @user, :name
     assert_select "div.show_for div.user_name.wrapper"

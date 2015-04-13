@@ -24,6 +24,14 @@ class LabelTest < ActionView::TestCase
     end
   end
 
+  test "show_for allows label class to be disabled globally" do
+    swap ShowFor, :label_tag => :span, :label_class => nil do
+      with_attribute_for @user, :name
+      assert_select "div.show_for div.wrapper span"
+      assert_no_select "span[class]"
+    end
+  end
+
   test "show_for allows label to be changed by attribute" do
     with_attribute_for @user, :name, :label_tag => :span
     assert_select "div.show_for div.wrapper span.label"
