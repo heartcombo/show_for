@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gemspec path: '..'
+
+gem 'rake'
+gem 'rdoc'
+gem 'railties', github: 'rails/rails'
+gem 'activemodel', github: 'rails/rails'
+gem 'actionpack', github: 'rails/rails'
+gem 'rack', github: 'rack/rack'

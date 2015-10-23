@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "show_for"
 
-  s.add_dependency('activemodel', '>= 3.2', '< 5')
-  s.add_dependency('actionpack', '>= 3.2', '< 5')
+  s.add_dependency('activemodel', '>= 3.2', '< 5.1')
+  s.add_dependency('actionpack', '>= 3.2', '< 5.1')
 end
