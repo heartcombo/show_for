@@ -1,4 +1,4 @@
-script: "bundle exec rake"
+script: bundle exec rake
 rvm:
   - 1.9.3
   - 2.0.0
@@ -23,8 +23,7 @@ matrix:
     gemfile: gemfiles/Gemfile-rails.5.0.x
 notifications:
   email: false
-  campfire:
+  slack:
     on_success: change
     on_failure: always
-    rooms:
-      - secure: "1jM45T9Qz66U8toE0hD+jlFrXq6tamt28sAcCwmE5DXw/tJUMhdAcWcjjOXi\nT/u/dIvLtsuF9epXzzk4+iyywTKa4wW33+GGd5AtdA7IZZI0y37VnaaTZBF3\nz+vEmQmGAT91VxUo6BOn9Xljb4qp5mBAR+Ug8PvCnmvKNxkMJxs="
+    secure: tXWWi0oBvnC+uoeIQuZTd2a5VPgn4l2NRpLMY091OgpSiAaoYRlypogsyjGeIFibMQgozq81r+9Jap4C81jAK19kGT/jXrJGw8JyBRmRfCW/Rj6Aq6Fh196oIQMBZEq6YlLGJPd6GXUN5I42t/Oe0j+OEDEBKl669C3a5nVUYxI=
