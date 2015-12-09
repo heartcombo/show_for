@@ -11,13 +11,14 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/plataformatec/show_for"
   s.description = "Wrap your objects with a helper to easily show them"
   s.authors     = ['José Valim']
+  s.licenses    = ["MIT"]
 
   s.files         = Dir["CHANGELOG.md", "MIT-LICENSE", "README.md", "lib/**/*"]
   s.test_files    = Dir["test/**/*"]
   s.require_paths = ["lib"]
 
-  s.rubyforge_project = "show_for"
+  s.required_ruby_version = '>= 2.1.7'
 
-  s.add_dependency('activemodel', '>= 3.2', '< 5.1')
-  s.add_dependency('actionpack', '>= 3.2', '< 5.1')
+  s.add_dependency('activemodel', '>= 4.1', '< 5.1')
+  s.add_dependency('actionpack', '>= 4.1', '< 5.1')
 end
