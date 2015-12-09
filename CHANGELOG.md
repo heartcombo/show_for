@@ -1,7 +1,11 @@
 ## Unreleased
 
-### enhancements
+## 0.5.0
 
+* Relaxed dependencies to support Rails 5.
+* Removed support for Rails `3.2` and `4.0` and Ruby `1.9.3` and `2.0.0`.
+
+### enhancements
   * Do not generate label/content/wrapper/collection classes when config is set to `nil`.
 
 ## 0.4.0
