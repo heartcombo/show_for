@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    show_for (0.4.0)
-      actionpack (>= 3.2, < 5)
-      activemodel (>= 3.2, < 5)
+    show_for (0.5.0)
+      actionpack (>= 4.1, < 5.1)
+      activemodel (>= 4.1, < 5.1)
 
 GEM
   remote: https://rubygems.org/
@@ -73,3 +73,6 @@ DEPENDENCIES
   rake
   rdoc
   show_for!
+
+BUNDLED WITH
+   1.10.6
