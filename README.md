@@ -116,6 +116,7 @@ ShowFor uses the following sequence to get the attribute value:
 * use the output of a block argument if given
 * use the output of the `:value` argument if given
 * check if a `:"human_#{attribute}"` method is defined
+* use the value of `model.human_attribute_name(#{attribute}/#{attribute_value})` if `:translate_value` is set
 * retrieve the attribute directly.
 
 ## Options
@@ -125,6 +126,8 @@ ShowFor handles a series of options. Those are:
 * __:format__ - Sent to `I18n.localize` when the attribute is a date/time object.
 
 * __:value__ - Can be used instead of block. If a `Symbol` is called as instance method.
+
+* __:translate_value__ - Set to true in order to use I18n to automatically translate the attribute value. This will try to lookup `object.class.human_attribute_name(#{attribute}/#{attribute_value})`
 
 * __:if_blank__ - An object to be used if the value is blank. Not escaped as well.
 

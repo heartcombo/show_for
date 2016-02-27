@@ -35,14 +35,16 @@ class User < OpenStruct
     Company.new(1, "Plataformatec")
   end
 
-  def self.human_attribute_name(attribute)
+  def self.human_attribute_name(attribute, options = {})
     case attribute
       when 'name'
         'Super User Name!'
       when 'company'
         'Company Human Name!'
+      when 'state/approved'
+        "My Approved"
       else
-        attribute.humanize
+        options.has_key?(:default) ? options[:default] : attribute.humanize
     end
   end
 

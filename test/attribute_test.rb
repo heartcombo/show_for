@@ -199,6 +199,16 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for div.wrapper", /#{@user.name.upcase}/
   end
 
+  test "show_for tries to translate the attribute value if :translate_value set" do
+    with_attribute_for @user, :state, :translate_value => true
+    assert_select "div.show_for div.wrapper", /My Approved/
+  end
+
+  test "show_for does not try to translate the attribute value if :translate_value is not set" do
+    with_attribute_for @user, :state, :translate_value => false
+    assert_select "div.show_for div.wrapper", /approved/
+  end
+
   test "show_for does not display blank attribute if skip_blanks option is passed" do
     swap ShowFor, :skip_blanks => true do
       with_attribute_for @user, :description

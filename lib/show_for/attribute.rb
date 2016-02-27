@@ -5,7 +5,7 @@ module ShowFor
       block = block_from_value_option(attribute_name, options) unless block
       collection_block, block = block, nil if collection_block?(block)
 
-      value = attribute_value(attribute_name, &block)
+      value = attribute_value(attribute_name, options, &block)
 
       wrap_label_and_content(attribute_name, value, options, &collection_block)
     end
@@ -14,7 +14,7 @@ module ShowFor
       apply_default_options!(attribute_name, options)
       collection_block, block = block, nil if collection_block?(block)
 
-      value = attribute_value(attribute_name, &block)
+      value = attribute_value(attribute_name, options, &block)
 
       wrap_content(attribute_name, value, options, &collection_block)
     end
@@ -27,13 +27,14 @@ module ShowFor
 
   private
 
-    def attribute_value(attribute_name, &block)
+    def attribute_value(attribute_name, options = {}, &block)
       if block
         block
       elsif @object.respond_to?(:"human_#{attribute_name}")
         @object.send :"human_#{attribute_name}"
       else
-        @object.send(attribute_name)
+        value = @object.send(attribute_name)
+        options[:translate_value] && @object.class.human_attribute_name([attribute_name, value.to_s].join("/"), :default => value) || value
       end
     end
 
@@ -59,4 +60,3 @@ module ShowFor
     end
   end
 end
-
