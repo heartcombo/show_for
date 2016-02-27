@@ -116,6 +116,7 @@ ShowFor uses the following sequence to get the attribute value:
 * use the output of a block argument if given
 * use the output of the `:value` argument if given
 * check if a `:"human_#{attribute}"` method is defined
+* use the value of `model.human_attribute_name(#{attribute}/#{attribute_value})` if translated
 * retrieve the attribute directly.
 
 ## Options

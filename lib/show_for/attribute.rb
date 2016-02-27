@@ -33,7 +33,7 @@ module ShowFor
       elsif @object.respond_to?(:"human_#{attribute_name}")
         @object.send :"human_#{attribute_name}"
       else
-        @object.send(attribute_name)
+        @object.class.human_attribute_name([attribute_name, @object.send(attribute_name).to_s].join("/"), :default => @object.send(attribute_name))
       end
     end
 
@@ -59,4 +59,3 @@ module ShowFor
     end
   end
 end
-
