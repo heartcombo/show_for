@@ -17,6 +17,12 @@ class ShowForGeneratorTest < Rails::Generators::TestCase
       /config.show_for_tag = :div/
   end
 
+  test 'generates the show_for bootstrap initializer when asked' do
+    run_generator ['--bootstrap']
+    assert_file 'config/initializers/show_for.rb',
+      /config.show_for_tag = :dl/
+  end
+
   %W(erb haml slim).each do |engine|
     test "generates the scaffold template when using #{engine}" do
       run_generator ['-e', engine]
