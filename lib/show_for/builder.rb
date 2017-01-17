@@ -64,13 +64,13 @@ module ShowFor
       return if skip_blanks?(content)
       tag = options.delete(:"#{type}_tag") || ShowFor.send(:"#{type}_tag")
 
-      if tag
+      if tag.blank?
+        content
+      else
         type_class = ShowFor.send :"#{type}_class"
         html_options = options.delete(:"#{type}_html") || {}
         html_options[:class] = [type_class, html_options[:class]].compact.presence
         @template.content_tag(tag, content, html_options)
-      else
-        content
       end
     end
 
