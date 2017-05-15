@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.6.0
+
+* Relaxed dependencies to support Rails 5.1.
+
 ## 0.5.0
 
 * Relaxed dependencies to support Rails 5.
