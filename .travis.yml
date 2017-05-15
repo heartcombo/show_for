@@ -8,6 +8,12 @@ gemfile:
   - gemfiles/Gemfile-rails.4.1.x
   - gemfiles/Gemfile-rails.head
   - Gemfile
+matrix:
+  exclude:
+    - rvm: 2.1
+      gemfile: gemfiles/Gemfile-rails.head
+    - rvm: 2.1
+      gemfile: gemfiles/Gemfile
 notifications:
   email: false
   slack:
