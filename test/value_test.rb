@@ -51,7 +51,7 @@ class ValueTest < ActionView::TestCase
   end
 
   test "show_for accepts an attribute as nil, without label and separator" do
-    c = with_value_for @user, :birthday
+    with_value_for @user, :birthday
     assert_no_select "div.show_for div.wrapper strong.label"
     assert_no_select "div.show_for div.wrapper br"
     assert_select "div.show_for div.wrapper", /Not specified/
