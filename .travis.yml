@@ -2,18 +2,23 @@ sudo: false
 cache: bundler
 script: bundle exec rake
 rvm:
-  - 2.1
-  - 2.2
+  - 2.1.10
+  - 2.2.6
+  - 2.4.1
 gemfile:
   - gemfiles/Gemfile-rails.4.1.x
   - gemfiles/Gemfile-rails.head
   - Gemfile
 matrix:
   exclude:
-    - rvm: 2.1
+    - rvm: 2.2.6
+      gemfile: gemfiles/Gemfile-rails.4.1.x
+    - rvm: 2.4.1
+      gemfile: gemfiles/Gemfile-rails.4.1.x
+    - rvm: 2.1.10
       gemfile: gemfiles/Gemfile-rails.head
-    - rvm: 2.1
-      gemfile: gemfiles/Gemfile
+    - rvm: 2.1.10
+      gemfile: Gemfile
 notifications:
   email: false
   slack:
