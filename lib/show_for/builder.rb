@@ -53,7 +53,7 @@ module ShowFor
 
     def apply_wrapper_options!(type, options, value)
       options[:"#{type}_html"] ||= {}
-      options[:"#{type}_html"][:class] = [options[:"#{type}_html"][:class], ShowFor.blank_content_class].join(' ') if value.blank? && value != false
+      options[:"#{type}_html"][:class] = [options[:"#{type}_html"][:class], ShowFor.blank_content_class].join(' ') if is_empty?(value)
       options
     end
 
@@ -83,6 +83,11 @@ module ShowFor
     # Verifies whether the value is blank and its configured to skip blank values.
     def skip_blanks?(value) #:nodoc:
       ShowFor.skip_blanks && value.blank? && value != false
+    end
+
+    def is_empty?(value)
+      value = @template.capture(&value) if value.is_a?(Proc)
+      value.blank? && value != false
     end
   end
 end
