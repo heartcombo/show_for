@@ -85,7 +85,7 @@ module ShowFor
       ShowFor.skip_blanks && value.blank? && value != false
     end
 
-    def is_empty?(value)
+    def is_empty?(value) #:nodoc:
       value = @template.capture(&value) if value.is_a?(Proc)
       value.blank? && value != false
     end
