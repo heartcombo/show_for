@@ -35,6 +35,7 @@ class ActionView::TestCase
       :invalid => false,
       :scopes => ["admin", "manager", "visitor"],
       :birthday => nil,
+      :karma => Proc.new { nil },
       :created_at => Time.now,
       :updated_at => Date.today
     }.merge(options))
