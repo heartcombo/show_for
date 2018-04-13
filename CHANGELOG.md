@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 0.6.1
+
+* Add support for Rails 5.2.
+*  Fix issue causing blank class not being applied to field wrapper when the result of a Proc is empty.
+
 ## 0.6.0
 
 * Relaxed dependencies to support Rails 5.1.
