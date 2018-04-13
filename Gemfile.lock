@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     show_for (0.6.0)
-      actionpack (>= 4.1, < 6.0)
-      activemodel (>= 4.1, < 6.0)
+      actionpack (>= 4.1)
+      activemodel (>= 4.1)
 
 GEM
   remote: https://rubygems.org/
