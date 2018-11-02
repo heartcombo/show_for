@@ -40,7 +40,7 @@ module ShowFor
     def block_from_value_option(attribute_name, options)
       case options[:value]
       when nil
-        nil
+        options.has_key?(:value) ? '' : nil
       when Symbol
         block_from_symbol(attribute_name, options)
       else
