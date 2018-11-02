@@ -187,6 +187,11 @@ class AttributeTest < ActionView::TestCase
     assert_select "div.show_for div.wrapper", /123/
   end
 
+  test "show_for ignores attribute if :value supplied but with nil value" do
+    with_attribute_for @user, :name, :value => nil
+    assert_select "div.show_for div.wrapper", /Not specified/
+  end
+
   test "show_for ignores :value if a block is supplied" do
     with_attribute_for @user, :name, :value => "Calculated Value" do
       @user.name.upcase
