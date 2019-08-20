@@ -3,6 +3,7 @@
 ## 0.7.0
 
 * Add support for Rails 6.0.
+* Drop support for Rails < 5.0 and Ruby < 2.4.
 
 ## 0.6.1
 
