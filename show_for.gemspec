@@ -17,8 +17,8 @@ Gem::Specification.new do |s|
   s.test_files    = Dir["test/**/*"]
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = '>= 2.1.7'
+  s.required_ruby_version = '>= 2.4.0'
 
-  s.add_dependency('activemodel', '>= 4.1')
-  s.add_dependency('actionpack', '>= 4.1')
+  s.add_dependency('activemodel', '>= 5.0')
+  s.add_dependency('actionpack', '>= 5.0')
 end
