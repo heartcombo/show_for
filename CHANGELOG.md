@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 0.7.0
+
+* Add support for Rails 6.0.
+
 ## 0.6.1
 
 * Add support for Rails 5.2.

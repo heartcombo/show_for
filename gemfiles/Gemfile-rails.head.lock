@@ -38,7 +38,7 @@ GIT
 PATH
   remote: ..
   specs:
-    show_for (0.6.1)
+    show_for (0.7.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
 
