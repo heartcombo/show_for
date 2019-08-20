@@ -39,8 +39,8 @@ PATH
   remote: ..
   specs:
     show_for (0.6.1)
-      actionpack (>= 4.1)
-      activemodel (>= 4.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -86,4 +86,4 @@ DEPENDENCIES
   show_for!
 
 BUNDLED WITH
-   1.16.0
+   1.17.3
