@@ -10,11 +10,11 @@ module ShowFor
 
       content = case value
         when Date, Time, DateTime
-          I18n.l value, :format => options.delete(:format) || ShowFor.i18n_format
+          I18n.l value, format: options.delete(:format) || ShowFor.i18n_format
         when TrueClass
-          I18n.t :"show_for.yes", :default => "Yes"
+          I18n.t :"show_for.yes", default: "Yes"
         when FalseClass
-          I18n.t :"show_for.no", :default => "No"
+          I18n.t :"show_for.no", default: "No"
         when Array, Hash
           collection_handler(value, options, &block) unless value.empty?
         when Proc
@@ -48,11 +48,11 @@ module ShowFor
     end
 
     def translate_blank_html
-      template.t(:'show_for.blank_html', :default => translate_blank_text)
+      template.t(:'show_for.blank_html', default: translate_blank_text)
     end
 
     def translate_blank_text
-      I18n.t(:'show_for.blank', :default => "Not specified")
+      I18n.t(:'show_for.blank', default: "Not specified")
     end
 
     def blank_value(options)

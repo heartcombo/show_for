@@ -9,18 +9,18 @@ ShowFor allows you to quickly show a model information with I18n features.
 ```erb
 <%= show_for @user do |u| %>
   <%= u.attribute :name %>
-  <%= u.attribute :nickname, :in => :profile %>
+  <%= u.attribute :nickname, in: :profile %>
   <%= u.attribute :confirmed? %>
-  <%= u.attribute :created_at, :format => :short %>
-  <%= u.attribute :last_sign_in_at, :if_blank => "User did not access yet",
-                  :wrapper_html => { :id => "sign_in_timestamp" } %>
+  <%= u.attribute :created_at, format: :short %>
+  <%= u.attribute :last_sign_in_at, if_blank: "User did not access yet",
+                  wrapper_html: { id: "sign_in_timestamp" } %>
 
   <%= u.attribute :photo do %>
     <%= image_tag(@user.photo_url) %>
   <% end %>
 
   <%= u.association :company %>
-  <%= u.association :tags, :to_sentence => true %>
+  <%= u.association :tags, to_sentence: true %>
 <% end %>
 ```
 
@@ -50,11 +50,11 @@ ShowFor allows you to quickly show a model information with I18n features.
 ```erb
 <%= show_for @admin do |a| %>
   <%= a.attribute :name %>
-  <%= a.attribute :login, :value => :upcase %>
+  <%= a.attribute :login, value: :upcase %>
   <%= a.attribute :confirmed? %>
-  <%= a.attribute :created_at, :format => :short %>
-  <%= a.attribute :last_sign_in_at, :if_blank => "Administrator did not access yet"
-                  :wrapper_html => { :id => "sign_in_timestamp" } %>
+  <%= a.attribute :created_at, format: :short %>
+  <%= a.attribute :last_sign_in_at, if_blank: "Administrator did not access yet"
+                  wrapper_html: { id: "sign_in_timestamp" } %>
 
   <%= a.attribute :photo do %>
     <%= image_tag(@admin.photo_url) %>
@@ -141,8 +141,8 @@ ShowFor also exposes the label method. In case you want to use the default
 `human_attribute_name` lookup and the default wrapping:
 
 ```ruby
-a.label :name                     #=> <strong class="label">Name</strong>
-a.label "Name", :id => "my_name"  #=> <strong class="label" id="my_name">Name</strong>
+a.label :name                  #=> <strong class="label">Name</strong>
+a.label "Name", id: "my_name"  #=> <strong class="label" id="my_name">Name</strong>
 ```
 
 Optionally, if you want to wrap the inner part of the label with some text
@@ -163,16 +163,16 @@ ShowFor also supports associations.
 ```erb
 <%= show_for @artwork do |a| %>
   <%= a.association :artist %>
-  <%= a.association :artist, :using => :name_with_title %>
-  <%= a.attribute :name_with_title, :in => :artist %>
+  <%= a.association :artist, using: :name_with_title %>
+  <%= a.attribute :name_with_title, in: :artist %>
 
   <%= a.association :tags %>
-  <%= a.association :tags, :to_sentence => true %>
+  <%= a.association :tags, to_sentence: true %>
   <%= a.association :tags do
     @artwork.tags.map(&:name).to_sentence
   end %>
 
-  <%= a.association :fans, :collection_tag => :ol do |fan| %>
+  <%= a.association :fans, collection_tag: :ol do |fan| %>
     <li><%= link_to fan.name, fan %></li>
   <% end %>
 <% end %>
@@ -196,7 +196,7 @@ collection objects.
 Here are some other examples of the many possibilites to custom the output content:
 
 ```erb
-<%= u.association :relationships, :label => 'test' do  %>
+<%= u.association :relationships, label: 'test' do  %>
   <% @user.relationships.each do |relation| %>
     <%= relation.related_user.name if relation.related_user_role == 'supervisor' %>
   <% end %>

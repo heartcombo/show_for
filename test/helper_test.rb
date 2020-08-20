@@ -11,7 +11,7 @@ class HelperTest < ActionView::TestCase
   end
 
   test "show for yields an instance of builder class specified by builder option" do
-    show_for(@user, :builder => CustomBuilder) do |f|
+    show_for(@user, builder: CustomBuilder) do |f|
       assert f.instance_of?(CustomBuilder)
     end
   end
@@ -27,28 +27,28 @@ class HelperTest < ActionView::TestCase
   end
 
   test "show for should pass options" do
-    concat(show_for(@user, :id => "my_div", :class => "common") do |f| end)
+    concat(show_for(@user, id: "my_div", class: "common") do |f| end)
     assert_select "div#my_div.show_for.user.common"
   end
 
   test "show for tag should be configurable" do
-    swap ShowFor, :show_for_tag => :p do
+    swap ShowFor, show_for_tag: :p do
       concat(show_for(@user) do |f| end)
       assert_select "p.show_for"
     end
   end
 
   test "show for class should be configurable" do
-    swap ShowFor, :show_for_class => :awesome do
+    swap ShowFor, show_for_class: :awesome do
       concat(show_for(@user) do |f| end)
       assert_select "div.show_for.user.awesome"
     end
   end
   
   test "show for options hash should not be modified" do
-    html_options = { :show_for_tag => :li }
+    html_options = { show_for_tag: :li }
     concat(show_for(@user, html_options) do |f| end)
-    assert_equal({ :show_for_tag => :li }, html_options)
+    assert_equal({ show_for_tag: :li }, html_options)
   end
   
 end

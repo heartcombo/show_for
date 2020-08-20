@@ -28,16 +28,16 @@ class ActionView::TestCase
 
   def setup_new_user(options={})
     @user = User.new({
-      :id => 1,
-      :name => 'ShowFor',
-      :description => '',
-      :active => true,
-      :invalid => false,
-      :scopes => ["admin", "manager", "visitor"],
-      :birthday => nil,
-      :karma => Proc.new { nil },
-      :created_at => Time.now,
-      :updated_at => Date.today
+      id: 1,
+      name: 'ShowFor',
+      description: '',
+      active: true,
+      invalid: false,
+      scopes: ["admin", "manager", "visitor"],
+      birthday: nil,
+      karma: Proc.new { nil },
+      created_at: Time.now,
+      updated_at: Date.today
     }.merge(options))
   end
 

@@ -9,7 +9,7 @@ module MiscHelpers
   end
 
   def assert_no_select(selector, value=nil)
-    assert_select(selector, :text => value, :count => 0)
+    assert_select(selector, text: value, count: 0)
   end
 
   def swap(object, new_values)

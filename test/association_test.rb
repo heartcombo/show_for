@@ -7,17 +7,17 @@ class AssociationTest < ActionView::TestCase
   end
 
   test "show_for accepts :using as option to tell how to retrieve association value" do
-    with_association_for @user, :company, :using => :alternate_name
+    with_association_for @user, :company, using: :alternate_name
     assert_select "div.show_for div.wrapper", /Alternate Plataformatec/
   end
 
   test "show_for accepts :in to tell to retrieve an attribute from association" do
-    with_attribute_for @user, :alternate_name, :in => :company
+    with_attribute_for @user, :alternate_name, in: :company
     assert_select "div.show_for div.wrapper", /Alternate Plataformatec/
   end
 
   test "show_for forwards all options send with :in to association" do
-    with_attribute_for @user, :alternate_name, :in => :tags, :to_sentence => true
+    with_attribute_for @user, :alternate_name, in: :tags, to_sentence: true
     assert_no_select "div.show_for div.wrapper ul.collection"
     assert_select "div.show_for div.wrapper", /Alternate Tag 1, Alternate Tag 2, and Alternate Tag 3/
   end
@@ -35,7 +35,7 @@ class AssociationTest < ActionView::TestCase
       []
     end
 
-    swap ShowFor, :association_methods => [:name] do
+    swap ShowFor, association_methods: [:name] do
       with_association_for @user, :tags
       assert_no_select "div.show_for div.wrapper ul.collection"
       assert_no_select "div.show_for div.wrapper", /Enumerator/
@@ -47,7 +47,7 @@ class AssociationTest < ActionView::TestCase
       []
     end
 
-    swap ShowFor, :association_methods => [:name] do
+    swap ShowFor, association_methods: [:name] do
       with_association_for @user, :tags do |tag|
         tag.name
       end
@@ -89,7 +89,7 @@ class AssociationTest < ActionView::TestCase
   end
 
   test "show_for accepts :using as option to tell how to retrieve association values" do
-    with_association_for @user, :tags, :using => :alternate_name
+    with_association_for @user, :tags, using: :alternate_name
     assert_select "div.show_for div.wrapper ul.collection"
     assert_select "div.show_for div.wrapper ul.collection li", "Alternate Tag 1"
     assert_select "div.show_for div.wrapper ul.collection li", "Alternate Tag 2"
@@ -97,13 +97,13 @@ class AssociationTest < ActionView::TestCase
   end
 
   test "show_for accepts :to_sentence as option in collection associations" do
-    with_association_for @user, :tags, :to_sentence => true
+    with_association_for @user, :tags, to_sentence: true
     assert_no_select "div.show_for div.wrapper ul.collection"
     assert_select "div.show_for div.wrapper", /Tag 1, Tag 2, and Tag 3/
   end
 
   test "show_for accepts :join as option in collection associations" do
-    with_association_for @user, :tags, :join => ", "
+    with_association_for @user, :tags, join: ", "
     assert_no_select "div.show_for div.wrapper ul.collection"
     assert_select "div.show_for div.wrapper", /Tag 1, Tag 2, Tag 3/
   end
@@ -117,7 +117,7 @@ class AssociationTest < ActionView::TestCase
   end
 
   test "show_for accepts a block with argument in collection associations" do
-    with_association_for @user, :tags, :collection_tag => :p do |tag|
+    with_association_for @user, :tags, collection_tag: :p do |tag|
       assert_kind_of Tag, tag
       content_tag(:span, tag.name)
     end
@@ -133,7 +133,7 @@ class AssociationTest < ActionView::TestCase
       []
     end
 
-    swap ShowFor, :skip_blanks => true do
+    swap ShowFor, skip_blanks: true do
       with_association_for @user, :tags
       assert_no_select "div.show_for div.wrapper"
     end
@@ -144,7 +144,7 @@ class AssociationTest < ActionView::TestCase
       nil
     end
 
-    swap ShowFor, :skip_blanks => true do
+    swap ShowFor, skip_blanks: true do
       with_association_for @user, :company
       assert_no_select "div.show_for div.wrapper"
     end

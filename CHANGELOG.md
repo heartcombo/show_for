@@ -127,7 +127,7 @@
 ## 0.1.2
 
 ### enhancements
-  * allow `f.attribute :nickname, :in => :profile` as association shortcut
+  * allow `f.attribute :nickname, in: :profile` as association shortcut
 
 ### deprecations
   * `:method` now becomes `:using`
