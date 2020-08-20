@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Respect `nil` value when provided, by skipping model attribute value.
+
 ## 0.7.0
 
 * Add support for Rails 6.0.

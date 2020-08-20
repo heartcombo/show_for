@@ -38,10 +38,9 @@ module ShowFor
     end
 
     def block_from_value_option(attribute_name, options)
-      case
-      when !options.has_key?(:value)
+      if !options.has_key?(:value)
         nil
-      when options[:value].is_a?(Symbol)
+      elsif options[:value].is_a?(Symbol)
         block_from_symbol(attribute_name, options)
       else
         lambda { options[:value].to_s }
@@ -59,4 +58,3 @@ module ShowFor
     end
   end
 end
-
