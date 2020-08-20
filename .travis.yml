@@ -22,8 +22,4 @@ matrix:
     - rvm: 2.7
       gemfile: gemfiles/Gemfile-rails.5.2.x
 notifications:
-  email: false
-  slack:
-    on_success: change
-    on_failure: always
-    secure: tXWWi0oBvnC+uoeIQuZTd2a5VPgn4l2NRpLMY091OgpSiAaoYRlypogsyjGeIFibMQgozq81r+9Jap4C81jAK19kGT/jXrJGw8JyBRmRfCW/Rj6Aq6Fh196oIQMBZEq6YlLGJPd6GXUN5I42t/Oe0j+OEDEBKl669C3a5nVUYxI=
+  email: true
