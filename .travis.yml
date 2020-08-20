@@ -2,10 +2,10 @@ sudo: false
 cache: bundler
 script: bundle exec rake
 rvm:
-  - 2.4.6
-  - 2.5.5
-  - 2.6.3
-  - ruby-head
+  - 2.4
+  - 2.5
+  - 2.6
+  - 2.7
 gemfile:
   - gemfiles/Gemfile-rails.5.1.x
   - gemfiles/Gemfile-rails.5.2.x
@@ -13,12 +13,14 @@ gemfile:
   - gemfiles/Gemfile-rails.head
 matrix:
   exclude:
-    - rvm: 2.4.6
+    - rvm: 2.4
       gemfile: Gemfile
-    - rvm: 2.4.6
+    - rvm: 2.4
       gemfile: gemfiles/Gemfile-rails.head
-  allow_failures:
-    - rvm: ruby-head
+    - rvm: 2.7
+      gemfile: gemfiles/Gemfile-rails.5.1.x
+    - rvm: 2.7
+      gemfile: gemfiles/Gemfile-rails.5.2.x
 notifications:
   email: false
   slack:
