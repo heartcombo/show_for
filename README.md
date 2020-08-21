@@ -1,8 +1,8 @@
 # ShowFor
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/show_for.png)](http://badge.fury.io/rb/show_for)
-[![Build Status](https://api.travis-ci.org/plataformatec/show_for.png?branch=master)](http://travis-ci.org/plataformatec/show_for)
-[![Code Climate](https://codeclimate.com/github/plataformatec/show_for.png)](https://codeclimate.com/github/plataformatec/show_for)
+[![Build Status](https://api.travis-ci.org/heartcombo/show_for.png?branch=master)](http://travis-ci.org/heartcombo/show_for)
+[![Code Climate](https://codeclimate.com/github/heartcombo/show_for.png)](https://codeclimate.com/github/heartcombo/show_for)
 
 ShowFor allows you to quickly show a model information with I18n features.
 
@@ -220,6 +220,6 @@ Here are some other examples of the many possibilites to custom the output conte
 
 If you discover any bugs or want to drop a line, feel free to create an issue on GitHub.
 
-http://github.com/plataformatec/show_for/issues
+http://github.com/heartcombo/show_for/issues
 
 MIT License. Copyright 2012-2019 Plataformatec. http://plataformatec.com.br
