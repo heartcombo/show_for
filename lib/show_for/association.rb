@@ -1,6 +1,6 @@
 module ShowFor
   module Association
-    def attribute(attribute_name, options={}, &block)
+    def attribute(attribute_name, options = {}, &block)
       if association_name = options.delete(:in)
         options[:using] = attribute_name
         association(association_name, options, &block)
@@ -9,7 +9,7 @@ module ShowFor
       end
     end
 
-    def association(association_name, options={}, &block)
+    def association(association_name, options = {}, &block)
       apply_default_options!(association_name, options)
 
       # If a block with an iterator was given, no need to calculate the labels

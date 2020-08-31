@@ -1,6 +1,6 @@
 module ShowFor
   module Content
-    def content(value, options={}, apply_options=true, &block)
+    def content(value, options = {}, apply_options = true, &block)
       # cache value for apply_wrapper_options!
       sample_value = value
 

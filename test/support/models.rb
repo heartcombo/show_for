@@ -12,7 +12,7 @@ end
 Tag = Struct.new(:id, :name) do
   extend ActiveModel::Naming
 
-  def self.all(options={})
+  def self.all(options = {})
     (1..3).map{ |i| Tag.new(i, "Tag #{i}") }
   end
 

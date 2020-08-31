@@ -1,6 +1,6 @@
 module ShowFor
   module Attribute
-    def attribute(attribute_name, options={}, &block)
+    def attribute(attribute_name, options = {}, &block)
       apply_default_options!(attribute_name, options)
       block = block_from_value_option(attribute_name, options) unless block
       collection_block, block = block, nil if collection_block?(block)
@@ -10,7 +10,7 @@ module ShowFor
       wrap_label_and_content(attribute_name, value, options, &collection_block)
     end
 
-    def value(attribute_name, options={}, &block)
+    def value(attribute_name, options = {}, &block)
       apply_default_options!(attribute_name, options)
       collection_block, block = block, nil if collection_block?(block)
 

@@ -9,7 +9,7 @@ module ShowFor
     #     f.attribute :email
     #   end
     #
-    def show_for(object, html_options={}, &block)
+    def show_for(object, html_options = {}, &block)
       html_options = html_options.dup
 
       tag = html_options.delete(:show_for_tag) || ShowFor.show_for_tag

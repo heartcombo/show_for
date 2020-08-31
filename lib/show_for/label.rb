@@ -1,6 +1,6 @@
 module ShowFor
   module Label
-    def label(text_or_attribute, options={}, apply_options=true)
+    def label(text_or_attribute, options = {}, apply_options = true)
       label = if text_or_attribute.is_a?(String)
         text_or_attribute
       elsif options.key?(:label)

@@ -8,7 +8,7 @@ module MiscHelpers
     end
   end
 
-  def assert_no_select(selector, value=nil)
+  def assert_no_select(selector, value = nil)
     assert_select(selector, text: value, count: 0)
   end
 
@@ -25,31 +25,31 @@ module MiscHelpers
     end
   end
 
-  def with_attribute_for(object, attribute, options={}, &block)
+  def with_attribute_for(object, attribute, options = {}, &block)
     concat(show_for(object) do |o|
       concat o.attribute(attribute, options, &block)
     end)
   end
 
-  def with_value_for(object, attribute, options={}, &block)
+  def with_value_for(object, attribute, options = {}, &block)
     concat(show_for(object) do |o|
       concat o.value(attribute, options, &block)
     end)
   end
 
-  def with_association_for(object, association, options={}, &block)
+  def with_association_for(object, association, options = {}, &block)
     concat(show_for(object) do |o|
       concat o.association(association, options, &block)
     end)
   end
 
-  def with_label_for(object, attribute, options={})
+  def with_label_for(object, attribute, options = {})
     concat(show_for(object) do |o|
       concat o.label(attribute, options)
     end)
   end
 
-  def with_content_for(object, value, options={})
+  def with_content_for(object, value, options = {})
     concat(show_for(object) do |o|
       concat o.content(value, options)
     end)
