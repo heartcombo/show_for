@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/rack/rack.git
-  revision: 649c72bab9e7b50d657b5b432d0c205c95c2be07
+  revision: 2d3f6069e1995e0af4d8e702b3a131100b4ac33f
   specs:
     rack (2.3.0)
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 65c6f7030067b42e3c82c81d2424590ed61de29c
+  revision: 357013d36698f3e10ea935cf31f7cad426b785ce
   specs:
     actionpack (6.1.0.alpha)
       actionview (= 6.1.0.alpha)
@@ -27,6 +27,7 @@ GIT
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
+      rexml
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     railties (6.1.0.alpha)
@@ -52,12 +53,12 @@ GEM
     erubi (1.9.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     method_source (1.0.0)
     mini_portile2 (2.4.0)
-    minitest (5.14.1)
+    minitest (5.14.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     rack-test (1.1.0)
@@ -69,6 +70,7 @@ GEM
       loofah (~> 2.3)
     rake (13.0.1)
     rdoc (6.2.1)
+    rexml (3.2.4)
     thor (1.0.1)
     tzinfo (2.0.2)
       concurrent-ruby (~> 1.0)
