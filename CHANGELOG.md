@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Respect `nil` value when provided, by skipping model attribute value.
+* Add support for Ruby 3.0, drop support for Ruby < 2.5.
 * Add support for Rails 6.1, drop support for Rails < 5.2.
 * Move CI to GitHub Actions.
 
