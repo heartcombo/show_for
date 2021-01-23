@@ -40,9 +40,4 @@ class ActionView::TestCase
       updated_at: Date.today
     }.merge(options))
   end
-
-  # TODO: remove after supporting Rails 4.2+ only.
-  def rails_42?
-    ActiveModel::VERSION::STRING >= "4.2.0"
-  end
 end

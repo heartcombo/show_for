@@ -167,8 +167,7 @@ class AttributeTest < ActionView::TestCase
     @user.name = "<b>hack you!</b>"
     with_attribute_for @user, :name
     assert_no_select "div.show_for div.wrapper b"
-    assert_select "div.show_for div.wrapper",
-      rails_42? ? "Super User Name!<b>hack you!</b>" : "Super User Name!&lt;b&gt;hack you!&lt;/b&gt;"
+    assert_select "div.show_for div.wrapper", "Super User Name!<b>hack you!</b>"
   end
 
   test "show_for works with html_safe marked strings" do
