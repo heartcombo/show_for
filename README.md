@@ -1,7 +1,6 @@
 # ShowFor
 
 [![Gem Version](https://fury-badge.herokuapp.com/rb/show_for.png)](http://badge.fury.io/rb/show_for)
-[![Build Status](https://api.travis-ci.org/heartcombo/show_for.png?branch=master)](http://travis-ci.org/heartcombo/show_for)
 [![Code Climate](https://codeclimate.com/github/heartcombo/show_for.png)](https://codeclimate.com/github/heartcombo/show_for)
 
 ShowFor allows you to quickly show a model information with I18n features.

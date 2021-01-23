@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Respect `nil` value when provided, by skipping model attribute value.
+* Move CI to GitHub Actions.
 
 ## 0.7.0
 
