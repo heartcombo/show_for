@@ -1,4 +1,4 @@
-## Unreleased
+## 0.8.0
 
 * Respect `nil` value when provided, by skipping model attribute value.
 * Add support for Ruby 3.0, drop support for Ruby < 2.5.
