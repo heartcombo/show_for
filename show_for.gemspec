@@ -12,6 +12,12 @@ Gem::Specification.new do |s|
   s.description = "Wrap your objects with a helper to easily show them"
   s.authors     = ['José Valim']
   s.licenses    = ["MIT"]
+  s.metadata    = {
+    "homepage_uri"    => "https://github.com/heartcombo/show_for",
+    "changelog_uri"   => "https://github.com/heartcombo/show_for/blob/master/CHANGELOG.md",
+    "source_code_uri" => "https://github.com/heartcombo/show_for",
+    "bug_tracker_uri" => "https://github.com/heartcombo/show_for/issues",
+  }
 
   s.files         = Dir["CHANGELOG.md", "MIT-LICENSE", "README.md", "lib/**/*"]
   s.test_files    = Dir["test/**/*"]
