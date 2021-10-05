@@ -4,6 +4,6 @@ gemspec
 
 gem 'rake'
 gem 'rdoc'
-gem 'railties', '~> 6.1.0'
-gem 'activemodel', '~> 6.1.0'
-gem 'actionpack', '~> 6.1.0'
+gem 'railties', '~> 7.0.0.alpha2'
+gem 'activemodel', '~> 7.0.0.alpha2'
+gem 'actionpack', '~> 7.0.0.alpha2'

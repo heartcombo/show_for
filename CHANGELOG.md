@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add support for Rails 7.0 alpha 2 (no changes required)
+
 ## 0.8.0
 
 * Respect `nil` value when provided, by skipping model attribute value.
