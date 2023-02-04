@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   }
 
   s.files         = Dir["CHANGELOG.md", "MIT-LICENSE", "README.md", "lib/**/*"]
-  s.test_files    = Dir["test/**/*"]
   s.require_paths = ["lib"]
 
   s.required_ruby_version = '>= 2.5.0'
