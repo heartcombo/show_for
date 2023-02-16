@@ -227,4 +227,6 @@ If you discover any bugs or want to drop a line, feel free to create an issue on
 
 http://github.com/heartcombo/show_for/issues
 
-MIT License. Copyright 2012-2019 Plataformatec. http://plataformatec.com.br
+## License
+
+MIT License. Copyright 2020-2023 Rafael França, Carlos Antônio da Silva. Copyright 2012-2019 Plataformatec.
