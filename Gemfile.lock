@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    show_for (0.8.0)
+    show_for (0.8.1)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
 

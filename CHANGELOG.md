@@ -1,4 +1,4 @@
-## Unreleased
+## 0.8.1
 
 * Add support for Rails 7.0/7.1 and Ruby 3.1/3.2 (no changes required)
 * Remove test files from the gem package.
