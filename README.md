@@ -38,7 +38,7 @@ Run the generator:
 
 And you are ready to go.
 
-Note: This branch aims Rails 5 and 6 support, so if you want to use it with
+Note: This branch aims Rails 7 and 8 support, so if you want to use it with
 older versions of Rails, check out the available branches.
 
 ## Usage
