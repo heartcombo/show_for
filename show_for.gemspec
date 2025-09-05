@@ -7,10 +7,10 @@ Gem::Specification.new do |s|
   s.version     = ShowFor::VERSION.dup
   s.platform    = Gem::Platform::RUBY
   s.summary     = "Wrap your objects with a helper to easily show them"
-  s.email       = "contact@plataformatec.com.br"
-  s.homepage    = "http://github.com/plataformatec/show_for"
+  s.email       = "heartcombo.oss@gmail.com"
+  s.homepage    = "http://github.com/heartcombo/show_for"
   s.description = "Wrap your objects with a helper to easily show them"
-  s.authors     = ['José Valim']
+  s.authors     = ["José Valim"]
   s.licenses    = ["MIT"]
   s.metadata    = {
     "homepage_uri"    => "https://github.com/heartcombo/show_for",

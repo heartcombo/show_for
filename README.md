@@ -205,15 +205,6 @@ Here are some other examples of the many possibilites to custom the output conte
 <% end %>
 ```
 
-## Maintainers
-
-* José Valim (http://github.com/josevalim)
-* Carlos Antonio da Silva (https://github.com/carlosantoniodasilva)
-
-## Contributors
-
-* Jonas Grimfelt (http://github.com/grimen)
-
 ## Supported Ruby / Rails versions
 
 We intend to maintain support for all Ruby / Rails versions that haven't reached end-of-life.
@@ -229,4 +220,6 @@ http://github.com/heartcombo/show_for/issues
 
 ## License
 
-MIT License. Copyright 2020-2024 Rafael França, Carlos Antônio da Silva. Copyright 2012-2019 Plataformatec.
+MIT License.
+Copyright 2012-2019 Plataformatec.
+Copyright 2020-2025 Rafael França, Carlos Antonio da Silva.
