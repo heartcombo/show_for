@@ -221,5 +221,5 @@ http://github.com/heartcombo/show_for/issues
 ## License
 
 MIT License.
-Copyright 2012-2019 Plataformatec.
 Copyright 2020-2025 Rafael França, Carlos Antonio da Silva.
+Copyright 2012-2019 Plataformatec.
