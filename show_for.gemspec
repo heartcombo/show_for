@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.summary     = "Wrap your objects with a helper to easily show them"
   s.email       = "heartcombo.oss@gmail.com"
-  s.homepage    = "http://github.com/heartcombo/show_for"
+  s.homepage    = "https://github.com/heartcombo/show_for"
   s.description = "Wrap your objects with a helper to easily show them"
   s.authors     = ["José Valim"]
   s.licenses    = ["MIT"]
