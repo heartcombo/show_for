@@ -67,6 +67,7 @@ GEM
     nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    ostruct (0.6.3)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -122,10 +123,11 @@ PLATFORMS
 DEPENDENCIES
   actionpack (~> 8.1.0)
   activemodel (~> 8.1.0)
+  ostruct
   railties (~> 8.1.0)
   rake
   rdoc
   show_for!
 
 BUNDLED WITH
-   2.6.9
+  4.0.3
