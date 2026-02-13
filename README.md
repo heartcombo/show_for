@@ -1,6 +1,6 @@
 # ShowFor
 
-[![Gem Version](https://fury-badge.herokuapp.com/rb/show_for.png)](http://badge.fury.io/rb/show_for)
+[![Gem Version](https://badge.fury.io/rb/show_for.svg)](https://badge.fury.io/rb/show_for)
 
 ShowFor allows you to quickly show a model information with I18n features.
 
